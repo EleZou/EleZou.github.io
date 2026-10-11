@@ -38,37 +38,37 @@ window.PGSF_DATA = {
     {
       "id": "scannetpp",
       "name": "ScanNet++",
-      "scene": "88cf747085",
+      "scene": "66c98f4a9b",
       "description": "Real indoor capture",
       "images": {
         "mesh": {
-          "PGSF": "assets/images/scannetpp/mesh/pgsf.webp",
-          "PGSR": "assets/images/scannetpp/mesh/pgsr.webp",
-          "2DGS": "assets/images/scannetpp/mesh/2dgs.webp",
-          "AmbiSuR": "assets/images/scannetpp/mesh/ambisur.webp",
-          "GT": "assets/images/scannetpp/mesh/gt.webp"
+          "PGSF": "assets/images/scannetpp/mesh/pgsf.webp?v=66c98f4a9b-DSC01979",
+          "PGSR": "assets/images/scannetpp/mesh/pgsr.webp?v=66c98f4a9b-DSC01979",
+          "2DGS": "assets/images/scannetpp/mesh/2dgs.webp?v=66c98f4a9b-DSC01979",
+          "AmbiSuR": "assets/images/scannetpp/mesh/ambisur.webp?v=66c98f4a9b-DSC01979",
+          "GT": "assets/images/scannetpp/mesh/gt.webp?v=66c98f4a9b-DSC01979"
         },
         "rgb": {
-          "2DGS": "assets/images/scannetpp/rgb/2dgs.webp",
-          "PGSR": "assets/images/scannetpp/rgb/pgsr.webp",
-          "AmbiSuR": "assets/images/scannetpp/rgb/ambisur.webp",
-          "PGSF": "assets/images/scannetpp/rgb/pgsf.webp",
-          "GT": "assets/images/scannetpp/rgb/gt.webp"
+          "2DGS": "assets/images/scannetpp/rgb/2dgs.webp?v=66c98f4a9b-DSC01979",
+          "PGSR": "assets/images/scannetpp/rgb/pgsr.webp?v=66c98f4a9b-DSC01979",
+          "AmbiSuR": "assets/images/scannetpp/rgb/ambisur.webp?v=66c98f4a9b-DSC01979",
+          "PGSF": "assets/images/scannetpp/rgb/pgsf.webp?v=66c98f4a9b-DSC01979",
+          "GT": "assets/images/scannetpp/rgb/gt.webp?v=66c98f4a9b-DSC01979"
         },
         "depth": {
-          "2DGS": "assets/images/scannetpp/depth/2dgs.webp",
-          "PGSR": "assets/images/scannetpp/depth/pgsr.webp",
-          "AmbiSuR": "assets/images/scannetpp/depth/ambisur.webp",
-          "PGSF": "assets/images/scannetpp/depth/pgsf.webp"
+          "2DGS": "assets/images/scannetpp/depth/2dgs.webp?v=66c98f4a9b-DSC01979",
+          "PGSR": "assets/images/scannetpp/depth/pgsr.webp?v=66c98f4a9b-DSC01979",
+          "AmbiSuR": "assets/images/scannetpp/depth/ambisur.webp?v=66c98f4a9b-DSC01979",
+          "PGSF": "assets/images/scannetpp/depth/pgsf.webp?v=66c98f4a9b-DSC01979"
         },
         "normal": {
-          "2DGS": "assets/images/scannetpp/normal/2dgs.webp",
-          "PGSR": "assets/images/scannetpp/normal/pgsr.webp",
-          "AmbiSuR": "assets/images/scannetpp/normal/ambisur.webp",
-          "PGSF": "assets/images/scannetpp/normal/pgsf.webp"
+          "2DGS": "assets/images/scannetpp/normal/2dgs.webp?v=66c98f4a9b-DSC01979",
+          "PGSR": "assets/images/scannetpp/normal/pgsr.webp?v=66c98f4a9b-DSC01979",
+          "AmbiSuR": "assets/images/scannetpp/normal/ambisur.webp?v=66c98f4a9b-DSC01979",
+          "PGSF": "assets/images/scannetpp/normal/pgsf.webp?v=66c98f4a9b-DSC01979"
         }
       },
-      "view": "DSC08813"
+      "view": "DSC01979"
     },
     {
       "id": "mushroom",

@@ -12,7 +12,7 @@ Serve the repository root with `python -m http.server 8000` and visit `/PGSF/`.
 - `data.js`: comparison assets and video metadata. Paths are relative to this folder.
 - `assets/`: lossless WebP comparison images, browser-ready H.264 videos, locally hosted OFL fonts.
 
-The three supplied 45-second videos retain 1920 × 1080 resolution and 45 fps. The videos show office0 (Replica), 8b5caf3398 (ScanNet++), and coffee_room (MuSHRoom). Static comparisons show office0, 88cf747085, and vr_room respectively.
+The three supplied 45-second videos retain 1920 × 1080 resolution and 45 fps. The videos show office0 (Replica), 8b5caf3398 (ScanNet++), and coffee_room (MuSHRoom). Static comparisons show office0, 66c98f4a9b, and vr_room respectively. ScanNet++ RGB, depth, and normal panels use the matched DSC01979 view (2DGS index 00019); mesh panels use the supplied captures of the same scene.
 
 ## Reference availability
 
