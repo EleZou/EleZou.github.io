@@ -12,10 +12,10 @@
   <title>PGSF · Projective Gaussian Surface Fields</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=fast-video-1">
   <script src="data.js?v=scannetpp-66c98f4a9b" defer></script>
-  <script src="app.js" defer></script>
-  <script src="mesh-videos.js" defer></script>
+  <script src="app.js?v=fast-video-1" defer></script>
+  <script src="mesh-videos.js?v=fast-video-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
     <section id="videos" class="video-section container" aria-labelledby="videos-title">
       <div class="section-heading video-heading"><h2 id="videos-title">Explore the reconstructions</h2><span class="section-kicker">Three indoor datasets</span></div>
       <div class="video-frame">
-        <video id="reconstruction-video" controls playsinline muted loop preload="metadata" poster="assets/videos/scannetpp-poster.webp" aria-label="PGSF reconstruction video on ScanNet++, 8b5caf3398">
+        <video id="reconstruction-video" controls playsinline muted loop preload="none" poster="assets/videos/scannetpp-poster.webp" aria-label="PGSF reconstruction video on ScanNet++, 8b5caf3398">
           <source src="assets/videos/scannetpp.mp4" type="video/mp4">
           Your browser does not support HTML video. <a href="assets/videos/scannetpp.mp4">Download the video.</a>
         </video>
@@ -96,14 +96,15 @@
         <div id="mesh-video-content" role="tabpanel" aria-labelledby="mesh-method-pgsr">
           <div class="mesh-video-frame">
             <video id="mesh-comparison-video" controls playsinline muted loop preload="none" poster="assets/videos/mesh-comparisons/replica-pgsr.webp" aria-label="Replica office0: PGSR on the left and PGSF on the right, synchronized mesh comparison" aria-describedby="mesh-video-caption">
-              <source src="assets/videos/mesh-comparisons/replica-pgsr.mp4" type="video/mp4">
-              Your browser does not support HTML video. <a href="assets/videos/mesh-comparisons/replica-pgsr.mp4">Open the comparison video.</a>
+              <source src="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4" type="video/mp4">
+              Your browser does not support HTML video. <a href="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4">Open the comparison video.</a>
             </video>
           </div>
           <div class="mesh-playback-toolbar">
             <button type="button" class="mesh-play-button" id="mesh-play-toggle" aria-controls="mesh-comparison-video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><span>Play comparison</span></button>
             <label class="mesh-speed-control" for="mesh-video-speed">Speed <select id="mesh-video-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label>
-            <a id="mesh-video-open" href="assets/videos/mesh-comparisons/replica-pgsr.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
+            <label class="mesh-speed-control" for="mesh-video-quality">Quality <select id="mesh-video-quality"><option value="fast" selected>Fast</option><option value="hd">HD</option></select></label>
+            <a id="mesh-video-open" href="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
           </div>
           <p id="mesh-video-caption" class="mesh-video-caption">Inspect the wall–furniture boundaries and surface continuity as the camera moves. PGSF stays on the right; both views play and seek together.</p>
           <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>

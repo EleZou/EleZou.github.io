@@ -4,6 +4,7 @@
   const video = section.querySelector('video');
   const toggle = section.querySelector('#mesh-play-toggle');
   const speed = section.querySelector('#mesh-video-speed');
+  const quality = section.querySelector('#mesh-video-quality');
   const status = section.querySelector('#mesh-video-status');
   const scenes = {
     replica: {name: 'Replica', scene: 'office0', regime: 'Synthetic indoor views', detail: 'Inspect the wall–furniture boundaries and surface continuity as the camera moves.'},
@@ -19,6 +20,48 @@
   let ready = false;
   let shouldPlay = false;
   let playRequest = 0;
+  const preparedVideos = new Map();
+  const failedPreloads = new Set();
+  let preloader = null;
+
+  function stopPreloading() {
+    preloader?.abort();
+    preloader = null;
+  }
+
+  function preloadComparisons() {
+    if (preloader) return;
+    const lastRange = video.buffered.length - 1;
+    if (lastRange < 0 || video.buffered.end(lastRange) < video.duration - 0.1) return;
+    const controller = new AbortController();
+    preloader = controller;
+    // Fetch one small clip at a time. Cached object URLs make later switches
+    // independent of the server's handling of range-request caching.
+    (async () => {
+      try {
+        while (!controller.signal.aborted) {
+          const datasets = [currentDataset, ...Object.keys(scenes).filter(key => key !== currentDataset)];
+          const layouts = portraitScreen.matches ? ['-portrait', ''] : ['', '-portrait'];
+          const sources = layouts.flatMap(layout => datasets.flatMap(dataset => Object.keys(methods).map(method =>
+            `assets/videos/mesh-comparisons/${dataset}-${method}${layout}-fast.mp4`)));
+          const next = sources.find(source => source !== video.dataset.source && !preparedVideos.has(source) && !failedPreloads.has(source));
+          if (!next) break;
+          try {
+            const response = await fetch(next, {signal: controller.signal, cache: 'force-cache', priority: 'low'});
+            if (!response.ok) throw new Error('Video unavailable');
+            const blob = await response.blob();
+            if (controller.signal.aborted) break;
+            preparedVideos.set(next, URL.createObjectURL(blob));
+          } catch (error) {
+            if (controller.signal.aborted) break;
+            failedPreloads.add(next);
+          }
+        }
+      } finally {
+        if (preloader === controller) preloader = null;
+      }
+    })();
+  }
 
   function selectTab(button) {
     button.parentElement.querySelectorAll('[role="tab"]').forEach(tab => {
@@ -71,21 +114,24 @@
     const scene = scenes[dataset];
     const portrait = portraitScreen.matches;
     const path = `assets/videos/mesh-comparisons/${dataset}-${method}${portrait ? '-portrait' : ''}`;
+    const source = `${path}${quality.value === 'fast' ? '-fast' : ''}.mp4`;
+    if (!preparedVideos.has(source)) stopPreloading();
     video.poster = `${path}.webp`;
-    video.src = `${path}.mp4`;
+    video.dataset.source = source;
+    video.src = preparedVideos.get(source) || source;
     video.setAttribute('aria-label', `${scene.name} ${scene.scene}: ${methods[method]} ${portrait ? 'above' : 'on the left'} and PGSF ${portrait ? 'below' : 'on the right'}, synchronized mesh comparison`);
     section.querySelector('#mesh-video-scene').textContent = scene.scene;
     section.querySelector('#mesh-video-regime').textContent = `${scene.name} · ${scene.regime}`;
     section.querySelector('#mesh-video-caption').textContent = `${scene.detail} PGSF stays ${portrait ? 'below' : 'on the right'}; both views play and seek together.`;
-    section.querySelector('#mesh-video-open').href = `${path}.mp4`;
-    video.querySelector('a').href = `${path}.mp4`;
+    section.querySelector('#mesh-video-open').href = source;
+    video.querySelector('a').href = source;
     section.querySelector('#mesh-video-panel').setAttribute('aria-labelledby', `mesh-dataset-${dataset}`);
     section.querySelector('#mesh-video-content').setAttribute('aria-labelledby', `mesh-method-${method}`);
     status.textContent = '';
     updateButton();
     video.addEventListener('loadedmetadata', () => {
       ready = true;
-      video.currentTime = Math.min(desiredTime, Math.max(0, video.duration - 0.05));
+      if (desiredTime > 0) video.currentTime = Math.min(desiredTime, Math.max(0, video.duration - 0.05));
       video.playbackRate = Number(speed.value);
       if (shouldPlay) play();
     }, {once: true, signal: pendingLoad.signal});
@@ -102,6 +148,7 @@
   }));
   toggle.addEventListener('click', () => shouldPlay ? pause() : play());
   speed.addEventListener('change', () => { video.playbackRate = Number(speed.value); });
+  quality.addEventListener('change', () => changeVideo(currentDataset, currentMethod, true));
   video.addEventListener('loadedmetadata', () => { ready = true; });
   video.addEventListener('play', () => { shouldPlay = true; updateButton(); });
   video.addEventListener('pause', () => {
@@ -109,24 +156,20 @@
   });
   video.addEventListener('waiting', () => { if (shouldPlay) status.textContent = 'Loading comparison…'; });
   video.addEventListener('playing', () => { status.textContent = ''; });
-  video.addEventListener('canplay', () => { status.textContent = ''; });
+  video.addEventListener('canplay', () => { status.textContent = ''; preloadComparisons(); });
+  video.addEventListener('progress', preloadComparisons);
+  video.addEventListener('suspend', preloadComparisons);
   video.addEventListener('error', () => {
     pause();
     status.textContent = 'The video could not load. Try another comparison, or open the video directly.';
   });
   document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
   portraitScreen.addEventListener('change', () => changeVideo(currentDataset, currentMethod, true));
-  if (portraitScreen.matches) changeVideo(currentDataset, currentMethod, true);
+  video.preload = 'auto';
+  changeVideo(currentDataset, currentMethod, true);
 
-  // Load only the visible pair, and stop decoding when readers move on.
+  // Loading continues in the background; only playback pauses offscreen.
   if ('IntersectionObserver' in window) {
-    const loader = new IntersectionObserver(entries => {
-      if (!entries.some(entry => entry.isIntersecting)) return;
-      video.preload = 'metadata';
-      if (!video.currentSrc) video.load();
-      loader.disconnect();
-    }, {rootMargin: '250px'});
-    loader.observe(section);
     const pauser = new IntersectionObserver(entries => {
       if (!entries[0].isIntersecting && !document.fullscreenElement && !video.webkitDisplayingFullscreen) pause();
     }, {threshold: 0});

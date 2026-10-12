@@ -9,7 +9,7 @@ Serve the repository root with `python -m http.server 8000` and visit `/PGSF/`.
 - `index.html`: title, manuscript abstract, method description, videos, comparisons.
 - `style.css`: responsive layout and accessible comparison controls.
 - `app.js`: dataset / modality / reference selection, mouse / touch / keyboard sliders, enlarged views, and video selection.
-- `mesh-videos.js`: synchronized mesh-video comparison selection, playback state, lazy loading, and pause-on-exit.
+- `mesh-videos.js`: synchronized mesh-video comparison selection, playback state, background preloading, and pause-on-exit.
 - `data.js`: comparison assets and video metadata. Paths are relative to this folder.
 - `assets/`: lossless WebP comparison images, browser-ready H.264 videos, locally hosted OFL fonts.
 
@@ -31,8 +31,14 @@ Author, paper, and method-code links are omitted until confirmed. Layout is insp
 
 The 360-degree mesh comparison section appears immediately before the interactive image comparisons. Each 30-second clip compares a selectable baseline (PGSR, 2DGS, AmbiSuR) or ground truth on the left with PGSF on the right. Dataset selection covers Replica office0, ScanNet++ 88cf747085, and MuSHRoom coffee_room. These scene IDs are independent of the existing image comparisons and PGSF-only teaser videos.
 
-The 15 supplied 1920 x 1080 / 45 fps videos are paired into 12 browser-ready H.264 clips in `assets/videos/mesh-comparisons/`. Both sides use identical 1280 x 720 scaling with the complete source framing and 1,350 frames retained. Each combined video is 2560 x 784, including a 64-pixel method-label strip. A single stream provides exact synchronization through playback, seeking, buffering, looping, and fullscreen. MP4 metadata is at the start for streaming. Only the active pair loads when it approaches the viewport.
+The 15 supplied 1920 x 1080 / 45 fps videos are paired into 12 comparisons in `assets/videos/mesh-comparisons/`, with fast and HD versions for each screen layout. A single stream provides exact synchronization through playback, seeking, buffering, looping, and fullscreen. MP4 metadata is at the start for streaming. The selected pair starts loading as soon as the page opens, regardless of scroll position. Once it has buffered, the remaining fast clips preload sequentially at low priority, preferring the current dataset and screen layout before preparing the other layout. Completed downloads use object URLs for immediate switching. Choosing an uncached pair interrupts background fetching to prioritize that selection; preloading resumes when it has buffered. Failed background requests leave direct streaming available.
+
+The default Fast version uses 1600 x 490 at 30 fps on desktop and 640 x 784 on portrait phones. Both methods receive identical scaling and compression, with the complete 30-second camera path and full framing retained. H.264 encoding uses CRF 27, the slow preset, a one-second keyframe interval, and capped bitrates of 1 Mbps (desktop) and 0.7 Mbps (portrait). Fast files end in `-fast.mp4` and reuse the existing posters. The Quality selector explicitly loads HD when needed; switching quality preserves playback position, speed, and playing state.
+
+HD pairs retain all 1,350 source frames at 45 fps. Desktop HD uses identical 1280 x 720 scaling for each view, producing a combined 2560 x 784 frame including method labels. Portrait HD uses 960 x 1176. These original HD files remain available without alteration.
 
 Switching the comparator preserves playback position and speed; switching datasets starts the new camera path at zero. Native controls support seeking and fullscreen, with a separate play/pause button, half-speed playback, and a direct-video fallback. Labels remain visible in fullscreen. Keyboard arrow keys switch dataset and method tabs.
 
-Portrait screens up to 600 px use corresponding `-portrait.mp4` clips with the same full views stacked vertically (960 x 1176, 45 fps). PGSF stays below the comparator. Rotating or resizing the screen preserves playback position; only the selected layout is loaded. Desktop and landscape screens retain the larger side-by-side presentation.
+Portrait screens up to 600 px use corresponding `-portrait-fast.mp4` or `-portrait.mp4` clips with the same full views stacked vertically. PGSF stays below the comparator. Rotating or resizing the screen preserves playback position. Desktop and landscape screens retain the larger side-by-side presentation. HD clips load only when the reader chooses HD.
+
+The PGSF-only teaser waits for a play action before downloading video data. Interactive comparison images load when their cards approach the viewport, while enlarged comparisons load immediately on request. This avoids competing with mesh playback for bandwidth. Comparison images remain lossless.

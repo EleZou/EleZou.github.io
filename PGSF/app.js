@@ -15,6 +15,17 @@
   const referenceName = () => state.reference === 'GT' && state.modality === 'normal' ? 'GT depth-derived normal' : name(state.reference);
   const arrows = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>';
   const expandIcon = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4M3 3l5 5m9-5-5 5M3 17l5-5m9 5-5-5"/></svg>';
+  const loadViewImages = view => view.querySelectorAll('img[data-src]').forEach(img => {
+    img.src = img.dataset.src;
+    delete img.dataset.src;
+  });
+  const imageObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      loadViewImages(entry.target);
+      imageObserver.unobserve(entry.target);
+    });
+  }, {rootMargin: '120px'}) : null;
 
   function selectTab(button) {
     button.parentElement.querySelectorAll('[role="tab"]').forEach(tab => {
@@ -76,8 +87,10 @@
       img.addEventListener('load', onLoad);
       img.addEventListener('error', () => { view.dataset.error = 'true'; view.dataset.loading = 'false'; });
     }
-    view.querySelector('.reference-image').src = images[state.reference];
-    view.querySelector('.method-image').src = images[method];
+    view.querySelector('.reference-image').dataset.src = images[state.reference];
+    view.querySelector('.method-image').dataset.src = images[method];
+    if (large || !imageObserver) loadViewImages(view);
+    else imageObserver.observe(view);
     const range = view.querySelector('input');
     range.addEventListener('input', () => updatePosition(view, range.value));
     let dragging = false;
@@ -109,6 +122,7 @@
   dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if (event.clientX<r.left || event.clientX>r.right || event.clientY<r.top || event.clientY>r.bottom) dialog.close(); } });
 
   function render() {
+    imageObserver?.disconnect();
     renderVersion += 1;
     const version = renderVersion;
     const d = dataset(), images = available();
@@ -171,8 +185,8 @@
     selectTab(button);
     if (wasPlaying) video.play().catch(() => {});
   }));
-  const videoObserver = new IntersectionObserver(entries => { if (!entries[0].isIntersecting) video.pause(); }, {threshold:0.05});
+  const videoObserver = new IntersectionObserver(entries => { if (!entries[0].isIntersecting && !video.paused) video.pause(); }, {threshold:0.05});
   videoObserver.observe(video);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden && !video.paused) video.pause(); });
   render();
 })();
