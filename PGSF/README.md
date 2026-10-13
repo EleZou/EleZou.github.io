@@ -45,6 +45,6 @@ The PGSF-only teaser waits for a play action before downloading video data. Inte
 
 ## Experimental results
 
-The `#results` section follows the interactive comparisons and precedes the closing paragraph. It reproduces the main manuscript's reconstruction and rendering tables, all 96 displayed metric cells across those two tables, their supplied rank colors, and their bold best results (including ties). HTML tables retain grouped metric headers and full-cell backgrounds. The two main tables appear side by side on desktop and stack on narrow screens.
+The `#results` section follows the interactive comparisons and precedes the closing paragraph. It combines the main manuscript's reconstruction and rendering results in one compact table with shared dataset and method columns and two grouped metric headers. All 96 reported values, supplied rank colors, and bold best results (including ties) are preserved. Twelve unreported rendering entries use an en dash. Rankings fill each entire cell. The table fits on desktop; narrow screens scroll horizontally within the table region, with a visible swipe hint and method names kept visible while scrolling.
 
 Figures 3 and 4 are lossless WebP exports from the manuscript PDFs in `assets/images/experiments/`. Figures 3 and 4 share the same display width and retain their original aspect ratios. Every plate links to its full-resolution image. New figure images load near the viewport; the previously requested continuous mesh-video preloading is retained.

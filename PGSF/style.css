@@ -51,21 +51,22 @@
 .rank-legend{font-size:12px;text-align:center;color:var(--muted);margin:25px 0}
 .rank-legend span{display:inline-block;padding:2px 7px;color:var(--ink);border-radius:3px}
 .rank-first{background:#ffcccc}.rank-second{background:#ffe3bf}.rank-third{background:#ffffb3}
-.result-table-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
-.result-table-card{min-width:0}
+.result-table-card{min-width:0;max-width:960px;margin-inline:auto}
 .result-kicker{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:650;margin:0 0 8px}
 .result-table-card h3{font-size:21px;margin:0 0 17px}
 .result-table-scroll{overflow-x:auto;overscroll-behavior-x:contain;border-top:2px solid var(--ink);border-bottom:1px solid var(--ink)}
-.experiment-table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.55;font-variant-numeric:tabular-nums;text-align:center}
-.experiment-table th,.experiment-table td{padding:5px 7px;white-space:nowrap}
+.experiment-table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px;line-height:1.5;font-variant-numeric:tabular-nums;text-align:center}
+.experiment-table th,.experiment-table td{padding:3px 10px;white-space:nowrap}
 .experiment-table thead{border-bottom:1px solid var(--ink)}
 .experiment-table thead tr:first-child th[colspan]{border-bottom:1px solid var(--line)}
 .experiment-table thead th{font-weight:600}
 .experiment-table tbody+tbody{border-top:1px solid var(--line)}
 .experiment-table tbody th{font-weight:400}
-.experiment-table .dataset-cell{font-size:12px;font-style:italic;vertical-align:middle;color:var(--muted)}
+.experiment-table .dataset-cell{font-size:13px;font-style:italic;vertical-align:middle;color:var(--muted)}
 .experiment-table .ours-row th{font-weight:750;color:var(--accent-dark)}
 .experiment-table strong{font-weight:750}
+.experiment-table .unreported{color:var(--muted)}
+.result-scroll-hint{display:none;font-size:11px;color:var(--muted);margin:0 0 8px}
 .result-table-note{font-size:12px;line-height:1.7;color:var(--muted);margin:12px 0 0}
 .experiment-analysis{margin-top:27px;margin-bottom:45px}
 .experiment-figure{width:100%;margin:0 0 52px;padding-top:34px;border-top:1px solid var(--line)}
@@ -75,7 +76,7 @@
 .experiment-figure>a:first-of-type{display:block;width:100%;cursor:zoom-in}
 .experiment-figure img{width:100%;height:auto}
 .experiment-enlarge{display:block;text-align:right;font-size:12px;margin-top:12px}
-@media(max-width:900px){.result-table-grid{gap:23px}.experiment-table{font-size:12px}.experiment-table th,.experiment-table td{padding-inline:5px}.experiment-table .dataset-cell{font-size:11px}}
-@media(max-width:720px){.result-table-grid{grid-template-columns:1fr;gap:32px}.experiment-table{font-size:13px}.experiment-table .dataset-cell{font-size:12px}}
+@media(max-width:900px){.experiment-table{font-size:13px}.experiment-table th,.experiment-table td{padding-inline:8px}.experiment-table .dataset-cell{font-size:12px}}
+@media(max-width:695px){.result-scroll-hint{display:block}.experiment-table th[scope="row"],.experiment-table thead tr:first-child th:nth-child(2){position:sticky;left:0;z-index:1;background:#fff;box-shadow:1px 0 var(--line)}}
 @media(max-width:600px){.experiment-section{padding-block:39px 0}.rank-legend{font-size:11px;line-height:1.9}.result-table-card h3{font-size:20px}.experiment-figure{padding-top:26px;margin-bottom:34px}.experiment-figure h3{font-size:21px}.experiment-figure figcaption p{font-size:13px}.experiment-figure figcaption{margin-bottom:17px}.experiment-analysis{margin-bottom:32px}.nav-links{gap:13px;font-size:11px}.experiment-enlarge{font-size:11px}}
-@media(max-width:360px){.nav-links{gap:9px;font-size:10px}.experiment-table th,.experiment-table td{padding-inline:4px}.experiment-table{font-size:12px}.experiment-table .dataset-cell{font-size:11px}}
+@media(max-width:360px){.nav-links{gap:9px;font-size:10px}}
