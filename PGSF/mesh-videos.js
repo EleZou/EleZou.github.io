@@ -7,7 +7,7 @@
   const quality = section.querySelector('#mesh-video-quality');
   const status = section.querySelector('#mesh-video-status');
   const scenes = {
-    replica: {name: 'Replica', scene: 'office0', regime: 'Synthetic indoor views', detail: 'Inspect the wall–furniture boundaries and surface continuity as the camera moves.'},
+    replica: {name: 'Replica', scene: 'office0', regime: 'Rendered views of a real scanned interior', detail: 'Inspect the wall–furniture boundaries and surface continuity as the camera moves.'},
     scannetpp: {name: 'ScanNet++', scene: '88cf747085', regime: 'Real scanned interior', detail: 'Inspect the tiled wall, sink outline, and small surface structures from changing angles.'},
     mushroom: {name: 'MuSHRoom', scene: 'coffee_room', regime: 'Challenging smartphone capture', detail: 'Inspect the sofa contours, curtains, and gaps between reconstructed surfaces.'}
   };

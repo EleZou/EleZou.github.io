@@ -4,7 +4,7 @@ window.PGSF_DATA = {
       "id": "replica",
       "name": "Replica",
       "scene": "office0",
-      "description": "Synthetic indoor scene",
+      "description": "Rendered views of a real scanned interior",
       "images": {
         "mesh": {
           "PGSF": "assets/images/replica/mesh/pgsf.webp",

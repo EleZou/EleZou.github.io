@@ -13,9 +13,9 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=combined-results-1">
-  <script src="data.js?v=scannetpp-66c98f4a9b" defer></script>
+  <script src="data.js?v=replica-provenance-1" defer></script>
   <script src="app.js?v=fast-video-1" defer></script>
-  <script src="mesh-videos.js?v=fast-video-1" defer></script>
+  <script src="mesh-videos.js?v=replica-provenance-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -56,7 +56,7 @@
 
     <section id="overview" class="abstract-section section-band" aria-labelledby="abstract-title">
       <div class="prose-container"><h2 id="abstract-title">Abstract</h2>
-        <p>Recovering coherent indoor surfaces from 3D Gaussians is challenging because each Gaussian provides only a local and sign-ambiguous estimate of surface orientation, while spatially nearby cues may become unreliable across visibility and depth discontinuities. To address this, we introduce Projective Gaussian Surface Fields (PGSF), a projective formulation that adapts normal-field inference to image-based indoor reconstruction. We represent each Gaussian orientation with a sign-invariant rank-one projector and infer a soft Projective Normal Field (PNF) over visibility- and depth-aware neighborhoods. The field aggregates compatible evidence while retaining uncertainty in ambiguous regions. The inferred field provides detached targets for Gaussian orientations and positions, while rendered projectors enforce depth-normal and cross-view consistency. This coupling propagates geometric evidence while separating convex field inference from non-convex Gaussian optimization. Experiments span synthetic views of Replica interiors, real scanned scenes from ScanNet++, and challenging smartphone captures from MuSHRoom. Consistent improvements over PGSR in reconstruction and rendering across these three indoor benchmarks support the effectiveness of the field coupling under varied acquisition conditions.</p>
+        <p>Recovering coherent indoor surfaces from 3D Gaussians is challenging because each Gaussian provides only a local and sign-ambiguous estimate of surface orientation, while spatially nearby cues may become unreliable across visibility and depth discontinuities. To address this, we introduce Projective Gaussian Surface Fields (PGSF), a projective formulation that adapts normal-field inference to image-based indoor reconstruction. We represent each Gaussian orientation with a sign-invariant rank-one projector and infer a soft Projective Normal Field (PNF) over visibility- and depth-aware neighborhoods. The field aggregates compatible evidence while retaining uncertainty in ambiguous regions. The inferred field provides detached targets for Gaussian orientations and positions, while rendered projectors enforce depth-normal and cross-view consistency. This coupling propagates geometric evidence while separating convex field inference from non-convex Gaussian optimization. Experiments cover rendered views of scanned Replica scenes, real ScanNet++ imagery, and challenging MuSHRoom smartphone captures. Consistent improvements over PGSR in reconstruction and rendering across these three indoor benchmarks support the effectiveness of the field coupling under varied acquisition conditions.</p>
       </div>
     </section>
 
@@ -84,7 +84,7 @@
         <button type="button" role="tab" id="mesh-dataset-mushroom" aria-selected="false" tabindex="-1" aria-controls="mesh-video-panel" data-mesh-dataset="mushroom">MuSHRoom</button>
       </div>
       <div id="mesh-video-panel" role="tabpanel" aria-labelledby="mesh-dataset-replica">
-        <div class="mesh-video-meta"><p><strong id="mesh-video-scene">office0</strong><span id="mesh-video-regime">Replica · Synthetic indoor views</span></p><span class="mesh-sync-label"><span aria-hidden="true"></span>Frame-synchronized</span></div>
+        <div class="mesh-video-meta"><p><strong id="mesh-video-scene">office0</strong><span id="mesh-video-regime">Replica · Rendered views of a real scanned interior</span></p><span class="mesh-sync-label"><span aria-hidden="true"></span>Frame-synchronized</span></div>
         <div class="mesh-method-toolbar"><span id="mesh-method-label">Compare PGSF with</span>
           <div class="tab-list mesh-method-tabs" role="tablist" aria-labelledby="mesh-method-label">
             <button type="button" role="tab" id="mesh-method-pgsr" aria-selected="true" aria-controls="mesh-video-content" data-mesh-method="pgsr">PGSR</button>
@@ -142,7 +142,7 @@
       </div>
     </section>
     <section id="results" class="experiment-section container" aria-labelledby="experiment-title">
-      <div class="section-heading centered"><p class="eyebrow">Evidence across three indoor benchmarks</p><h2 id="experiment-title">Experimental results</h2><p class="section-intro">Synthetic views from Replica, real scanned interiors from ScanNet++, and challenging smartphone captures from MuSHRoom.</p></div>
+      <div class="section-heading centered"><p class="eyebrow">Evidence across three indoor benchmarks</p><h2 id="experiment-title">Experimental results</h2><p class="section-intro">We evaluate rendered views of eight scanned Replica scenes, real ScanNet++ imagery, and challenging MuSHRoom smartphone captures.</p></div>
       <p class="rank-legend">Cell colors indicate <span class="rank-first">1st</span>, <span class="rank-second">2nd</span>, and <span class="rank-third">3rd</span> place. Ties share the same rank.</p>
       <article class="result-table-card" aria-labelledby="combined-results-title">
         <p class="result-kicker">Table 1</p><h3 id="combined-results-title">Surface reconstruction and novel view synthesis</h3>
