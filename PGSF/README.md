@@ -45,6 +45,6 @@ The PGSF-only teaser waits for a play action before downloading video data. Inte
 
 ## Experimental results
 
-The `#results` section follows the interactive comparisons and precedes the closing paragraph. It reproduces the main manuscript's reconstruction and rendering tables, all 126 displayed metric cells across those tables and the ablation table, their supplied rank colors, and their bold best results (including ties). HTML tables retain grouped metric headers and full-cell backgrounds. Desktop main tables appear side by side; narrow screens stack them, while the ablation table scrolls within its own container.
+The `#results` section follows the interactive comparisons and precedes the closing paragraph. It reproduces the main manuscript's reconstruction and rendering tables, all 96 displayed metric cells across those two tables, their supplied rank colors, and their bold best results (including ties). HTML tables retain grouped metric headers and full-cell backgrounds. The two main tables appear side by side on desktop and stack on narrow screens.
 
-Figures 3, 4, and 5 are lossless WebP exports from the manuscript PDFs in `assets/images/experiments/`. Figures 3 and 4 share the same display width and retain their original aspect ratios. Every plate links to its full-resolution image. New figure images load near the viewport; the previously requested continuous mesh-video preloading is retained.
+Figures 3 and 4 are lossless WebP exports from the manuscript PDFs in `assets/images/experiments/`. Figures 3 and 4 share the same display width and retain their original aspect ratios. Every plate links to its full-resolution image. New figure images load near the viewport; the previously requested continuous mesh-video preloading is retained.
