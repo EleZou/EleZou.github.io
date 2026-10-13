@@ -42,3 +42,9 @@ Switching the comparator preserves playback position and speed; switching datase
 Portrait screens up to 600 px use corresponding `-portrait-fast.mp4` or `-portrait.mp4` clips with the same full views stacked vertically. PGSF stays below the comparator. Rotating or resizing the screen preserves playback position. Desktop and landscape screens retain the larger side-by-side presentation. HD clips load only when the reader chooses HD.
 
 The PGSF-only teaser waits for a play action before downloading video data. Interactive comparison images load when their cards approach the viewport, while enlarged comparisons load immediately on request. This avoids competing with mesh playback for bandwidth. Comparison images remain lossless.
+
+## Experimental results
+
+The `#results` section follows the interactive comparisons and precedes the closing paragraph. It reproduces the main manuscript's reconstruction and rendering tables, all 126 displayed metric cells across those tables and the ablation table, their supplied rank colors, and their bold best results (including ties). HTML tables retain grouped metric headers and full-cell backgrounds. Desktop main tables appear side by side; narrow screens stack them, while the ablation table scrolls within its own container.
+
+Figures 3, 4, and 5 are lossless WebP exports from the manuscript PDFs in `assets/images/experiments/`. Figures 3 and 4 share the same display width and retain their original aspect ratios. Every plate links to its full-resolution image. New figure images load near the viewport; the previously requested continuous mesh-video preloading is retained.
