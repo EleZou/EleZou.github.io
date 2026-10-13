@@ -1,8 +1,8 @@
 (() => {
   'use strict';
-  const data = window.PGSF_DATA;
+  const data = window.VisPNF_DATA;
   const state = {dataset: 'replica', modality: 'mesh', reference: 'GT', position: 50};
-  const methodOrder = ['PGSF', 'PGSR', '2DGS', 'AmbiSuR'];
+  const methodOrder = ['VisPNF', 'PGSR', '2DGS', 'AmbiSuR'];
   const modalityLabels = {mesh: 'Mesh', rgb: 'RGB', depth: 'Depth', normal: 'Normal'};
   const grid = document.querySelector('#comparison-grid');
   const referenceSelect = document.querySelector('#reference-select');
@@ -11,7 +11,7 @@
   let renderVersion = 0;
   const dataset = () => data.datasets.find(d => d.id === state.dataset);
   const available = () => dataset().images[state.modality];
-  const name = method => method === 'PGSF' ? 'PGSF (Ours)' : method === 'GT' ? 'Ground truth' : method;
+  const name = method => method === 'VisPNF' ? 'VisPNF (Ours)' : method === 'GT' ? 'Ground truth' : method;
   const referenceName = () => state.reference === 'GT' && state.modality === 'normal' ? 'GT depth-derived normal' : name(state.reference);
   const arrows = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>';
   const expandIcon = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4M3 3l5 5m9-5-5 5M3 17l5-5m9 5-5-5"/></svg>';
@@ -126,7 +126,7 @@
     renderVersion += 1;
     const version = renderVersion;
     const d = dataset(), images = available();
-    if (!images[state.reference]) state.reference = images.GT ? 'GT' : 'PGSF';
+    if (!images[state.reference]) state.reference = images.GT ? 'GT' : 'VisPNF';
     referenceSelect.replaceChildren();
     for (const method of ['GT', ...methodOrder]) {
       if (!images[method]) continue;
@@ -138,7 +138,7 @@
     for (const method of methodOrder) {
       if (method === state.reference) continue;
       const card = document.createElement('article'); card.className = 'compare-card';
-      card.innerHTML = `<div class="card-heading"><h3>${method}${method === 'PGSF' ? '<span class="ours-badge">Ours</span>' : ''}</h3><button class="expand-button" type="button" aria-label="Enlarge ${method} comparison">${expandIcon}<span>Enlarge</span></button></div>`;
+      card.innerHTML = `<div class="card-heading"><h3>${method}${method === 'VisPNF' ? '<span class="ours-badge">Ours</span>' : ''}</h3><button class="expand-button" type="button" aria-label="Enlarge ${method} comparison">${expandIcon}<span>Enlarge</span></button></div>`;
       card.append(createView(method));
       const button = card.querySelector('button'); button.addEventListener('click', () => enlarge(method, button));
       grid.append(card);
@@ -158,10 +158,10 @@
     requestAnimationFrame(() => { if (version === renderVersion) document.querySelector('#comparison-status').textContent = `${d.name}, ${d.scene}. ${modalityLabels[state.modality]} comparisons against ${referenceName()}.`; });
   }
   document.querySelectorAll('[data-dataset]').forEach(button => button.addEventListener('click', () => {
-    state.dataset = button.dataset.dataset; selectTab(button); state.reference = available().GT ? 'GT' : 'PGSF'; render();
+    state.dataset = button.dataset.dataset; selectTab(button); state.reference = available().GT ? 'GT' : 'VisPNF'; render();
   }));
   document.querySelectorAll('[data-modality]').forEach(button => button.addEventListener('click', () => {
-    state.modality = button.dataset.modality; selectTab(button); state.reference = available().GT ? 'GT' : 'PGSF'; render();
+    state.modality = button.dataset.modality; selectTab(button); state.reference = available().GT ? 'GT' : 'VisPNF'; render();
   }));
   referenceSelect.addEventListener('change', () => { state.reference = referenceSelect.value; render(); });
   sync.addEventListener('change', () => { if (sync.checked) document.querySelectorAll('.compare-view').forEach(view => moveDivider(view,state.position)); });
@@ -179,7 +179,7 @@
     const v = data.videos.find(item => item.id === button.dataset.video);
     const wasPlaying = !video.paused;
     video.pause(); video.poster = v.poster; video.src = v.src; video.load();
-    video.setAttribute('aria-label', `PGSF reconstruction video on ${v.dataset}, ${v.scene}`);
+    video.setAttribute('aria-label', `VisPNF reconstruction video on ${v.dataset}, ${v.scene}`);
     document.querySelector('#video-scene').textContent = v.scene;
     document.querySelector('#video-details').setAttribute('aria-labelledby', button.id);
     selectTab(button);

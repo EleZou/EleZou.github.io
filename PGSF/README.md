@@ -1,4 +1,4 @@
-# PGSF project website
+# VisPNF project website
 
 Static project page at `https://elezou.github.io/PGSF/`. No build step, framework, analytics, or third-party runtime requests are required.
 
@@ -29,7 +29,7 @@ Author, paper, and method-code links are omitted until confirmed. Layout is insp
 
 ## Synchronized mesh videos
 
-The 360-degree mesh comparison section appears immediately before the interactive image comparisons. Each 30-second clip compares a selectable baseline (PGSR, 2DGS, AmbiSuR) or ground truth on the left with PGSF on the right. Dataset selection covers Replica office0, ScanNet++ 88cf747085, and MuSHRoom coffee_room. These scene IDs are independent of the existing image comparisons and PGSF-only teaser videos.
+The 360-degree mesh comparison section appears immediately before the interactive image comparisons. Each 30-second clip compares a selectable baseline (PGSR, 2DGS, AmbiSuR) or ground truth on the left with VisPNF on the right. Dataset selection covers Replica office0, ScanNet++ 88cf747085, and MuSHRoom coffee_room. These scene IDs are independent of the existing image comparisons and VisPNF-only teaser videos.
 
 The 15 supplied 1920 x 1080 / 45 fps videos are paired into 12 comparisons in `assets/videos/mesh-comparisons/`, with fast and HD versions for each screen layout. A single stream provides exact synchronization through playback, seeking, buffering, looping, and fullscreen. MP4 metadata is at the start for streaming. The selected pair starts loading as soon as the page opens, regardless of scroll position. Once it has buffered, the remaining fast clips preload sequentially at low priority, preferring the current dataset and screen layout before preparing the other layout. Completed downloads use object URLs for immediate switching. Choosing an uncached pair interrupts background fetching to prioritize that selection; preloading resumes when it has buffered. Failed background requests leave direct streaming available.
 
@@ -39,9 +39,9 @@ HD pairs retain all 1,350 source frames at 45 fps. Desktop HD uses identical 128
 
 Switching the comparator preserves playback position and speed; switching datasets starts the new camera path at zero. Native controls support seeking and fullscreen, with a separate play/pause button, half-speed playback, and a direct-video fallback. Labels remain visible in fullscreen. Keyboard arrow keys switch dataset and method tabs.
 
-Portrait screens up to 600 px use corresponding `-portrait-fast.mp4` or `-portrait.mp4` clips with the same full views stacked vertically. PGSF stays below the comparator. Rotating or resizing the screen preserves playback position. Desktop and landscape screens retain the larger side-by-side presentation. HD clips load only when the reader chooses HD.
+Portrait screens up to 600 px use corresponding `-portrait-fast.mp4` or `-portrait.mp4` clips with the same full views stacked vertically. VisPNF stays below the comparator. Rotating or resizing the screen preserves playback position. Desktop and landscape screens retain the larger side-by-side presentation. HD clips load only when the reader chooses HD.
 
-The PGSF-only teaser waits for a play action before downloading video data. Interactive comparison images load when their cards approach the viewport, while enlarged comparisons load immediately on request. This avoids competing with mesh playback for bandwidth. Comparison images remain lossless.
+The VisPNF-only teaser waits for a play action before downloading video data. Interactive comparison images load when their cards approach the viewport, while enlarged comparisons load immediately on request. This avoids competing with mesh playback for bandwidth. Comparison images remain lossless.
 
 ## Experimental results
 

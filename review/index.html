@@ -5,31 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="PGSF organizes local Gaussian orientations into a projective surface field for coherent indoor reconstruction. Explore videos and interactive comparisons on Replica, ScanNet++, and MuSHRoom.">
+  <meta name="description" content="VisPNF extends Projective Normal Fields to indoor Gaussian surface reconstruction through visibility-guided neighborhoods and iterative coupling with Gaussian optimization. Explore videos and interactive comparisons on Replica, ScanNet++, and MuSHRoom.">
   <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="PGSF: Projective Gaussian Surface Fields for Coherent Indoor Surface Reconstruction">
-  <meta property="og:description" content="From local Gaussian orientations to coherent indoor surfaces. Videos and interactive mesh, RGB, depth, and normal comparisons.">
+  <meta property="og:title" content="VisPNF: Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes">
+  <meta property="og:description" content="Visibility-guided normal-field optimization for indoor Gaussian surface reconstruction. Videos and interactive mesh, RGB, depth, and normal comparisons.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/replica/mesh/pgsf.webp">
-  <title>PGSF · Projective Gaussian Surface Fields</title>
+  <title>VisPNF: Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=combined-results-1">
-  <script src="data.js?v=replica-provenance-1" defer></script>
-  <script src="app.js?v=fast-video-1" defer></script>
-  <script src="mesh-videos.js?v=replica-provenance-1" defer></script>
+  <script src="data.js?v=vispnf-20261014" defer></script>
+  <script src="app.js?v=vispnf-20261014" defer></script>
+  <script src="mesh-videos.js?v=vispnf-20261014" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="top-nav" aria-label="Main navigation">
-    <a class="wordmark" href="#main" aria-label="PGSF home">PGSF<span class="wordmark-dot"></span></a>
+    <a class="wordmark" href="#main" aria-label="VisPNF home">VisPNF<span class="wordmark-dot"></span></a>
     <div class="nav-links"><a href="#overview">Overview</a><a href="#mesh-videos">Mesh videos</a><a href="#comparisons">Comparisons</a><a href="#results">Results</a></div>
   </nav>
   <main id="main">
     <header class="hero container">
       <p class="eyebrow">Indoor 3D Gaussian surface reconstruction</p>
-      <h1><span class="title-accent">PGSF</span>: Projective Gaussian Surface Fields for Coherent Indoor Surface Reconstruction</h1>
-      <p class="hero-summary">From local Gaussian orientations to coherent indoor surfaces.</p>
+      <h1><span class="title-accent">VisPNF</span>: Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes</h1>
+      <p class="hero-summary">Visibility-guided normal-field optimization for indoor Gaussian surface reconstruction.</p>
       <div class="hero-links">
         <a class="pill-button primary" href="#comparisons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4 7l-3 5 3 5M20 7l3 5-3 5M2 12h7m6 0h7"/></svg>Explore comparisons</a>
         <a class="pill-button" href="#videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>Watch videos</a>
@@ -40,7 +40,7 @@
     <section id="videos" class="video-section container" aria-labelledby="videos-title">
       <div class="section-heading video-heading"><h2 id="videos-title">Explore the reconstructions</h2><span class="section-kicker">Three indoor datasets</span></div>
       <div class="video-frame">
-        <video id="reconstruction-video" controls playsinline muted loop preload="none" poster="assets/videos/scannetpp-poster.webp" aria-label="PGSF reconstruction video on ScanNet++, 8b5caf3398">
+        <video id="reconstruction-video" controls playsinline muted loop preload="none" poster="assets/videos/scannetpp-poster.webp" aria-label="VisPNF reconstruction video on ScanNet++, 8b5caf3398">
           <source src="assets/videos/scannetpp.mp4" type="video/mp4">
           Your browser does not support HTML video. <a href="assets/videos/scannetpp.mp4">Download the video.</a>
         </video>
@@ -53,24 +53,24 @@
         </div>
         <div class="video-meta"><p id="video-details" role="tabpanel" aria-labelledby="video-scannetpp"><span id="video-scene">8b5caf3398</span><span class="dot-divider">·</span>45 s · 1080p</p><button type="button" id="video-play-toggle" aria-controls="reconstruction-video">Play video</button></div>
       </div>
-      <p class="teaser-caption">PGSF brings local geometric evidence into a shared projective field, supporting coherent surface reconstruction across diverse indoor environments.</p>
+      <p class="teaser-caption">VisPNF propagates compatible normal-axis evidence through a visibility-guided graph, supporting indoor surface reconstruction under weak textures, occlusions, and depth discontinuities.</p>
     </section>
 
     <section id="overview" class="abstract-section section-band" aria-labelledby="abstract-title">
       <div class="prose-container"><h2 id="abstract-title">Abstract</h2>
-        <p>Recovering coherent indoor surfaces from 3D Gaussians is challenging because each Gaussian provides only a local and sign-ambiguous estimate of surface orientation, while spatially nearby cues may become unreliable across visibility and depth discontinuities. To address this, we introduce Projective Gaussian Surface Fields (PGSF), a projective formulation that adapts normal-field inference to image-based indoor reconstruction. We represent each Gaussian orientation with a sign-invariant rank-one projector and infer a soft Projective Normal Field (PNF) over visibility- and depth-aware neighborhoods. The field aggregates compatible evidence while retaining uncertainty in ambiguous regions. The inferred field provides detached targets for Gaussian orientations and positions, while rendered projectors enforce depth-normal and cross-view consistency. This coupling propagates geometric evidence while separating convex field inference from non-convex Gaussian optimization. Experiments cover rendered views of scanned Replica scenes, real ScanNet++ imagery, and challenging MuSHRoom smartphone captures. Consistent improvements over PGSR in reconstruction and rendering across these three indoor benchmarks support the effectiveness of the field coupling under varied acquisition conditions.</p>
+        <p>Indoor scenes commonly contain large planar surfaces with nearly uniform colors and weak textures, making their geometry difficult to constrain through photometric supervision alone. Occlusions and depth discontinuities further complicate the aggregation of local geometric cues. Projective Normal Fields (PNF), a recently introduced convex framework for normal-axis optimization from raw point clouds, accommodate open and non-manifold surfaces without requiring watertight topology. Building on this framework, we introduce VisPNF, which extends PNF to Gaussian surface reconstruction through visibility-guided neighborhood construction and iterative coupling with Gaussian optimization. We construct a weighted connectivity graph that integrates spatial proximity, normal-axis agreement, shared visibility, depth compatibility, Gaussian opacity, and radiance similarity. The edge weights promote the exchange of normal-axis evidence among geometrically and photometrically compatible Gaussians, while attenuating the influence of low-opacity primitives and discouraging coupling across surface boundaries. Gaussian normal axes are encoded as sign-invariant projectors, and a soft normal field is jointly optimized over the graph to propagate geometric evidence while retaining directional ambiguity. The inferred field provides detached targets for Gaussian orientations and positions, while rendered Gaussian projectors enforce depth-normal and cross-view consistency. Periodic field updates follow the evolving Gaussian geometry, preserving convexity within each fixed-data field subproblem. Experiments on Replica, ScanNet++, and MuSHRoom demonstrate improvements in surface reconstruction and rendering over the PGSR backbone across all three benchmarks, supporting the effectiveness of visibility-guided normal-field optimization under diverse indoor acquisition conditions.</p>
       </div>
     </section>
 
     <section id="method" class="method-section container" aria-labelledby="method-title">
       <div class="section-heading centered"><p class="eyebrow">Local evidence. Shared geometry.</p><h2 id="method-title">Method overview</h2></div>
       <figure class="method-figure">
-        <a href="assets/images/overview.webp" target="_blank" rel="noopener" aria-label="Open full-resolution PGSF method overview"><img src="assets/images/overview.webp" alt="PGSF pipeline: sign-invariant Gaussian projectors, projective normal field inference, and geometric coupling through axis, tangent, depth-normal, and cross-view losses." loading="lazy" decoding="async"></a>
+        <a href="assets/images/overview.webp" target="_blank" rel="noopener" aria-label="Open full-resolution VisPNF method overview"><img src="assets/images/overview.webp" alt="VisPNF pipeline: sign-invariant Gaussian projectors, projective normal field inference, and geometric coupling through axis, tangent, depth-normal, and cross-view losses." loading="lazy" decoding="async"></a>
         <figcaption>Projective field inference and Gaussian optimization are coupled through fixed geometric targets.</figcaption>
       </figure>
       <div class="method-description">
-        <p><strong>A field that respects orientation ambiguity.</strong> Sign-invariant projectors represent Gaussian axes without assigning an arbitrary normal direction. Visibility- and depth-aware neighborhoods bring compatible cues together while preserving uncertainty.</p>
-        <p><strong>Geometry coupled across space and views.</strong> The inferred field regularizes Gaussian orientations and positions. Depth-normal and cross-view consistency connect the rendered projectors to a shared surface.</p>
+        <p><strong>Visibility-guided geometric evidence.</strong> A weighted graph combines spatial proximity, normal-axis agreement, shared visibility, depth compatibility, Gaussian opacity, and radiance similarity. Its weights favor compatible evidence while reducing coupling across surface boundaries.</p>
+        <p><strong>Iterative field–geometry coupling.</strong> Sign-invariant projectors retain normal-axis ambiguity. The inferred field provides detached targets for Gaussian orientations and positions, while rendered projectors enforce depth-normal and cross-view consistency. Periodic updates follow the evolving geometry, with each fixed-data field subproblem remaining convex.</p>
       </div>
     </section>
 
@@ -78,7 +78,7 @@
       <div class="section-heading centered">
         <p class="eyebrow">Surface reconstruction</p>
         <h2 id="mesh-videos-title">360° mesh comparisons</h2>
-        <p class="section-intro">Compare PGSF with each baseline or the reference mesh along the same camera path.</p>
+        <p class="section-intro">Compare VisPNF with each baseline or the reference mesh along the same camera path.</p>
       </div>
       <div class="tab-list dataset-tabs" role="tablist" aria-label="Mesh video dataset">
         <button type="button" role="tab" id="mesh-dataset-replica" aria-selected="true" aria-controls="mesh-video-panel" data-mesh-dataset="replica">Replica</button>
@@ -87,7 +87,7 @@
       </div>
       <div id="mesh-video-panel" role="tabpanel" aria-labelledby="mesh-dataset-replica">
         <div class="mesh-video-meta"><p><strong id="mesh-video-scene">office0</strong><span id="mesh-video-regime">Replica · Rendered views of a real scanned interior</span></p><span class="mesh-sync-label"><span aria-hidden="true"></span>Frame-synchronized</span></div>
-        <div class="mesh-method-toolbar"><span id="mesh-method-label">Compare PGSF with</span>
+        <div class="mesh-method-toolbar"><span id="mesh-method-label">Compare VisPNF with</span>
           <div class="tab-list mesh-method-tabs" role="tablist" aria-labelledby="mesh-method-label">
             <button type="button" role="tab" id="mesh-method-pgsr" aria-selected="true" aria-controls="mesh-video-content" data-mesh-method="pgsr">PGSR</button>
             <button type="button" role="tab" id="mesh-method-2dgs" aria-selected="false" tabindex="-1" aria-controls="mesh-video-content" data-mesh-method="2dgs">2DGS</button>
@@ -97,7 +97,7 @@
         </div>
         <div id="mesh-video-content" role="tabpanel" aria-labelledby="mesh-method-pgsr">
           <div class="mesh-video-frame">
-            <video id="mesh-comparison-video" controls playsinline muted loop preload="none" poster="assets/videos/mesh-comparisons/replica-pgsr.webp" aria-label="Replica office0: PGSR on the left and PGSF on the right, synchronized mesh comparison" aria-describedby="mesh-video-caption">
+            <video id="mesh-comparison-video" controls playsinline muted loop preload="none" poster="assets/videos/mesh-comparisons/replica-pgsr.webp" aria-label="Replica office0: PGSR on the left and VisPNF on the right, synchronized mesh comparison" aria-describedby="mesh-video-caption">
               <source src="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4" type="video/mp4">
               Your browser does not support HTML video. <a href="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4">Open the comparison video.</a>
             </video>
@@ -108,7 +108,7 @@
             <label class="mesh-speed-control" for="mesh-video-quality">Quality <select id="mesh-video-quality"><option value="fast" selected>Fast</option><option value="hd">HD</option></select></label>
             <a id="mesh-video-open" href="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
           </div>
-          <p id="mesh-video-caption" class="mesh-video-caption">Inspect the wall–furniture boundaries and surface continuity as the camera moves. PGSF stays on the right; both views play and seek together.</p>
+          <p id="mesh-video-caption" class="mesh-video-caption">Inspect the wall–furniture boundaries and surface continuity as the camera moves. VisPNF stays on the right; both views play and seek together.</p>
           <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
         </div>
       </div>
@@ -139,7 +139,7 @@
         </div>
         <div class="results-description">
           <p><strong>Surface reconstruction.</strong> The selected comparisons highlight continuity across surface interiors and the preservation of structural boundaries. Meshes, depth, and normals offer complementary views of the recovered geometry.</p>
-          <p><strong>Novel view synthesis.</strong> Matched RGB views show how geometric coherence relates to appearance. Use the ground-truth reference to inspect local image details, or select PGSF to compare methods directly.</p>
+          <p><strong>Novel view synthesis.</strong> Matched RGB views show how geometric coherence relates to appearance. Use the ground-truth reference to inspect local image details, or select VisPNF to compare methods directly.</p>
         </div>
       </div>
     </section>
@@ -161,7 +161,7 @@
           <tr><th scope="row">GOF</th><td>9.04</td><td>54.08</td><td>74.34</td><td class="unreported" aria-label="Not reported">–</td><td class="unreported" aria-label="Not reported">–</td><td class="unreported" aria-label="Not reported">–</td></tr>
           <tr><th scope="row">PGSR</th><td class="rank-third" aria-label="8.51, third rank">8.51</td><td class="rank-third" aria-label="63.67, third rank">63.67</td><td class="rank-third" aria-label="82.48, third rank">82.48</td><td class="rank-third" aria-label="38.09, third rank">38.09</td><td class="rank-second" aria-label="0.973, second rank">0.973</td><td class="rank-third" aria-label="0.101, third rank">0.101</td></tr>
           <tr><th scope="row">AmbiSuR</th><td class="rank-second" aria-label="6.15, second rank">6.15</td><td class="rank-second" aria-label="72.29, second rank">72.29</td><td class="rank-second" aria-label="86.85, second rank">86.85</td><td class="rank-second" aria-label="38.13, second rank">38.13</td><td class="rank-second" aria-label="0.973, second rank">0.973</td><td class="rank-second" aria-label="0.081, second rank">0.081</td></tr>
-          <tr class="ours-row"><th scope="row">PGSF</th><td class="rank-first" aria-label="4.96, first rank"><strong>4.96</strong></td><td class="rank-first" aria-label="74.67, first rank"><strong>74.67</strong></td><td class="rank-first" aria-label="87.83, first rank"><strong>87.83</strong></td><td class="rank-first" aria-label="38.76, first rank"><strong>38.76</strong></td><td class="rank-first" aria-label="0.976, first rank"><strong>0.976</strong></td><td class="rank-first" aria-label="0.075, first rank"><strong>0.075</strong></td></tr>
+          <tr class="ours-row"><th scope="row">VisPNF</th><td class="rank-first" aria-label="4.96, first rank"><strong>4.96</strong></td><td class="rank-first" aria-label="74.67, first rank"><strong>74.67</strong></td><td class="rank-first" aria-label="87.83, first rank"><strong>87.83</strong></td><td class="rank-first" aria-label="38.76, first rank"><strong>38.76</strong></td><td class="rank-first" aria-label="0.976, first rank"><strong>0.976</strong></td><td class="rank-first" aria-label="0.075, first rank"><strong>0.075</strong></td></tr>
         </tbody>
         <tbody>
           <tr><th scope="rowgroup" rowspan="6" class="dataset-cell">ScanNet++</th><th scope="row">3DGS</th><td>10.57</td><td>31.78</td><td>77.65</td><td class="unreported" aria-label="Not reported">–</td><td class="unreported" aria-label="Not reported">–</td><td class="unreported" aria-label="Not reported">–</td></tr>
@@ -169,7 +169,7 @@
           <tr><th scope="row">GOF</th><td class="rank-third" aria-label="7.09, third rank">7.09</td><td>57.99</td><td>74.75</td><td class="unreported" aria-label="Not reported">–</td><td class="unreported" aria-label="Not reported">–</td><td class="unreported" aria-label="Not reported">–</td></tr>
           <tr><th scope="row">PGSR</th><td class="rank-second" aria-label="6.04, second rank">6.04</td><td class="rank-second" aria-label="66.72, second rank">66.72</td><td class="rank-second" aria-label="85.03, second rank">85.03</td><td class="rank-third" aria-label="29.99, third rank">29.99</td><td class="rank-first" aria-label="0.928, first rank">0.928</td><td class="rank-second" aria-label="0.169, second rank">0.169</td></tr>
           <tr><th scope="row">AmbiSuR</th><td>7.67</td><td>58.64</td><td>83.06</td><td>29.24</td><td class="rank-second" aria-label="0.922, second rank">0.922</td><td>0.179</td></tr>
-          <tr class="ours-row"><th scope="row">PGSF</th><td class="rank-first" aria-label="3.79, first rank"><strong>3.79</strong></td><td class="rank-first" aria-label="77.14, first rank"><strong>77.14</strong></td><td class="rank-first" aria-label="88.75, first rank"><strong>88.75</strong></td><td class="rank-first" aria-label="30.09, first rank"><strong>30.09</strong></td><td class="rank-first" aria-label="0.928, first rank"><strong>0.928</strong></td><td class="rank-first" aria-label="0.164, first rank"><strong>0.164</strong></td></tr>
+          <tr class="ours-row"><th scope="row">VisPNF</th><td class="rank-first" aria-label="3.79, first rank"><strong>3.79</strong></td><td class="rank-first" aria-label="77.14, first rank"><strong>77.14</strong></td><td class="rank-first" aria-label="88.75, first rank"><strong>88.75</strong></td><td class="rank-first" aria-label="30.09, first rank"><strong>30.09</strong></td><td class="rank-first" aria-label="0.928, first rank"><strong>0.928</strong></td><td class="rank-first" aria-label="0.164, first rank"><strong>0.164</strong></td></tr>
         </tbody>
         <tbody>
           <tr><th scope="rowgroup" rowspan="6" class="dataset-cell">MuSHRoom</th><th scope="row">3DGS</th><td>11.92</td><td>38.53</td><td>62.00</td><td class="rank-second" aria-label="25.79, second rank">25.79</td><td class="rank-third" aria-label="0.877, third rank">0.877</td><td class="rank-second" aria-label="0.206, second rank">0.206</td></tr>
@@ -177,13 +177,13 @@
           <tr><th scope="row">GOF</th><td>12.07</td><td>42.57</td><td>61.47</td><td>24.76</td><td>0.864</td><td>0.219</td></tr>
           <tr><th scope="row">PGSR</th><td>11.30</td><td class="rank-third" aria-label="56.37, third rank">56.37</td><td class="rank-third" aria-label="72.09, third rank">72.09</td><td>25.48</td><td>0.873</td><td>0.219</td></tr>
           <tr><th scope="row">AmbiSuR</th><td class="rank-second" aria-label="6.32, second rank">6.32</td><td class="rank-second" aria-label="67.56, second rank">67.56</td><td class="rank-first" aria-label="81.09, first rank">81.09</td><td>25.20</td><td class="rank-second" aria-label="0.878, second rank">0.878</td><td class="rank-third" aria-label="0.217, third rank">0.217</td></tr>
-          <tr class="ours-row"><th scope="row">PGSF</th><td class="rank-first" aria-label="6.07, first rank"><strong>6.07</strong></td><td class="rank-first" aria-label="67.94, first rank"><strong>67.94</strong></td><td class="rank-second" aria-label="79.42, second rank">79.42</td><td class="rank-first" aria-label="25.90, first rank"><strong>25.90</strong></td><td class="rank-first" aria-label="0.887, first rank"><strong>0.887</strong></td><td class="rank-first" aria-label="0.205, first rank"><strong>0.205</strong></td></tr>
+          <tr class="ours-row"><th scope="row">VisPNF</th><td class="rank-first" aria-label="6.07, first rank"><strong>6.07</strong></td><td class="rank-first" aria-label="67.94, first rank"><strong>67.94</strong></td><td class="rank-second" aria-label="79.42, second rank">79.42</td><td class="rank-first" aria-label="25.90, first rank"><strong>25.90</strong></td><td class="rank-first" aria-label="0.887, first rank"><strong>0.887</strong></td><td class="rank-first" aria-label="0.205, first rank"><strong>0.205</strong></td></tr>
         </tbody>
           </table>
         </div>
         <p class="result-table-note" id="result-table-note">Metrics are averaged over scenes. CD is in centimeters; F-score and normal consistency (NC) are percentages. ↑ / ↓ indicate higher / lower is better; – denotes an unreported result.</p>
       </article>
-      <div class="results-description experiment-analysis"><p><strong>Reconstruction.</strong> PGSF achieves the best mean CD and F-score on all three datasets. On MuSHRoom, AmbiSuR retains higher normal consistency, illustrating the distinction between surface coverage and local orientation accuracy.</p><p><strong>Rendering.</strong> PGSF achieves the best mean PSNR and LPIPS across all three benchmarks. These gains accompany the reconstruction improvements, while SSIM on ScanNet++ remains tied at the reported precision.</p></div>
+      <div class="results-description experiment-analysis"><p><strong>Reconstruction.</strong> VisPNF achieves the best mean CD and F-score on all three datasets. On MuSHRoom, AmbiSuR retains higher normal consistency, illustrating the distinction between surface coverage and local orientation accuracy.</p><p><strong>Rendering.</strong> VisPNF achieves the best mean PSNR and LPIPS across all three benchmarks. These gains accompany the reconstruction improvements, while SSIM on ScanNet++ remains tied at the reported precision.</p></div>
       <figure class="experiment-figure" id="experiment-figure-3">
       <figcaption><span class="result-kicker">Figure 3</span><h3>Surface reconstruction across indoor scenes</h3><p>Matched mesh comparisons from the paper. Red boxes mark local geometry; inspect surface continuity, folds, and structural boundaries.</p></figcaption>
       <a href="assets/images/experiments/surface-reconstruction.webp" target="_blank" rel="noopener" aria-label="Open Figure 3 at full resolution"><img src="assets/images/experiments/surface-reconstruction.webp" width="2304" height="1654" loading="lazy" decoding="async" alt="Surface reconstruction across indoor scenes. Matched mesh comparisons from the paper. Red boxes mark local geometry; inspect surface continuity, folds, and structural boundaries."></a>
@@ -193,9 +193,9 @@
       <a href="assets/images/experiments/rgb-normal-depth.webp" target="_blank" rel="noopener" aria-label="Open Figure 4 at full resolution"><img src="assets/images/experiments/rgb-normal-depth.webp" width="2400" height="2390" loading="lazy" decoding="async" alt="RGB, normal, and depth comparisons. The same views are arranged by representation and method. The final column shows reference RGB. Depth colors are normalized per image and should be compared for boundaries and structure."></a>
       <a class="experiment-enlarge" href="assets/images/experiments/rgb-normal-depth.webp" target="_blank" rel="noopener">Open full-resolution figure <span aria-hidden="true">↗</span></a></figure>
     </section>
-    <section class="prose-container closing-section"><h2>Coherent geometry across indoor environments</h2><p>Across Replica, ScanNet++, and MuSHRoom, PGSF consistently improves surface reconstruction and rendering quality over PGSR. The projective field provides a common geometric representation across these different capture conditions.</p></section>
+    <section class="prose-container closing-section"><h2>Coherent geometry across indoor environments</h2><p>Across Replica, ScanNet++, and MuSHRoom, VisPNF consistently improves surface reconstruction and rendering quality over PGSR. The projective field provides a common geometric representation across these different capture conditions.</p></section>
   </main>
-  <footer class="site-footer"><a class="wordmark" href="#main">PGSF<span class="wordmark-dot"></span></a><p>Projective Gaussian Surface Fields for Coherent Indoor Surface Reconstruction</p><p class="credits">Layout inspired by <a href="https://kasothaphie.github.io/GenRecon/" target="_blank" rel="noopener">GenRecon</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
+  <footer class="site-footer"><a class="wordmark" href="#main">VisPNF<span class="wordmark-dot"></span></a><p>Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes</p><p class="credits">Layout inspired by <a href="https://kasothaphie.github.io/GenRecon/" target="_blank" rel="noopener">GenRecon</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
   <dialog id="comparison-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title">Comparison</h2><button id="close-dialog" type="button" aria-label="Close enlarged comparison">✕</button></div><div id="dialog-content"></div><p class="dialog-hint">Drag the divider, or focus it and use the arrow keys. Press Esc to close.</p></dialog>
   <noscript><p class="noscript-message">Enable JavaScript to use the comparison sliders. The reconstruction videos and method overview remain available above.</p></noscript>
 </body>

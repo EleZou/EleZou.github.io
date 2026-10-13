@@ -119,10 +119,10 @@
     video.poster = `${path}.webp`;
     video.dataset.source = source;
     video.src = preparedVideos.get(source) || source;
-    video.setAttribute('aria-label', `${scene.name} ${scene.scene}: ${methods[method]} ${portrait ? 'above' : 'on the left'} and PGSF ${portrait ? 'below' : 'on the right'}, synchronized mesh comparison`);
+    video.setAttribute('aria-label', `${scene.name} ${scene.scene}: ${methods[method]} ${portrait ? 'above' : 'on the left'} and VisPNF ${portrait ? 'below' : 'on the right'}, synchronized mesh comparison`);
     section.querySelector('#mesh-video-scene').textContent = scene.scene;
     section.querySelector('#mesh-video-regime').textContent = `${scene.name} · ${scene.regime}`;
-    section.querySelector('#mesh-video-caption').textContent = `${scene.detail} PGSF stays ${portrait ? 'below' : 'on the right'}; both views play and seek together.`;
+    section.querySelector('#mesh-video-caption').textContent = `${scene.detail} VisPNF stays ${portrait ? 'below' : 'on the right'}; both views play and seek together.`;
     section.querySelector('#mesh-video-open').href = source;
     video.querySelector('a').href = source;
     section.querySelector('#mesh-video-panel').setAttribute('aria-labelledby', `mesh-dataset-${dataset}`);
