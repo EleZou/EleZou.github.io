@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="VisPNF extends Projective Normal Fields to indoor Gaussian surface reconstruction through visibility-guided neighborhoods and iterative coupling with Gaussian optimization. Explore videos and interactive comparisons on Replica, ScanNet++, and MuSHRoom.">
+  <meta name="description" content="VisPNF extends Projective Normal Fields to indoor Gaussian surface reconstruction through visibility- and appearance-guided evidence and iterative coupling with Gaussian optimization.">
   <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="VisPNF: Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes">
-  <meta property="og:description" content="Visibility-guided normal-field optimization for indoor Gaussian surface reconstruction. Videos and interactive mesh, RGB, depth, and normal comparisons.">
+  <meta property="og:title" content="VisPNF: Visibility- and Appearance-Guided Projective Normal Fields for Indoor Gaussian Surface Reconstruction">
+  <meta property="og:description" content="Visibility- and appearance-guided projective-normal-field optimization">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/replica/mesh/pgsf.webp">
-  <title>VisPNF: Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes</title>
+  <meta property="og:image" content="assets/images/replica/mesh/vispnf.webp">
+  <title>VisPNF: Visibility- and Appearance-Guided Projective Normal Fields for Indoor Gaussian Surface Reconstruction</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css?v=combined-results-1">
-  <script src="data.js?v=vispnf-20261014" defer></script>
-  <script src="app.js?v=vispnf-20261014" defer></script>
-  <script src="mesh-videos.js?v=vispnf-20261014" defer></script>
+  <script src="data.js?v=vispnf-identity-2027" defer></script>
+  <script src="app.js?v=vispnf-identity-2027" defer></script>
+  <script src="mesh-videos.js?v=vispnf-identity-2027" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -28,8 +28,8 @@
   <main id="main">
     <header class="hero container">
       <p class="eyebrow">Indoor 3D Gaussian surface reconstruction</p>
-      <h1><span class="title-accent">VisPNF</span>: Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes</h1>
-      <p class="hero-summary">Visibility-guided normal-field optimization for indoor Gaussian surface reconstruction.</p>
+      <h1><span class="title-accent">VisPNF</span>: Visibility- and Appearance-Guided Projective Normal Fields for Indoor Gaussian Surface Reconstruction</h1>
+      <p class="hero-summary">Visibility- and appearance-guided projective-normal-field optimization</p>
       <div class="hero-links">
         <a class="pill-button primary" href="#comparisons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4 7l-3 5 3 5M20 7l3 5-3 5M2 12h7m6 0h7"/></svg>Explore comparisons</a>
         <a class="pill-button" href="#videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>Watch videos</a>
@@ -53,12 +53,12 @@
         </div>
         <div class="video-meta"><p id="video-details" role="tabpanel" aria-labelledby="video-scannetpp"><span id="video-scene">8b5caf3398</span><span class="dot-divider">·</span>45 s · 1080p</p><button type="button" id="video-play-toggle" aria-controls="reconstruction-video">Play video</button></div>
       </div>
-      <p class="teaser-caption">VisPNF propagates compatible normal-axis evidence through a visibility-guided graph, supporting indoor surface reconstruction under weak textures, occlusions, and depth discontinuities.</p>
+      <p class="teaser-caption">VisPNF propagates compatible normal-axis evidence through a visibility- and appearance-guided graph, supporting indoor surface reconstruction under weak textures, occlusions, and depth discontinuities.</p>
     </section>
 
     <section id="overview" class="abstract-section section-band" aria-labelledby="abstract-title">
       <div class="prose-container"><h2 id="abstract-title">Abstract</h2>
-        <p>Indoor scenes commonly contain large planar surfaces with nearly uniform colors and weak textures, making their geometry difficult to constrain through photometric supervision alone. Occlusions and depth discontinuities further complicate the aggregation of local geometric cues. Projective Normal Fields (PNF), a recently introduced convex framework for normal-axis optimization from raw point clouds, accommodate open and non-manifold surfaces without requiring watertight topology. Building on this framework, we introduce VisPNF, which extends PNF to Gaussian surface reconstruction through visibility-guided neighborhood construction and iterative coupling with Gaussian optimization. We construct a weighted connectivity graph that integrates spatial proximity, normal-axis agreement, shared visibility, depth compatibility, Gaussian opacity, and radiance similarity. The edge weights promote the exchange of normal-axis evidence among geometrically and photometrically compatible Gaussians, while attenuating the influence of low-opacity primitives and discouraging coupling across surface boundaries. Gaussian normal axes are encoded as sign-invariant projectors, and a soft normal field is jointly optimized over the graph to propagate geometric evidence while retaining directional ambiguity. The inferred field provides detached targets for Gaussian orientations and positions, while rendered Gaussian projectors enforce depth-normal and cross-view consistency. Periodic field updates follow the evolving Gaussian geometry, preserving convexity within each fixed-data field subproblem. Experiments on Replica, ScanNet++, and MuSHRoom demonstrate improvements in surface reconstruction and rendering over the PGSR backbone across all three benchmarks, supporting the effectiveness of visibility-guided normal-field optimization under diverse indoor acquisition conditions.</p>
+        <p>Indoor scenes contain large, weakly textured surfaces whose geometry is difficult to recover from photometric supervision alone. Occlusions further complicate the aggregation of local geometric cues. We introduce VisPNF, a visibility- and appearance-guided extension of point-cloud Projective Normal Fields (PNF) for indoor Gaussian surface reconstruction. A weighted graph combines geometric compatibility, shared view coverage, opacity, and radiance similarity to coordinate sign-ambiguous normal axes across compatible Gaussians. Gaussian-aware anchors provide local orientation cues, while a rendering term aligns alpha-composited field tensors with depth-derived normal projectors. With geometric and rendering evidence fixed and positive anchoring weights, the PNF objective is strongly convex and admits a unique minimizer. We alternate field inference with Gaussian optimization, using the inferred field to guide orientations and positions and rendered-projector losses to enforce depth-normal and cross-view consistency. Experiments on Replica, ScanNet++, and MuSHRoom demonstrate consistent improvements in reconstruction and rendering over the PGSR backbone.</p>
       </div>
     </section>
 
@@ -69,7 +69,7 @@
         <figcaption>Projective field inference and Gaussian optimization are coupled through fixed geometric targets.</figcaption>
       </figure>
       <div class="method-description">
-        <p><strong>Visibility-guided geometric evidence.</strong> A weighted graph combines spatial proximity, normal-axis agreement, shared visibility, depth compatibility, Gaussian opacity, and radiance similarity. Its weights favor compatible evidence while reducing coupling across surface boundaries.</p>
+        <p><strong>Visibility- and appearance-guided geometric evidence.</strong> A weighted graph combines spatial proximity, normal-axis agreement, shared visibility, depth compatibility, Gaussian opacity, and radiance similarity. Its weights favor compatible evidence while reducing coupling across surface boundaries.</p>
         <p><strong>Iterative field–geometry coupling.</strong> Sign-invariant projectors retain normal-axis ambiguity. The inferred field provides detached targets for Gaussian orientations and positions, while rendered projectors enforce depth-normal and cross-view consistency. Periodic updates follow the evolving geometry, with each fixed-data field subproblem remaining convex.</p>
       </div>
     </section>
@@ -97,16 +97,16 @@
         </div>
         <div id="mesh-video-content" role="tabpanel" aria-labelledby="mesh-method-pgsr">
           <div class="mesh-video-frame">
-            <video id="mesh-comparison-video" controls playsinline muted loop preload="none" poster="assets/videos/mesh-comparisons/replica-pgsr.webp" aria-label="Replica office0: PGSR on the left and VisPNF on the right, synchronized mesh comparison" aria-describedby="mesh-video-caption">
-              <source src="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4" type="video/mp4">
-              Your browser does not support HTML video. <a href="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4">Open the comparison video.</a>
+            <video id="mesh-comparison-video" controls playsinline muted loop preload="none" poster="assets/videos/mesh-comparisons-vispnf/replica-pgsr.webp" aria-label="Replica office0: PGSR on the left and VisPNF on the right, synchronized mesh comparison" aria-describedby="mesh-video-caption">
+              <source src="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4" type="video/mp4">
+              Your browser does not support HTML video. <a href="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4">Open the comparison video.</a>
             </video>
           </div>
           <div class="mesh-playback-toolbar">
             <button type="button" class="mesh-play-button" id="mesh-play-toggle" aria-controls="mesh-comparison-video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><span>Play comparison</span></button>
             <label class="mesh-speed-control" for="mesh-video-speed">Speed <select id="mesh-video-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label>
             <label class="mesh-speed-control" for="mesh-video-quality">Quality <select id="mesh-video-quality"><option value="fast" selected>Fast</option><option value="hd">HD</option></select></label>
-            <a id="mesh-video-open" href="assets/videos/mesh-comparisons/replica-pgsr-fast.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
+            <a id="mesh-video-open" href="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
           </div>
           <p id="mesh-video-caption" class="mesh-video-caption">Inspect the wall–furniture boundaries and surface continuity as the camera moves. VisPNF stays on the right; both views play and seek together.</p>
           <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
@@ -195,7 +195,7 @@
     </section>
     <section class="prose-container closing-section"><h2>Coherent geometry across indoor environments</h2><p>Across Replica, ScanNet++, and MuSHRoom, VisPNF consistently improves surface reconstruction and rendering quality over PGSR. The projective field provides a common geometric representation across these different capture conditions.</p></section>
   </main>
-  <footer class="site-footer"><a class="wordmark" href="#main">VisPNF<span class="wordmark-dot"></span></a><p>Visibility-Guided Projective Normal Fields for Gaussian Surface Reconstruction from Indoor Scenes</p><p class="credits">Layout inspired by <a href="https://kasothaphie.github.io/GenRecon/" target="_blank" rel="noopener">GenRecon</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
+  <footer class="site-footer"><a class="wordmark" href="#main">VisPNF<span class="wordmark-dot"></span></a><p>Visibility- and Appearance-Guided Projective Normal Fields for Indoor Gaussian Surface Reconstruction</p><p class="credits">Layout inspired by <a href="https://kasothaphie.github.io/GenRecon/" target="_blank" rel="noopener">GenRecon</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
   <dialog id="comparison-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title">Comparison</h2><button id="close-dialog" type="button" aria-label="Close enlarged comparison">✕</button></div><div id="dialog-content"></div><p class="dialog-hint">Drag the divider, or focus it and use the arrow keys. Press Esc to close.</p></dialog>
   <noscript><p class="noscript-message">Enable JavaScript to use the comparison sliders. The reconstruction videos and method overview remain available above.</p></noscript>
 </body>

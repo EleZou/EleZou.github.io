@@ -43,7 +43,7 @@
           const datasets = [currentDataset, ...Object.keys(scenes).filter(key => key !== currentDataset)];
           const layouts = portraitScreen.matches ? ['-portrait', ''] : ['', '-portrait'];
           const sources = layouts.flatMap(layout => datasets.flatMap(dataset => Object.keys(methods).map(method =>
-            `assets/videos/mesh-comparisons/${dataset}-${method}${layout}-fast.mp4`)));
+            `assets/videos/mesh-comparisons-vispnf/${dataset}-${method}${layout}-fast.mp4`)));
           const next = sources.find(source => source !== video.dataset.source && !preparedVideos.has(source) && !failedPreloads.has(source));
           if (!next) break;
           try {
@@ -113,7 +113,7 @@
     currentMethod = method;
     const scene = scenes[dataset];
     const portrait = portraitScreen.matches;
-    const path = `assets/videos/mesh-comparisons/${dataset}-${method}${portrait ? '-portrait' : ''}`;
+    const path = `assets/videos/mesh-comparisons-vispnf/${dataset}-${method}${portrait ? '-portrait' : ''}`;
     const source = `${path}${quality.value === 'fast' ? '-fast' : ''}.mp4`;
     if (!preparedVideos.has(source)) stopPreloading();
     video.poster = `${path}.webp`;
