@@ -13,3 +13,7 @@ Font licenses remain in `assets/fonts/`. Layout credits are retained in the page
 The results section follows the videos and interactive comparisons. One combined table reports all 108 metric values from the current manuscript, with separate reconstruction and rendering headers. Dense ranks preserve ties, and rank colors fill the entire cell. On narrow screens the table scrolls within its container.
 
 Figures 5–8 show mesh comparisons including GOF, surface-error maps, optimized Gaussian kernel close-ups against PGSR, and RGB/normal/depth comparisons including GOF. The method overview matches the current manuscript. All five figures are lossless WebP exports, preserve their aspect ratios, and link to full-resolution images. Video playback and background preloading retain their existing behavior.
+
+## Page layout
+
+The centered publication layout follows DiffWind: a white page, restrained typography, dark resource buttons, and figures with captions below. Fonts are served locally. The videos, interactive comparisons, and table values retain their existing behavior and content.
