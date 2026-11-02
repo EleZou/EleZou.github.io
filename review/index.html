@@ -13,8 +13,8 @@
   <meta property="og:image" content="assets/images/replica/mesh/vispnf.webp">
   <title>VisPNF: Visibility- and Appearance-Guided Projective Normal Fields for Indoor Gaussian Surface Reconstruction</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="preload" href="assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=publication-20261102">
+  <link rel="preload" href="assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=diffwind-typography-2">
   <script src="data.js?v=vispnf-identity-2027" defer></script>
   <script src="app.js?v=vispnf-identity-2027" defer></script>
   <script src="mesh-videos.js?v=vispnf-identity-2027" defer></script>
@@ -22,8 +22,8 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="top-nav" aria-label="Main navigation">
-    <a class="wordmark" href="#main" aria-label="VisPNF home">VisPNF<span class="wordmark-dot"></span></a>
-    <div class="nav-links"><a href="#overview">Abstract</a><a href="#mesh-videos">Mesh videos</a><a href="#comparisons">Comparisons</a><a href="#results">Results</a></div>
+    <a class="home-link" href="#main" aria-label="VisPNF home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 11h3v10h5v-6h4v6h5V11h3Z"/></svg></a>
+    <details class="contents-menu"><summary>Contents</summary><div class="contents-links"><a href="#overview">Abstract</a><a href="#videos">Video</a><a href="#method">Method Overview</a><a href="#mesh-videos">Mesh Comparisons</a><a href="#comparisons">Interactive Comparisons</a><a href="#results">Results</a></div></details>
   </nav>
   <main id="main">
     <header class="hero container">
@@ -36,10 +36,17 @@
         <a class="pill-button" href="#videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7Z"/></svg>Videos</a>
         <a class="pill-button" href="#method"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5Zm-9 10 9 5 9-5M3 17l9 5 9-5"/></svg>Method</a>
       </div>
+      <p class="teaser-caption">VisPNF improves indoor Gaussian surface reconstruction by coupling projective normal field inference with Gaussian optimization.</p>
     </header>
 
+    <section id="overview" class="abstract-section section-band" aria-labelledby="abstract-title">
+      <div class="prose-container"><h2 id="abstract-title">Abstract</h2>
+        <p>Indoor scenes contain large, weakly textured surfaces whose geometry is difficult to recover from photometric supervision alone. Occlusions further complicate the aggregation of local geometric cues. We introduce VisPNF, a visibility- and appearance-guided extension of point-cloud Projective Normal Fields (PNF) for indoor Gaussian surface reconstruction. A weighted graph combines geometric compatibility, shared view coverage, opacity, and radiance similarity to coordinate sign-ambiguous normal axes across compatible Gaussians. Gaussian-aware anchors provide local orientation cues, while a rendering term aligns alpha-composited field tensors with depth-derived normal projectors. With geometric and rendering evidence fixed and positive anchoring weights, the PNF objective is strongly convex and admits a unique minimizer. We alternate field inference with Gaussian optimization, using the inferred field to guide orientations and positions and rendered-projector losses to enforce depth-normal and cross-view consistency. Experiments on Replica, ScanNet++, and MuSHRoom demonstrate consistent improvements in reconstruction and rendering over the PGSR backbone.</p>
+      </div>
+    </section>
+
     <section id="videos" class="video-section container" aria-labelledby="videos-title">
-      <h2 id="videos-title" class="sr-only">Explore the reconstructions</h2>
+      <div class="section-heading centered"><h2 id="videos-title">Video</h2></div>
       <div class="video-frame">
         <video id="reconstruction-video" controls playsinline muted loop preload="none" poster="assets/videos/scannetpp-poster.webp" aria-label="VisPNF reconstruction video on ScanNet++, 8b5caf3398">
           <source src="assets/videos/scannetpp.mp4" type="video/mp4">
@@ -54,31 +61,19 @@
         </div>
         <div class="video-meta"><p id="video-details" role="tabpanel" aria-labelledby="video-scannetpp"><span id="video-scene">8b5caf3398</span><span class="dot-divider">·</span>45 s · 1080p</p><button type="button" id="video-play-toggle" aria-controls="reconstruction-video">Play video</button></div>
       </div>
-      <p class="teaser-caption">VisPNF propagates compatible normal-axis evidence through a visibility- and appearance-guided graph, supporting indoor surface reconstruction under weak textures, occlusions, and depth discontinuities.</p>
-    </section>
-
-    <section id="overview" class="abstract-section section-band" aria-labelledby="abstract-title">
-      <div class="prose-container"><h2 id="abstract-title">Abstract</h2>
-        <p>Indoor scenes contain large, weakly textured surfaces whose geometry is difficult to recover from photometric supervision alone. Occlusions further complicate the aggregation of local geometric cues. We introduce VisPNF, a visibility- and appearance-guided extension of point-cloud Projective Normal Fields (PNF) for indoor Gaussian surface reconstruction. A weighted graph combines geometric compatibility, shared view coverage, opacity, and radiance similarity to coordinate sign-ambiguous normal axes across compatible Gaussians. Gaussian-aware anchors provide local orientation cues, while a rendering term aligns alpha-composited field tensors with depth-derived normal projectors. With geometric and rendering evidence fixed and positive anchoring weights, the PNF objective is strongly convex and admits a unique minimizer. We alternate field inference with Gaussian optimization, using the inferred field to guide orientations and positions and rendered-projector losses to enforce depth-normal and cross-view consistency. Experiments on Replica, ScanNet++, and MuSHRoom demonstrate consistent improvements in reconstruction and rendering over the PGSR backbone.</p>
-      </div>
     </section>
 
     <section id="method" class="method-section container" aria-labelledby="method-title">
       <div class="section-heading centered"><h2 id="method-title">Method Overview</h2></div>
       <figure class="method-figure">
         <a href="assets/images/overview.webp?v=paper-d8870f4" target="_blank" rel="noopener" aria-label="Open full-resolution VisPNF method overview"><img src="assets/images/overview.webp?v=paper-d8870f4" width="3600" height="759" alt="VisPNF pipeline: graph construction, Gaussian-aware anchors, field optimization with rendered-field constraints, and Gaussian optimization using geometric regularization." loading="lazy" decoding="async"></a>
-        <figcaption>Projective field inference and Gaussian optimization are coupled through fixed geometric targets.</figcaption>
+        <figcaption>VisPNF alternates projective normal field inference with Gaussian optimization. Visibility- and appearance-guided connections aggregate compatible normal axes, and the inferred field regularizes Gaussian orientations and positions.</figcaption>
       </figure>
-      <div class="method-description">
-        <p><strong>Visibility- and appearance-guided geometric evidence.</strong> A weighted graph combines spatial proximity, normal-axis agreement, shared visibility, depth compatibility, Gaussian opacity, and radiance similarity. Its weights favor compatible evidence while reducing coupling across surface boundaries.</p>
-        <p><strong>Iterative field–geometry coupling.</strong> With Gaussian parameters fixed, projected FISTA infers a soft normal-axis field using geometric and rendered-field constraints. The field then guides Gaussian orientations and positions, while rendered-projector losses enforce depth-normal and cross-view consistency. After activation, we update the field at every training iteration and rebuild the graph as needed.</p>
-      </div>
     </section>
 
     <section id="mesh-videos" class="mesh-video-section container" aria-labelledby="mesh-videos-title">
       <div class="section-heading centered">
-        <h2 id="mesh-videos-title">360° mesh comparisons</h2>
-        <p class="section-intro">Compare VisPNF with each baseline or the reference mesh along the same camera path.</p>
+        <h2 id="mesh-videos-title">Mesh Comparisons</h2>
       </div>
       <div class="tab-list dataset-tabs" role="tablist" aria-label="Mesh video dataset">
         <button type="button" role="tab" id="mesh-dataset-replica" aria-selected="true" aria-controls="mesh-video-panel" data-mesh-dataset="replica">Replica</button>
@@ -108,7 +103,7 @@
             <label class="mesh-speed-control" for="mesh-video-quality">Quality <select id="mesh-video-quality"><option value="fast" selected>Fast</option><option value="hd">HD</option></select></label>
             <a id="mesh-video-open" href="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
           </div>
-          <p id="mesh-video-caption" class="mesh-video-caption">Inspect the wall–furniture boundaries and surface continuity as the camera moves. VisPNF stays on the right; both views play and seek together.</p>
+          <p id="mesh-video-caption" class="mesh-video-caption">VisPNF on the right; both views share the same camera path.</p>
           <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
         </div>
       </div>
@@ -116,7 +111,7 @@
 
     <section id="comparisons" class="comparison-section section-band" aria-labelledby="comparison-title">
       <div class="container">
-        <div class="section-heading centered"><h2 id="comparison-title">Interactive comparisons</h2><p class="section-intro">Choose a dataset and representation, then drag the divider to inspect each method.</p></div>
+        <div class="section-heading centered"><h2 id="comparison-title">Interactive Comparisons</h2></div>
         <div class="tab-list dataset-tabs" role="tablist" aria-label="Comparison dataset">
           <button type="button" role="tab" id="dataset-replica" aria-selected="true" aria-controls="comparison-panel" data-dataset="replica">Replica</button>
           <button type="button" role="tab" id="dataset-scannetpp" aria-selected="false" tabindex="-1" aria-controls="comparison-panel" data-dataset="scannetpp">ScanNet++</button>
@@ -137,15 +132,11 @@
           <p id="comparison-note" class="comparison-note"></p>
           <p id="comparison-status" class="sr-only" role="status" aria-live="polite"></p>
         </div>
-        <div class="results-description">
-          <p><strong>Surface reconstruction.</strong> The selected comparisons highlight continuity across surface interiors and the preservation of structural boundaries. Meshes, depth, and normals offer complementary views of the recovered geometry.</p>
-          <p><strong>Novel view synthesis.</strong> Matched RGB views show how geometric coherence relates to appearance. Use the ground-truth reference to inspect local image details, or select VisPNF to compare methods directly.</p>
-        </div>
       </div>
     </section>
     <section id="results" class="experiment-section container" aria-labelledby="experiment-title">
-      <div class="section-heading centered"><h2 id="experiment-title">Experimental results</h2><p class="section-intro">We evaluate rendered views of eight scanned Replica scenes, real ScanNet++ imagery, and challenging MuSHRoom smartphone captures.</p></div>
-      <p class="rank-legend">Cell colors indicate <span class="rank-first">1st</span>, <span class="rank-second">2nd</span>, and <span class="rank-third">3rd</span> place. Ties share the same rank.</p>
+      <div class="section-heading centered"><h2 id="experiment-title">Quantitative Results</h2></div>
+      <p class="rank-legend"><span class="rank-first">1st</span>, <span class="rank-second">2nd</span>, and <span class="rank-third">3rd</span>; ties share a rank.</p>
       <article class="result-table-card" aria-labelledby="combined-results-title">
         <p class="result-kicker">Table 1</p><h3 id="combined-results-title">Surface reconstruction and novel view synthesis</h3>
         <p class="result-scroll-hint" id="result-scroll-hint">Swipe horizontally to view all metrics <span aria-hidden="true">↔</span></p>
@@ -183,39 +174,29 @@
         </div>
         <p class="result-table-note" id="result-table-note">Metrics are averaged over scenes. CD is in centimeters; F-score and normal consistency (NC) are percentages. ↑ / ↓ indicate higher / lower is better.</p>
       </article>
-      <div class="results-description experiment-analysis"><p><strong>Reconstruction.</strong> VisPNF achieves the lowest mean CD and highest mean F-score on all three datasets. It ranks first in mean NC on Replica and ScanNet++ and second on MuSHRoom, behind AmbiSuR.</p><p><strong>Rendering.</strong> VisPNF achieves the highest mean PSNR on Replica and the lowest mean LPIPS on all three datasets, improving both metrics over PGSR across all three benchmarks.</p></div>
       <figure class="experiment-figure" id="experiment-figure-5">
-        <div class="experiment-figure-heading"><span class="result-kicker">Figure 5</span><h3>Surface reconstruction across indoor scenes</h3></div>
+        <div class="experiment-figure-heading"><h3>Surface Reconstruction</h3></div>
         <a href="assets/images/experiments/surface-reconstruction.webp?v=paper-d8870f4" target="_blank" rel="noopener" aria-label="Open Figure 5 at full resolution"><img src="assets/images/experiments/surface-reconstruction.webp?v=paper-d8870f4" width="2800" height="1678" loading="lazy" decoding="async" alt="Surface reconstruction across indoor scenes. Surface reconstruction on Replica (top two rows), ScanNet++ (middle two rows), and MuSHRoom (bottom two rows). Red dashed boxes highlight regions for comparing surface continuity and local structure."></a>
-        <figcaption><p>Surface reconstruction on Replica (top two rows), ScanNet++ (middle two rows), and MuSHRoom (bottom two rows). Red dashed boxes highlight regions for comparing surface continuity and local structure.</p>
-          <a class="experiment-enlarge" href="assets/images/experiments/surface-reconstruction.webp?v=paper-d8870f4" target="_blank" rel="noopener">Open full-resolution figure <span aria-hidden="true">↗</span></a>
-        </figcaption>
+        <figcaption><p><strong>Figure 5.</strong> Replica, ScanNet++, and MuSHRoom, from top to bottom. Red dashed boxes highlight local surface structure.</p></figcaption>
       </figure>
       <figure class="experiment-figure" id="experiment-figure-6">
-        <div class="experiment-figure-heading"><span class="result-kicker">Figure 6</span><h3>Surface error against ground truth</h3></div>
+        <div class="experiment-figure-heading"><h3>Surface Error</h3></div>
         <a href="assets/images/experiments/surface-error.webp?v=paper-d8870f4" target="_blank" rel="noopener" aria-label="Open Figure 6 at full resolution"><img src="assets/images/experiments/surface-error.webp?v=paper-d8870f4" width="2800" height="1542" loading="lazy" decoding="async" alt="Surface error against ground truth. Error maps for the scenes and viewpoints in Figure 5. Colors show the distance from each visible reconstructed surface point to the nearest ground-truth surface. White color indicates no reconstructed surface."></a>
-        <figcaption><p>Error maps for the scenes and viewpoints in Figure 5. Colors show the distance from each visible reconstructed surface point to the nearest ground-truth surface. White color indicates no reconstructed surface.</p>
-          <a class="experiment-enlarge" href="assets/images/experiments/surface-error.webp?v=paper-d8870f4" target="_blank" rel="noopener">Open full-resolution figure <span aria-hidden="true">↗</span></a>
-        </figcaption>
+        <figcaption><p><strong>Figure 6.</strong> Surface error for the scenes in Figure 5. Color encodes distance to the ground-truth surface; white indicates no reconstructed surface.</p></figcaption>
       </figure>
       <figure class="experiment-figure" id="experiment-figure-7">
-        <div class="experiment-figure-heading"><span class="result-kicker">Figure 7</span><h3>Optimized Gaussian kernels</h3></div>
+        <div class="experiment-figure-heading"><h3>Gaussian Kernels</h3></div>
         <a href="assets/images/experiments/gaussian-kernels.webp?v=paper-d8870f4" target="_blank" rel="noopener" aria-label="Open Figure 7 at full resolution"><img src="assets/images/experiments/gaussian-kernels.webp?v=paper-d8870f4" width="2800" height="877" loading="lazy" decoding="async" alt="Optimized Gaussian kernels. Optimized Gaussian kernels on Replica (left) and ScanNet++ (right). VisPNF produces more regular kernel distributions than its PGSR backbone."></a>
-        <figcaption><p>Optimized Gaussian kernels on Replica (left) and ScanNet++ (right). VisPNF produces more regular kernel distributions than its PGSR backbone.</p>
-          <a class="experiment-enlarge" href="assets/images/experiments/gaussian-kernels.webp?v=paper-d8870f4" target="_blank" rel="noopener">Open full-resolution figure <span aria-hidden="true">↗</span></a>
-        </figcaption>
+        <figcaption><p><strong>Figure 7.</strong> Replica on the left and ScanNet++ on the right. VisPNF produces more regular Gaussian kernel distributions than PGSR.</p></figcaption>
       </figure>
       <figure class="experiment-figure" id="experiment-figure-8">
-        <div class="experiment-figure-heading"><span class="result-kicker">Figure 8</span><h3>RGB, normal, and depth comparisons</h3></div>
+        <div class="experiment-figure-heading"><h3>Rendering Results</h3></div>
         <a href="assets/images/experiments/rgb-normal-depth.webp?v=paper-d8870f4" target="_blank" rel="noopener" aria-label="Open Figure 8 at full resolution"><img src="assets/images/experiments/rgb-normal-depth.webp?v=paper-d8870f4" width="3000" height="2604" loading="lazy" decoding="async" alt="RGB, normal, and depth comparisons. Qualitative comparison of RGB images, normal maps, and depth maps. Red dashed boxes mark corresponding regions."></a>
-        <figcaption><p>Qualitative comparison of RGB images, normal maps, and depth maps. Red dashed boxes mark corresponding regions.</p>
-          <a class="experiment-enlarge" href="assets/images/experiments/rgb-normal-depth.webp?v=paper-d8870f4" target="_blank" rel="noopener">Open full-resolution figure <span aria-hidden="true">↗</span></a>
-        </figcaption>
+        <figcaption><p><strong>Figure 8.</strong> RGB, normal, and depth comparisons. Red dashed boxes mark corresponding regions.</p></figcaption>
       </figure>
     </section>
-    <section class="prose-container closing-section"><h2>Coherent geometry across indoor environments</h2><p>Across Replica, ScanNet++, and MuSHRoom, VisPNF consistently improves surface reconstruction and rendering quality over PGSR. The projective field provides a common geometric representation across these different capture conditions.</p></section>
   </main>
-  <footer class="site-footer"><a class="wordmark" href="#main">VisPNF<span class="wordmark-dot"></span></a><p>Visibility- and Appearance-Guided Projective Normal Fields for Indoor Gaussian Surface Reconstruction</p><p class="credits">Layout inspired by <a href="https://zju3dv.github.io/DiffWind/" rel="noopener" target="_blank">DiffWind</a>, <a href="https://kasothaphie.github.io/GenRecon/" target="_blank" rel="noopener">GenRecon</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
+  <footer class="site-footer"><p class="credits">Layout inspired by <a href="https://zju3dv.github.io/DiffWind/" rel="noopener" target="_blank">DiffWind</a>, <a href="https://kasothaphie.github.io/GenRecon/" target="_blank" rel="noopener">GenRecon</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener">Nerfies</a>.</p></footer>
   <dialog id="comparison-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title">Comparison</h2><button id="close-dialog" type="button" aria-label="Close enlarged comparison">✕</button></div><div id="dialog-content"></div><p class="dialog-hint">Drag the divider, or focus it and use the arrow keys. Press Esc to close.</p></dialog>
   <noscript><p class="noscript-message">Enable JavaScript to use the comparison sliders. The reconstruction videos and method overview remain available above.</p></noscript>
 </body>

@@ -51,4 +51,4 @@ Figures 5–8 show mesh comparisons including GOF, surface-error maps, optimized
 
 ## Page layout
 
-The centered publication layout follows DiffWind: a white page, restrained typography, dark resource buttons, and figures with captions below. Fonts are served locally. The videos, interactive comparisons, and table values retain their existing behavior and content.
+Typography and layout follow DiffWind: the same Google Sans title font, 48 px publication title, 32 px section headings, 16 px body text with 1.5 line height, and a centered 768 px content column. The source declares Jost without loading it; the same sans-serif fallback is used for body text. Google Sans is bundled locally with its OFL license. The abstract precedes the video and method overview. Captions are concise, and duplicate analysis is omitted. The table values and media remain unchanged.
