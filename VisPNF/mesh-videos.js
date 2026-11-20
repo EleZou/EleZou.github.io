@@ -1,178 +1,147 @@
 (() => {
   'use strict';
-  const section = document.querySelector('#mesh-videos');
-  const video = section.querySelector('video');
+  const {datasets, methods} = window.PNFSURF_DATA;
+  const section = document.querySelector('#videos');
+  const tabs = [...section.querySelectorAll('[data-mesh-dataset]')];
+  const videos = [...section.querySelectorAll('.scene-video-pair video')];
+  const selectors = [...section.querySelectorAll('.scene-video-pair select')];
   const toggle = section.querySelector('#mesh-play-toggle');
   const speed = section.querySelector('#mesh-video-speed');
-  const quality = section.querySelector('#mesh-video-quality');
+  const scrub = section.querySelector('#mesh-video-time');
+  const clock = section.querySelector('#mesh-video-clock');
+  const note = section.querySelector('#mesh-video-note');
   const status = section.querySelector('#mesh-video-status');
-  const scenes = {
-    replica: {name: 'Replica', scene: 'office0', regime: 'Rendered views of a real scanned interior', detail: 'Inspect the wall–furniture boundaries and surface continuity as the camera moves.'},
-    scannetpp: {name: 'ScanNet++', scene: '88cf747085', regime: 'Real scanned interior', detail: 'Inspect the tiled wall, sink outline, and small surface structures from changing angles.'},
-    mushroom: {name: 'MuSHRoom', scene: 'coffee_room', regime: 'Challenging smartphone capture', detail: 'Inspect the sofa contours, curtains, and gaps between reconstructed surfaces.'}
+  let scene = datasets[0];
+  let phase = 0;
+  let playing = false;
+  let loaded = false;
+  let request = 0;
+
+  const duration = () => videos[0].duration || 0;
+  const format = value => {
+    const seconds = Math.floor(value);
+    return Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
   };
-  const methods = {pgsr: 'PGSR', '2dgs': '2DGS', ambisur: 'AmbiSuR', gt: 'Ground truth'};
-  const portraitScreen = window.matchMedia('(max-width: 600px) and (orientation: portrait)');
-  let currentDataset = 'replica';
-  let currentMethod = 'pgsr';
-  let desiredTime = 0;
-  let pendingLoad = null;
-  let ready = false;
-  let shouldPlay = false;
-  let playRequest = 0;
-  const preparedVideos = new Map();
-  const failedPreloads = new Set();
-  let preloader = null;
+  const updateControls = () => {
+    toggle.querySelector('span').textContent = playing ? 'Pause comparison' : 'Play comparison';
+    toggle.querySelector('path').setAttribute('d', playing ? 'M8 5v14M16 5v14' : 'm8 5 11 7-11 7Z');
+    const total = duration();
+    scrub.disabled = !loaded || !Number.isFinite(total) || total <= 0;
+    scrub.value = scrub.disabled ? 0 : Math.round(phase / total * 1000);
+    const time = scrub.disabled ? '0:00' : format(phase) + ' / ' + format(total);
+    if (clock.textContent !== time) clock.textContent = time;
+    const spoken = scrub.disabled ? 'Video progress unavailable' : format(phase) + ' of ' + format(total);
+    if (scrub.getAttribute('aria-valuetext') !== spoken) scrub.setAttribute('aria-valuetext', spoken);
+  };
 
-  function stopPreloading() {
-    preloader?.abort();
-    preloader = null;
-  }
-
-  function preloadComparisons() {
-    if (preloader) return;
-    const lastRange = video.buffered.length - 1;
-    if (lastRange < 0 || video.buffered.end(lastRange) < video.duration - 0.1) return;
-    const controller = new AbortController();
-    preloader = controller;
-    // Fetch one small clip at a time. Cached object URLs make later switches
-    // independent of the server's handling of range-request caching.
-    (async () => {
-      try {
-        while (!controller.signal.aborted) {
-          const datasets = [currentDataset, ...Object.keys(scenes).filter(key => key !== currentDataset)];
-          const layouts = portraitScreen.matches ? ['-portrait', ''] : ['', '-portrait'];
-          const sources = layouts.flatMap(layout => datasets.flatMap(dataset => Object.keys(methods).map(method =>
-            `assets/videos/mesh-comparisons-vispnf/${dataset}-${method}${layout}-fast.mp4`)));
-          const next = sources.find(source => source !== video.dataset.source && !preparedVideos.has(source) && !failedPreloads.has(source));
-          if (!next) break;
-          try {
-            const response = await fetch(next, {signal: controller.signal, cache: 'force-cache', priority: 'low'});
-            if (!response.ok) throw new Error('Video unavailable');
-            const blob = await response.blob();
-            if (controller.signal.aborted) break;
-            preparedVideos.set(next, URL.createObjectURL(blob));
-          } catch (error) {
-            if (controller.signal.aborted) break;
-            failedPreloads.add(next);
-          }
-        }
-      } finally {
-        if (preloader === controller) preloader = null;
-      }
-    })();
-  }
-
-  function selectTab(button) {
-    button.parentElement.querySelectorAll('[role="tab"]').forEach(tab => {
-      const selected = tab === button;
-      tab.setAttribute('aria-selected', String(selected));
-      tab.tabIndex = selected ? 0 : -1;
-    });
-  }
-
-  function updateButton() {
-    toggle.querySelector('span').textContent = shouldPlay ? 'Pause comparison' : 'Play comparison';
-    toggle.querySelector('path').setAttribute('d', shouldPlay ? 'M8 5v14M16 5v14' : 'm8 5 11 7-11 7Z');
-  }
-
-  async function play() {
-    const request = ++playRequest;
-    shouldPlay = true;
-    updateButton();
-    status.textContent = '';
-    try {
-      await video.play();
-    } catch (error) {
-      // A method change or a pause can cancel a previous play request normally.
-      if (request !== playRequest || error.name === 'AbortError') return;
-      shouldPlay = false;
-      updateButton();
-      status.textContent = 'Playback could not start. Try Play comparison again, or open the video.';
+  function seek(time) {
+    phase = Math.max(0, time);
+    for (const video of videos) {
+      if (video.readyState >= 1) video.currentTime = Math.min(phase, Math.max(0, video.duration - 0.01));
     }
+    updateControls();
   }
 
   function pause() {
-    ++playRequest;
-    shouldPlay = false;
-    if (!video.paused) video.pause();
-    updateButton();
-  }
-
-  function changeVideo(dataset, method, force = false) {
-    if (!force && dataset === currentDataset && method === currentMethod) return;
-    desiredTime = dataset === currentDataset ? (ready ? video.currentTime : desiredTime) : 0;
-    const resume = shouldPlay;
-    ++playRequest;
-    pendingLoad?.abort();
-    pendingLoad = new AbortController();
-    ready = false;
-    if (!video.paused) video.pause();
-    shouldPlay = resume;
-    currentDataset = dataset;
-    currentMethod = method;
-    const scene = scenes[dataset];
-    const portrait = portraitScreen.matches;
-    const path = `assets/videos/mesh-comparisons-vispnf/${dataset}-${method}${portrait ? '-portrait' : ''}`;
-    const source = `${path}${quality.value === 'fast' ? '-fast' : ''}.mp4`;
-    if (!preparedVideos.has(source)) stopPreloading();
-    video.poster = `${path}.webp`;
-    video.dataset.source = source;
-    video.src = preparedVideos.get(source) || source;
-    video.setAttribute('aria-label', `${scene.name} ${scene.scene}: ${methods[method]} ${portrait ? 'above' : 'on the left'} and PNFSurf-P ${portrait ? 'below' : 'on the right'}, synchronized mesh comparison`);
-    section.querySelector('#mesh-video-scene').textContent = scene.scene;
-    section.querySelector('#mesh-video-regime').textContent = `${scene.name} · ${scene.regime}`;
-    section.querySelector('#mesh-video-caption').textContent = `PNFSurf-P ${portrait ? 'below' : 'on the right'}. Both meshes share the same camera path.`;
-    section.querySelector('#mesh-video-open').href = source;
-    video.querySelector('a').href = source;
-    section.querySelector('#mesh-video-panel').setAttribute('aria-labelledby', `mesh-dataset-${dataset}`);
-    section.querySelector('#mesh-video-content').setAttribute('aria-labelledby', `mesh-method-${method}`);
+    if (loaded) phase = videos[0].currentTime;
+    ++request;
+    playing = false;
+    videos.forEach(video => video.pause());
     status.textContent = '';
-    updateButton();
-    video.addEventListener('loadedmetadata', () => {
-      ready = true;
-      if (desiredTime > 0) video.currentTime = Math.min(desiredTime, Math.max(0, video.duration - 0.05));
+    updateControls();
+  }
+
+  function synchronize(ticket) {
+    if (!playing || ticket !== request) return;
+    const [left, right] = videos;
+    if (loaded && !left.seeking && !right.seeking) {
+      phase = left.currentTime;
+      if (right.readyState >= 2 && Math.abs(right.currentTime - phase) > 0.09) right.currentTime = phase;
+      updateControls();
+    }
+    requestAnimationFrame(() => synchronize(ticket));
+  }
+
+  async function play() {
+    const ticket = ++request;
+    const start = phase;
+    playing = true;
+    status.textContent = 'Loading video…';
+    updateControls();
+    try {
+      await Promise.all(videos.map(video => video.play()));
+      if (ticket !== request) return;
+      loaded = true;
+      seek(start);
+      status.textContent = '';
+      synchronize(ticket);
+    } catch {
+      if (ticket !== request) return;
+      pause();
+      status.textContent = 'Playback could not start. Try playing again or open a clip.';
+    }
+  }
+
+  function loadScene() {
+    const resume = playing;
+    ++request;
+    loaded = false;
+    status.textContent = '';
+    for (const [index, video] of videos.entries()) {
+      const method = selectors[index].value;
+      const label = methods[method];
+      video.pause();
+      video.poster = scene.posters[method];
+      const source = scene.videos[method];
+      video.src = source;
+      video.load();
       video.playbackRate = Number(speed.value);
-      if (shouldPlay) play();
-    }, {once: true, signal: pendingLoad.signal});
-    if (video.preload !== 'none' || shouldPlay) video.load();
+      video.setAttribute('aria-label', scene.name + ' ' + scene.scene + ', ' + label + ' mesh orbit');
+      const link = section.querySelector('#' + video.id + '-open');
+      link.href = source;
+      link.setAttribute('aria-label', 'Open ' + label + ' video');
+    }
+    section.querySelector('#mesh-video-scene').textContent = scene.scene;
+    note.hidden = !scene.videoNote;
+    note.textContent = scene.videoNote;
+    updateControls();
+    if (resume) play();
   }
 
-  section.querySelectorAll('[data-mesh-dataset]').forEach(button => button.addEventListener('click', () => {
-    selectTab(button);
-    changeVideo(button.dataset.meshDataset, currentMethod);
-  }));
-  section.querySelectorAll('[data-mesh-method]').forEach(button => button.addEventListener('click', () => {
-    selectTab(button);
-    changeVideo(currentDataset, button.dataset.meshMethod);
-  }));
-  toggle.addEventListener('click', () => shouldPlay ? pause() : play());
-  speed.addEventListener('change', () => { video.playbackRate = Number(speed.value); });
-  quality.addEventListener('change', () => changeVideo(currentDataset, currentMethod, true));
-  video.addEventListener('loadedmetadata', () => { ready = true; });
-  video.addEventListener('play', () => { shouldPlay = true; updateButton(); });
-  video.addEventListener('pause', () => {
-    if (ready) { shouldPlay = false; updateButton(); }
+  for (const tab of tabs) {
+    tab.addEventListener('click', () => {
+      if (scene.id === tab.dataset.meshDataset) return;
+      scene = datasets.find(item => item.id === tab.dataset.meshDataset);
+      phase = 0;
+      for (const button of tabs) {
+        button.setAttribute('aria-selected', String(button === tab));
+        button.tabIndex = button === tab ? 0 : -1;
+      }
+      section.querySelector('#mesh-video-panel').setAttribute('aria-labelledby', tab.id);
+      loadScene();
+    });
+  }
+  selectors.forEach(select => select.addEventListener('change', loadScene));
+  toggle.addEventListener('click', () => playing ? pause() : play());
+  speed.addEventListener('change', () => {
+    videos.forEach(video => { video.playbackRate = Number(speed.value); });
   });
-  video.addEventListener('waiting', () => { if (shouldPlay) status.textContent = 'Loading comparison…'; });
-  video.addEventListener('playing', () => { status.textContent = ''; });
-  video.addEventListener('canplay', () => { status.textContent = ''; preloadComparisons(); });
-  video.addEventListener('progress', preloadComparisons);
-  video.addEventListener('suspend', preloadComparisons);
-  video.addEventListener('error', () => {
-    pause();
-    status.textContent = 'The video could not load. Try another comparison, or open the video directly.';
-  });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); });
-  portraitScreen.addEventListener('change', () => changeVideo(currentDataset, currentMethod, true));
-  video.preload = 'auto';
-  changeVideo(currentDataset, currentMethod, true);
-
-  // Loading continues in the background; only playback pauses offscreen.
+  scrub.addEventListener('input', () => seek(duration() * Number(scrub.value) / 1000));
+  for (const video of videos) {
+    video.addEventListener('loadedmetadata', () => {
+      loaded = videos.every(item => item.readyState >= 1);
+      if (loaded && !playing) seek(phase);
+    });
+    video.addEventListener('error', () => {
+      pause();
+      status.textContent = 'A video could not load. Select another method or open the clip.';
+    });
+  }
+  document.addEventListener('visibilitychange', () => { if (document.hidden && playing) pause(); });
   if ('IntersectionObserver' in window) {
-    const pauser = new IntersectionObserver(entries => {
-      if (!entries[0].isIntersecting && !document.fullscreenElement && !video.webkitDisplayingFullscreen) pause();
-    }, {threshold: 0});
-    pauser.observe(video);
+    new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting && playing) pause();
+    }).observe(section.querySelector('.scene-video-pair'));
   }
+  loadScene();
 })();

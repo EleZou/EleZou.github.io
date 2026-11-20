@@ -12,7 +12,7 @@ Font licenses remain in `assets/fonts/`. Layout credits are retained in the page
 
 The results section contains the five tables from the paper, including DTU at matched training time. The mesh gallery covers seven datasets and includes all 17 indoor scenes.
 
-The interactive mesh panels include both PNFSurf backbones and GoF. The recorded mesh videos use the earlier VisPNF name for PNFSurf-P.
+The 360° videos and image sliders use one scene per dataset with six methods. The two video players share a timeline and each offers a method selector.
 
 ## Page layout
 

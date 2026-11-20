@@ -14,17 +14,17 @@
   <title>PNFSurf: Gaussian Surface Reconstruction Guided by Projective Normal Fields</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=pnfsurf-20261120">
-  <script src="data.js?v=pnfsurf-20261120" defer></script>
-  <script src="app.js?v=pnfsurf-20261120" defer></script>
-  <script src="mesh-videos.js?v=pnfsurf-20261120" defer></script>
+  <link rel="stylesheet" href="style.css?v=scenes-20261121">
+  <script src="data.js?v=scenes-20261121" defer></script>
+  <script src="app.js?v=scenes-20261121" defer></script>
+  <script src="mesh-videos.js?v=scenes-20261121" defer></script>
   <script src="showcase-tabs.js?v=pnfsurf-20261120" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <nav class="top-nav" aria-label="Main navigation">
     <a class="home-link" href="#main" aria-label="PNFSurf home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 11h3v10h5v-6h4v6h5V11h3Z"/></svg></a>
-    <details class="contents-menu"><summary>Contents</summary><div class="contents-links"><a href="#overview">Abstract</a><a href="#videos">Video</a><a href="#method">Method Overview</a><a href="#mesh-gallery">Mesh Gallery</a><a href="#mesh-videos">Mesh Videos</a><a href="#comparisons">Interactive Comparisons</a><a href="#results">Results</a></div></details>
+    <details class="contents-menu"><summary>Contents</summary><div class="contents-links"><a href="#overview">Abstract</a><a href="#method">Method Overview</a><a href="#mesh-gallery">Mesh Gallery</a><a href="#mesh-videos">Mesh Videos</a><a href="#comparisons">Interactive Comparisons</a><a href="#results">Results</a></div></details>
   </nav>
   <main id="main">
     <header class="hero container">
@@ -45,8 +45,69 @@
       </div>
     </section>
 
-    <section id="videos" class="video-section container" aria-labelledby="videos-title">
-      <div class="section-heading centered"><h2 id="videos-title">Video</h2></div>
+    <section id="videos" class="mesh-video-section container" aria-labelledby="mesh-videos-title">
+      <div id="mesh-videos" class="section-heading centered"><h2 id="mesh-videos-title">360° Mesh Videos</h2></div>
+      <div class="tab-list dataset-tabs selected-dataset-tabs" role="tablist" aria-label="Mesh video dataset">
+<button type="button" role="tab" id="mesh-dataset-replica" aria-controls="mesh-video-panel" aria-selected="true" tabindex="0" data-mesh-dataset="replica">Replica</button>
+<button type="button" role="tab" id="mesh-dataset-scannetpp" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="scannetpp">ScanNet++</button>
+<button type="button" role="tab" id="mesh-dataset-mushroom" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="mushroom">MuSHRoom</button>
+<button type="button" role="tab" id="mesh-dataset-dtu" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="dtu">DTU</button>
+<button type="button" role="tab" id="mesh-dataset-nerf-synthetic" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="nerf-synthetic">NeRF-Synthetic</button>
+<button type="button" role="tab" id="mesh-dataset-tnt" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="tnt">Tanks and Temples</button>
+<button type="button" role="tab" id="mesh-dataset-mipnerf360" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="mipnerf360">Mip-NeRF 360</button>
+</div>
+      <div id="mesh-video-panel" role="tabpanel" aria-labelledby="mesh-dataset-replica">
+        <div class="mesh-video-meta">
+          <p><strong id="mesh-video-scene">office1</strong></p>
+        </div>
+        <div class="scene-video-pair">
+      <div class="scene-video">
+        <div class="scene-video-heading">
+          <label for="mesh-comparison-left-method" class="sr-only">Left method</label>
+          <select id="mesh-comparison-left-method"><option value="2dgs">2DGS</option><option value="gof">GOF</option><option value="pgsr" selected>PGSR</option><option value="ambisur">AmbiSuR</option><option value="pnfsurf-p">PNFSurf-P</option><option value="pnfsurf-a">PNFSurf-A</option></select>
+          <a class="scene-video-open" id="mesh-comparison-left-open" href="assets/scenes-20261121/replica/pgsr.mp4" target="_blank"
+             rel="noopener" title="Open video" aria-label="Open PGSR video">↗</a>
+        </div>
+        <div class="scene-video-frame">
+          <video id="mesh-comparison-left" playsinline muted loop preload="none" poster="assets/scenes-20261121/replica/pgsr-poster.webp"
+                 aria-label="Replica office1, PGSR mesh orbit">
+            <source src="assets/scenes-20261121/replica/pgsr.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="scene-video">
+        <div class="scene-video-heading">
+          <label for="mesh-comparison-right-method" class="sr-only">Right method</label>
+          <select id="mesh-comparison-right-method"><option value="2dgs">2DGS</option><option value="gof">GOF</option><option value="pgsr">PGSR</option><option value="ambisur">AmbiSuR</option><option value="pnfsurf-p" selected>PNFSurf-P</option><option value="pnfsurf-a">PNFSurf-A</option></select>
+          <a class="scene-video-open" id="mesh-comparison-right-open" href="assets/scenes-20261121/replica/pnfsurf-p.mp4" target="_blank"
+             rel="noopener" title="Open video" aria-label="Open PNFSurf-P video">↗</a>
+        </div>
+        <div class="scene-video-frame">
+          <video id="mesh-comparison-right" playsinline muted loop preload="none" poster="assets/scenes-20261121/replica/pnfsurf-p-poster.webp"
+                 aria-label="Replica office1, PNFSurf-P mesh orbit">
+            <source src="assets/scenes-20261121/replica/pnfsurf-p.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+        </div>
+        <div class="scene-playback">
+          <button type="button" class="mesh-play-button" id="mesh-play-toggle"
+                  aria-controls="mesh-comparison-left mesh-comparison-right">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+            <span>Play comparison</span>
+          </button>
+          <label for="mesh-video-time" class="sr-only">Comparison playback progress</label>
+          <input id="mesh-video-time" type="range" min="0" max="1000" value="0" disabled>
+          <span id="mesh-video-clock" aria-hidden="true">0:00</span>
+          <label class="mesh-speed-control" for="mesh-video-speed">Speed
+            <select id="mesh-video-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select>
+          </label>
+        </div>
+        <p id="mesh-video-note" class="mesh-video-caption" hidden></p>
+        <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
+      </div>
+    <details class="reconstruction-demos" id="reconstruction-demos">
+<summary>Reconstruction videos</summary>
       <div class="video-frame">
         <video id="reconstruction-video" controls playsinline muted loop preload="none" poster="assets/videos/scannetpp-poster.webp" aria-label="PNFSurf reconstruction video on ScanNet++, 8b5caf3398">
           <source src="assets/videos/scannetpp.mp4" type="video/mp4">
@@ -59,74 +120,42 @@
           <button type="button" role="tab" aria-selected="true" aria-controls="video-details" data-video="scannetpp" id="video-scannetpp">ScanNet++</button>
           <button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="video-details" data-video="mushroom" id="video-mushroom">MuSHRoom</button>
         </div>
-        <div class="video-meta"><p id="video-details" role="tabpanel" aria-labelledby="video-scannetpp"><span id="video-scene">8b5caf3398</span><span class="dot-divider">·</span>45 s · 1080p</p><button type="button" id="video-play-toggle" aria-controls="reconstruction-video">Play video</button></div>
+        <div class="video-meta"><p id="video-details" role="tabpanel" aria-labelledby="video-scannetpp"><span id="video-scene">8b5caf3398</span><span class="dot-divider">·</span><span id="reconstruction-details">45 s</span></p><button type="button" id="video-play-toggle" aria-controls="reconstruction-video">Play video</button></div>
       </div>
-    </section>
+    </details></section>
 
     <section id="method" class="method-section container" aria-labelledby="method-title">
       <div class="section-heading centered"><h2 id="method-title">Method Overview</h2></div>
       <figure class="method-figure"><a href="assets/images/pnfsurf/overview.webp?v=pnfsurf-20261120" target="_blank" rel="noopener" aria-label="PNFSurf method overview"><img src="assets/images/pnfsurf/overview.webp?v=pnfsurf-20261120" width="3400" height="717" loading="lazy" decoding="async" alt="PNFSurf method overview"></a><figcaption>Gaussian reconstruction supplies the graph, anchors, and depth-normal targets. The inferred projective normal field then guides Gaussian optimization.</figcaption></figure>
     </section>
 
-    <section id="mesh-videos" class="mesh-video-section container" aria-labelledby="mesh-videos-title">
-      <div class="section-heading centered">
-        <h2 id="mesh-videos-title">Mesh Videos</h2>
-      </div>
-      <div class="tab-list dataset-tabs" role="tablist" aria-label="Mesh video dataset">
-        <button type="button" role="tab" id="mesh-dataset-replica" aria-selected="true" aria-controls="mesh-video-panel" data-mesh-dataset="replica">Replica</button>
-        <button type="button" role="tab" id="mesh-dataset-scannetpp" aria-selected="false" tabindex="-1" aria-controls="mesh-video-panel" data-mesh-dataset="scannetpp">ScanNet++</button>
-        <button type="button" role="tab" id="mesh-dataset-mushroom" aria-selected="false" tabindex="-1" aria-controls="mesh-video-panel" data-mesh-dataset="mushroom">MuSHRoom</button>
-      </div>
-      <div id="mesh-video-panel" role="tabpanel" aria-labelledby="mesh-dataset-replica">
-        <div class="mesh-video-meta"><p><strong id="mesh-video-scene">office0</strong><span id="mesh-video-regime">Replica · Rendered views of a real scanned interior</span></p><span class="mesh-sync-label"><span aria-hidden="true"></span>Frame-synchronized</span></div>
-        <div class="mesh-method-toolbar"><span id="mesh-method-label">Compare PNFSurf-P with</span>
-          <div class="tab-list mesh-method-tabs" role="tablist" aria-labelledby="mesh-method-label">
-            <button type="button" role="tab" id="mesh-method-pgsr" aria-selected="true" aria-controls="mesh-video-content" data-mesh-method="pgsr">PGSR</button>
-            <button type="button" role="tab" id="mesh-method-2dgs" aria-selected="false" tabindex="-1" aria-controls="mesh-video-content" data-mesh-method="2dgs">2DGS</button>
-            <button type="button" role="tab" id="mesh-method-ambisur" aria-selected="false" tabindex="-1" aria-controls="mesh-video-content" data-mesh-method="ambisur">AmbiSuR</button>
-            <button type="button" role="tab" id="mesh-method-gt" aria-selected="false" tabindex="-1" aria-controls="mesh-video-content" data-mesh-method="gt">Ground truth</button>
-          </div>
-        </div>
-        <div id="mesh-video-content" role="tabpanel" aria-labelledby="mesh-method-pgsr">
-          <div class="mesh-video-frame">
-            <video id="mesh-comparison-video" controls playsinline muted loop preload="none" poster="assets/videos/mesh-comparisons-vispnf/replica-pgsr.webp" aria-label="Replica office0: PGSR on the left and PNFSurf-P on the right, synchronized mesh comparison" aria-describedby="mesh-video-caption">
-              <source src="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4" type="video/mp4">
-              Your browser does not support HTML video. <a href="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4">Open the comparison video.</a>
-            </video>
-          </div>
-          <div class="mesh-playback-toolbar">
-            <button type="button" class="mesh-play-button" id="mesh-play-toggle" aria-controls="mesh-comparison-video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg><span>Play comparison</span></button>
-            <label class="mesh-speed-control" for="mesh-video-speed">Speed <select id="mesh-video-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label>
-            <label class="mesh-speed-control" for="mesh-video-quality">Quality <select id="mesh-video-quality"><option value="fast" selected>Fast</option><option value="hd">HD</option></select></label>
-            <a id="mesh-video-open" href="assets/videos/mesh-comparisons-vispnf/replica-pgsr-fast.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a>
-          </div>
-          <p id="mesh-video-caption" class="mesh-video-caption">PNFSurf-P appears on the right. Both meshes share the same camera path.</p>
-          <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
-        </div>
-      </div>
-    </section>
+
 
     <section id="comparisons" class="comparison-section section-band" aria-labelledby="comparison-title">
       <div class="container">
         <div class="section-heading centered"><h2 id="comparison-title">Interactive Comparisons</h2></div>
-        <div class="tab-list dataset-tabs" role="tablist" aria-label="Comparison dataset">
-          <button type="button" role="tab" id="dataset-replica" aria-selected="true" aria-controls="comparison-panel" data-dataset="replica">Replica</button>
-          <button type="button" role="tab" id="dataset-scannetpp" aria-selected="false" tabindex="-1" aria-controls="comparison-panel" data-dataset="scannetpp">ScanNet++</button>
-          <button type="button" role="tab" id="dataset-mushroom" aria-selected="false" tabindex="-1" aria-controls="comparison-panel" data-dataset="mushroom">MuSHRoom</button>
-        </div>
+        <div class="tab-list dataset-tabs selected-dataset-tabs" role="tablist" aria-label="Comparison dataset">
+<button type="button" role="tab" id="dataset-replica" aria-controls="comparison-panel" aria-selected="true" tabindex="0" data-dataset="replica">Replica</button>
+<button type="button" role="tab" id="dataset-scannetpp" aria-controls="comparison-panel" aria-selected="false" tabindex="-1" data-dataset="scannetpp">ScanNet++</button>
+<button type="button" role="tab" id="dataset-mushroom" aria-controls="comparison-panel" aria-selected="false" tabindex="-1" data-dataset="mushroom">MuSHRoom</button>
+<button type="button" role="tab" id="dataset-dtu" aria-controls="comparison-panel" aria-selected="false" tabindex="-1" data-dataset="dtu">DTU</button>
+<button type="button" role="tab" id="dataset-nerf-synthetic" aria-controls="comparison-panel" aria-selected="false" tabindex="-1" data-dataset="nerf-synthetic">NeRF-Synthetic</button>
+<button type="button" role="tab" id="dataset-tnt" aria-controls="comparison-panel" aria-selected="false" tabindex="-1" data-dataset="tnt">Tanks and Temples</button>
+<button type="button" role="tab" id="dataset-mipnerf360" aria-controls="comparison-panel" aria-selected="false" tabindex="-1" data-dataset="mipnerf360">Mip-NeRF 360</button>
+</div>
         <div id="comparison-panel" role="tabpanel" aria-labelledby="dataset-replica">
-          <div class="comparison-toolbar">
-            <div class="tab-list modality-tabs" role="tablist" aria-label="Representation">
-              <button type="button" role="tab" id="modality-mesh" aria-selected="true" aria-controls="comparison-content" data-modality="mesh">Mesh</button>
-              <button type="button" role="tab" id="modality-rgb" aria-selected="false" tabindex="-1" aria-controls="comparison-content" data-modality="rgb">RGB</button>
-              <button type="button" role="tab" id="modality-depth" aria-selected="false" tabindex="-1" aria-controls="comparison-content" data-modality="depth">Depth</button>
-              <button type="button" role="tab" id="modality-normal" aria-selected="false" tabindex="-1" aria-controls="comparison-content" data-modality="normal">Normal</button>
+          <div class="comparison-meta">
+            <p><strong id="comparison-scene">office1</strong>
+              <span id="comparison-context">Replica · Mesh</span></p>
+            <div class="scene-comparison-controls">
+              <div class="reference-control"><label for="reference-select">Compare with</label>
+                <select id="reference-select"><option value="PGSR">PGSR</option></select>
+              </div>
+              <label class="sync-control"><input id="sync-sliders" type="checkbox" checked>Sync dividers</label>
             </div>
-            <div class="reference-control"><label for="reference-select">Compare with</label><select id="reference-select"><option value="GT">Ground truth</option></select></div>
           </div>
-          <div class="comparison-meta"><p><strong id="comparison-scene">office0</strong><span id="comparison-context">Replica · Mesh</span></p><label class="sync-control"><input id="sync-sliders" type="checkbox" checked>Sync dividers</label></div>
-          <div id="comparison-content" role="tabpanel" aria-labelledby="modality-mesh"><div id="comparison-grid" class="comparison-grid"></div></div>
-          <p id="comparison-note" class="comparison-note"></p>
+          <div id="comparison-content"><div id="comparison-grid" class="comparison-grid"></div></div>
+          <p id="comparison-note" class="comparison-note" hidden></p>
           <p id="comparison-status" class="sr-only" role="status" aria-live="polite"></p>
         </div>
       </div>
@@ -296,8 +325,8 @@
 </figure>
 <figure class="experiment-figure" id="experiment-figure-7">
 <div class="experiment-figure-heading"><h3>Gaussian Kernels</h3></div>
-<a href="assets/images/pnfsurf/gaussian-kernels.webp?v=pnfsurf-20261120" target="_blank" rel="noopener" aria-label="Gaussian Kernels"><img src="assets/images/pnfsurf/gaussian-kernels.webp?v=pnfsurf-20261120" width="2600" height="814" loading="lazy" decoding="async" alt="Gaussian Kernels"></a>
-<figcaption><p>Optimized kernels on Replica and ScanNet++ for PNFSurf-P and its PGSR backbone.</p></figcaption>
+<a href="assets/images/pnfsurf/gaussian-kernels.webp?v=scenes-20261121" target="_blank" rel="noopener" aria-label="Gaussian Kernels"><img src="assets/images/pnfsurf/gaussian-kernels.webp?v=scenes-20261121" width="2600" height="2153" loading="lazy" decoding="async" alt="Gaussian Kernels"></a>
+<figcaption><p>Optimized kernels and absolute depth errors on Replica and ScanNet++ for PNFSurf-P and PGSR. Depth errors range from dark blue at 0 cm to dark red at 10 cm and above. Light gray marks invalid pixels.</p></figcaption>
 </figure>
 <figure class="experiment-figure" id="experiment-figure-8">
 <div class="experiment-figure-heading"><h3>RGB, Normals, and Depth</h3></div>

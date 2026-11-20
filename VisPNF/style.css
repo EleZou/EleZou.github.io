@@ -180,3 +180,90 @@ h2{font-size:32px;margin:0 0 24px}
   }
   .showcase-results .experiment-table thead th:not(.method-column) { position: static; box-shadow: none; }
 }
+
+/* Selected scene media */
+.selected-dataset-tabs {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.scene-video-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.scene-video {
+  min-width: 0;
+}
+.scene-video-heading,
+.scene-comparison-controls,
+.scene-playback {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .55rem .9rem;
+}
+.scene-video-heading {
+  justify-content: space-between;
+  padding-bottom: .4rem;
+}
+.scene-video-heading select {
+  min-width: 0;
+  font: inherit;
+  color: inherit;
+  max-width: calc(100% - 2rem);
+  padding: .4rem .55rem;
+}
+.scene-video-open {
+  font-size: 1.15rem;
+  white-space: nowrap;
+}
+.scene-video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f4f4f4;
+  border-radius: 4px;
+}
+.scene-video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.scene-playback {
+  margin-top: .75rem;
+}
+.scene-playback input[type="range"] {
+  flex: 1 1 7rem;
+  min-width: 3rem;
+}
+#mesh-video-clock {
+  min-width: 5.9rem;
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.scene-comparison-controls {
+  justify-content: flex-end;
+}
+.reconstruction-demos {
+  margin-top: 1rem;
+}
+.reconstruction-demos > summary {
+  width: fit-content;
+  cursor: pointer;
+}
+.reconstruction-demos > .video-frame {
+  margin-top: .75rem;
+}
+@media (max-width: 600px) {
+  .scene-video-pair {
+    gap: .5rem;
+  }
+  .scene-comparison-controls {
+    justify-content: flex-start;
+  }
+  .scene-playback .mesh-play-button {
+    flex-basis: 100%;
+  }
+}

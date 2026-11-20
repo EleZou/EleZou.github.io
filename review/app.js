@@ -1,18 +1,16 @@
 (() => {
   'use strict';
   const data = window.PNFSURF_DATA;
-  const state = {dataset: 'replica', modality: 'mesh', reference: 'GT', position: 50};
+  const state = {dataset: 'replica', reference: 'PGSR', position: 50};
   const methodOrder = ['PNFSurf-P', 'PNFSurf-A', 'PGSR', '2DGS', 'GOF', 'AmbiSuR'];
-  const modalityLabels = {mesh: 'Mesh', rgb: 'RGB', depth: 'Depth', normal: 'Normal'};
   const grid = document.querySelector('#comparison-grid');
   const referenceSelect = document.querySelector('#reference-select');
   const dialog = document.querySelector('#comparison-dialog');
   const sync = document.querySelector('#sync-sliders');
   let renderVersion = 0;
   const dataset = () => data.datasets.find(d => d.id === state.dataset);
-  const available = () => dataset().images[state.modality];
-  const name = method => method === 'PNFSurf-P' ? 'PNFSurf-P' : method === 'GT' ? 'Ground truth' : method;
-  const referenceName = () => state.reference === 'GT' && state.modality === 'normal' ? 'GT depth-derived normal' : name(state.reference);
+  const available = () => dataset().images;
+  const referenceName = () => state.reference;
   const arrows = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>';
   const expandIcon = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 3H3v4m10-4h4v4M3 13v4h4m10-4v4h-4M3 3l5 5m9-5-5 5M3 17l5-5m9 5-5-5"/></svg>';
   const loadViewImages = view => view.querySelectorAll('img[data-src]').forEach(img => {
@@ -64,16 +62,16 @@
     const images = available();
     const view = document.createElement('div');
     view.className = 'compare-view';
-    view.dataset.methodLabel = name(method);
+    view.dataset.methodLabel = method;
     view.dataset.loading = 'true';
     view.dataset.method = method;
-    const isPortrait = state.dataset === 'mushroom' && state.modality !== 'mesh';
-    view.style.setProperty('--image-ratio', isPortrait ? '738 / 994' : '16 / 9');
-    view.innerHTML = `<img class="reference-image" alt="${referenceName()}: ${dataset().name} ${dataset().scene}, ${modalityLabels[state.modality]}" decoding="async" draggable="false">
-      <img class="method-image" alt="${name(method)}: ${dataset().name} ${dataset().scene}, ${modalityLabels[state.modality]}" decoding="async" draggable="false">
-      <span class="image-label left">${name(method)}</span><span class="image-label right">${state.reference === 'GT' ? 'GT' : name(state.reference)}</span>
+    const d = dataset();
+    view.style.setProperty('--image-ratio', `${d.width} / ${d.height}`);
+    view.innerHTML = `<img class="reference-image" alt="${referenceName()}: ${d.name} ${d.scene} mesh" decoding="async" draggable="false">
+      <img class="method-image" alt="${method}: ${d.name} ${d.scene} mesh" decoding="async" draggable="false">
+      <span class="image-label left">${method}</span><span class="image-label right">${referenceName()}</span>
       <span class="compare-divider"><span class="compare-handle">${arrows}</span></span>
-      <input class="compare-range" type="range" min="0" max="100" step="1" value="50" aria-label="Compare ${name(method)} with ${referenceName()}, ${dataset().name} ${modalityLabels[state.modality]}">`;
+      <input class="compare-range" type="range" min="0" max="100" step="1" value="50" aria-label="Compare ${method} with ${referenceName()}, ${d.name} mesh">`;
     let loaded = 0;
     const onLoad = event => {
       loaded += 1;
@@ -111,7 +109,7 @@
   }
 
   function enlarge(method, opener) {
-    const title = `${dataset().name} · ${dataset().scene} · ${modalityLabels[state.modality]}`;
+    const title = `${dataset().name} · ${dataset().scene}`;
     document.querySelector('#dialog-title').textContent = title;
     document.querySelector('#dialog-content').replaceChildren(createView(method, true));
     dialog.showModal();
@@ -126,14 +124,12 @@
     renderVersion += 1;
     const version = renderVersion;
     const d = dataset(), images = available();
-    if (!images[state.reference]) state.reference = images.GT ? 'GT' : 'PNFSurf-P';
     referenceSelect.replaceChildren();
-    for (const method of ['GT', ...methodOrder]) {
-      if (!images[method]) continue;
-      const option = new Option(method === 'GT' && state.modality === 'normal' ? 'GT (depth-derived)' : name(method), method);
+    for (const method of methodOrder) {
+      const option = new Option(method, method);
       option.selected = method === state.reference; referenceSelect.append(option);
     }
-    grid.classList.toggle('is-portrait', d.id === 'mushroom' && state.modality !== 'mesh');
+    grid.classList.toggle('is-portrait', d.height / d.width > 0.9);
     grid.replaceChildren();
     for (const method of methodOrder) {
       if (!images[method] || method === state.reference) continue;
@@ -144,49 +140,47 @@
       grid.append(card);
     }
     document.querySelector('#comparison-scene').textContent = d.scene;
-    document.querySelector('#comparison-context').textContent = `${d.name} · ${modalityLabels[state.modality]}`;
-    let note;
-    if (state.modality === 'mesh') note = 'Reconstructed surfaces and the reference mesh from the same camera.';
-    if (state.modality === 'rgb') note = `Matched RGB test view (${d.view}). All methods use the same camera view.`;
-    if (state.modality === 'depth') note = 'Depth colors show relative structure with per-image normalization, not a shared metric distance scale.';
-    if (state.modality === 'normal') note = 'Normal colors encode camera-space orientation. 2DGS normals are derived from its exported depth.';
-    if (state.modality === 'normal' && d.id === 'mushroom') note += ' The reference normal is derived from captured GT depth; it is not a native normal measurement.';
-    if (['normal','depth'].includes(state.modality) && !images.GT) note += ' GT maps are not available for this scene; compare the methods directly.';
-    document.querySelector('#comparison-note').textContent = note;
+    document.querySelector('#comparison-context').textContent = `${d.name} · Mesh`;
+    const note = document.querySelector('#comparison-note');
+    note.hidden = !d.imageNote;
+    note.textContent = d.imageNote;
     document.querySelector('#comparison-panel').setAttribute('aria-labelledby', `dataset-${d.id}`);
-    document.querySelector('#comparison-content').setAttribute('aria-labelledby', `modality-${state.modality}`);
-    requestAnimationFrame(() => { if (version === renderVersion) document.querySelector('#comparison-status').textContent = `${d.name}, ${d.scene}. ${modalityLabels[state.modality]} comparisons against ${referenceName()}.`; });
+    requestAnimationFrame(() => { if (version === renderVersion) document.querySelector('#comparison-status').textContent = `${d.name}, ${d.scene}. Mesh comparisons against ${referenceName()}.`; });
   }
   document.querySelectorAll('[data-dataset]').forEach(button => button.addEventListener('click', () => {
-    state.dataset = button.dataset.dataset; selectTab(button); state.reference = available().GT ? 'GT' : 'PNFSurf-P'; render();
-  }));
-  document.querySelectorAll('[data-modality]').forEach(button => button.addEventListener('click', () => {
-    state.modality = button.dataset.modality; selectTab(button); state.reference = available().GT ? 'GT' : 'PNFSurf-P'; render();
+    state.dataset = button.dataset.dataset; selectTab(button); render();
   }));
   referenceSelect.addEventListener('change', () => { state.reference = referenceSelect.value; render(); });
   sync.addEventListener('change', () => { if (sync.checked) document.querySelectorAll('.compare-view').forEach(view => moveDivider(view,state.position)); });
 
-  const video = document.querySelector('#reconstruction-video');
-  const playToggle = document.querySelector('#video-play-toggle');
-  playToggle.addEventListener('click', () => {
-    if (video.paused) video.play().catch(() => { playToggle.textContent = 'Retry playback'; });
-    else video.pause();
-  });
-  video.addEventListener('play', () => { playToggle.textContent = 'Pause video'; });
-  video.addEventListener('pause', () => { playToggle.textContent = 'Play video'; });
-  document.querySelectorAll('[data-video]').forEach(button => button.addEventListener('click', () => {
-    if (button.getAttribute('aria-selected') === 'true') return;
-    const v = data.videos.find(item => item.id === button.dataset.video);
-    const wasPlaying = !video.paused;
-    video.pause(); video.poster = v.poster; video.src = v.src; video.load();
-    video.setAttribute('aria-label', `PNFSurf reconstruction video on ${v.dataset}, ${v.scene}`);
-    document.querySelector('#video-scene').textContent = v.scene;
-    document.querySelector('#video-details').setAttribute('aria-labelledby', button.id);
-    selectTab(button);
-    if (wasPlaying) video.play().catch(() => {});
-  }));
-  const videoObserver = new IntersectionObserver(entries => { if (!entries[0].isIntersecting && !video.paused) video.pause(); }, {threshold:0.05});
-  videoObserver.observe(video);
-  document.addEventListener('visibilitychange', () => { if (document.hidden && !video.paused) video.pause(); });
+  const demo = document.querySelector('#reconstruction-video');
+  if (demo) {
+    const play = document.querySelector('#video-play-toggle');
+    play.addEventListener('click', () => {
+      if (demo.paused) demo.play().catch(() => { play.textContent = 'Retry playback'; });
+      else demo.pause();
+    });
+    demo.addEventListener('play', () => { play.textContent = 'Pause video'; });
+    demo.addEventListener('pause', () => { play.textContent = 'Play video'; });
+    document.querySelectorAll('[data-video]').forEach(button => button.addEventListener('click', () => {
+      if (button.getAttribute('aria-selected') === 'true') return;
+      const item = data.reconstructionVideos.find(entry => entry.id === button.dataset.video);
+      const resume = !demo.paused;
+      demo.pause();
+      demo.poster = item.poster;
+      demo.src = item.src;
+      demo.querySelector('a').href = item.src;
+      demo.setAttribute('aria-label', 'PNFSurf reconstruction video on ' + item.dataset + ', ' + item.scene);
+      document.querySelector('#video-scene').textContent = item.scene;
+      document.querySelector('#video-details').setAttribute('aria-labelledby', button.id);
+      selectTab(button);
+      if (resume) demo.play().catch(() => { play.textContent = 'Retry playback'; });
+    }));
+    document.querySelector('#reconstruction-demos').addEventListener('toggle', event => {
+      if (!event.currentTarget.open) demo.pause();
+    });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) demo.pause(); });
+  }
+
   render();
 })();
