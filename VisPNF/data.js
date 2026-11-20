@@ -1,4 +1,4 @@
-window.VisPNF_DATA = {
+window.PNFSURF_DATA = {
   "datasets": [
     {
       "id": "replica",
@@ -7,30 +7,32 @@ window.VisPNF_DATA = {
       "description": "Rendered views of a real scanned interior",
       "images": {
         "mesh": {
-          "VisPNF": "assets/images/replica/mesh/vispnf.webp",
-          "PGSR": "assets/images/replica/mesh/pgsr.webp",
-          "2DGS": "assets/images/replica/mesh/2dgs.webp",
-          "AmbiSuR": "assets/images/replica/mesh/ambisur.webp",
-          "GT": "assets/images/replica/mesh/gt.webp"
+          "PNFSurf-P": "assets/images/interactive-mesh/replica/pnfsurf-p.webp?v=pnfsurf-20261120",
+          "PNFSurf-A": "assets/images/interactive-mesh/replica/pnfsurf-a.webp?v=pnfsurf-20261120",
+          "PGSR": "assets/images/interactive-mesh/replica/pgsr.webp?v=pnfsurf-20261120",
+          "2DGS": "assets/images/interactive-mesh/replica/2dgs.webp?v=pnfsurf-20261120",
+          "GOF": "assets/images/interactive-mesh/replica/gof.webp?v=pnfsurf-20261120",
+          "AmbiSuR": "assets/images/interactive-mesh/replica/ambisur.webp?v=pnfsurf-20261120",
+          "GT": "assets/images/interactive-mesh/replica/gt.webp?v=pnfsurf-20261120"
         },
         "rgb": {
           "2DGS": "assets/images/replica/rgb/2dgs.webp",
           "PGSR": "assets/images/replica/rgb/pgsr.webp",
           "AmbiSuR": "assets/images/replica/rgb/ambisur.webp",
-          "VisPNF": "assets/images/replica/rgb/vispnf.webp",
-          "GT": "assets/images/replica/rgb/gt.webp"
+          "GT": "assets/images/replica/rgb/gt.webp",
+          "PNFSurf-P": "assets/images/replica/rgb/vispnf.webp"
         },
         "depth": {
           "2DGS": "assets/images/replica/depth/2dgs.webp",
           "PGSR": "assets/images/replica/depth/pgsr.webp",
           "AmbiSuR": "assets/images/replica/depth/ambisur.webp",
-          "VisPNF": "assets/images/replica/depth/vispnf.webp"
+          "PNFSurf-P": "assets/images/replica/depth/vispnf.webp"
         },
         "normal": {
           "2DGS": "assets/images/replica/normal/2dgs.webp",
           "PGSR": "assets/images/replica/normal/pgsr.webp",
           "AmbiSuR": "assets/images/replica/normal/ambisur.webp",
-          "VisPNF": "assets/images/replica/normal/vispnf.webp"
+          "PNFSurf-P": "assets/images/replica/normal/vispnf.webp"
         }
       },
       "view": "00080"
@@ -42,30 +44,32 @@ window.VisPNF_DATA = {
       "description": "Real indoor capture",
       "images": {
         "mesh": {
-          "VisPNF": "assets/images/scannetpp/mesh/vispnf.webp?v=66c98f4a9b-DSC01979",
-          "PGSR": "assets/images/scannetpp/mesh/pgsr.webp?v=66c98f4a9b-DSC01979",
-          "2DGS": "assets/images/scannetpp/mesh/2dgs.webp?v=66c98f4a9b-DSC01979",
-          "AmbiSuR": "assets/images/scannetpp/mesh/ambisur.webp?v=66c98f4a9b-DSC01979",
-          "GT": "assets/images/scannetpp/mesh/gt.webp?v=66c98f4a9b-DSC01979"
+          "PNFSurf-P": "assets/images/interactive-mesh/scannetpp/pnfsurf-p.webp?v=pnfsurf-20261120",
+          "PNFSurf-A": "assets/images/interactive-mesh/scannetpp/pnfsurf-a.webp?v=pnfsurf-20261120",
+          "PGSR": "assets/images/interactive-mesh/scannetpp/pgsr.webp?v=pnfsurf-20261120",
+          "2DGS": "assets/images/interactive-mesh/scannetpp/2dgs.webp?v=pnfsurf-20261120",
+          "GOF": "assets/images/interactive-mesh/scannetpp/gof.webp?v=pnfsurf-20261120",
+          "AmbiSuR": "assets/images/interactive-mesh/scannetpp/ambisur.webp?v=pnfsurf-20261120",
+          "GT": "assets/images/interactive-mesh/scannetpp/gt.webp?v=pnfsurf-20261120"
         },
         "rgb": {
           "2DGS": "assets/images/scannetpp/rgb/2dgs.webp?v=66c98f4a9b-DSC01979",
           "PGSR": "assets/images/scannetpp/rgb/pgsr.webp?v=66c98f4a9b-DSC01979",
           "AmbiSuR": "assets/images/scannetpp/rgb/ambisur.webp?v=66c98f4a9b-DSC01979",
-          "VisPNF": "assets/images/scannetpp/rgb/vispnf.webp?v=66c98f4a9b-DSC01979",
-          "GT": "assets/images/scannetpp/rgb/gt.webp?v=66c98f4a9b-DSC01979"
+          "GT": "assets/images/scannetpp/rgb/gt.webp?v=66c98f4a9b-DSC01979",
+          "PNFSurf-P": "assets/images/scannetpp/rgb/vispnf.webp?v=66c98f4a9b-DSC01979"
         },
         "depth": {
           "2DGS": "assets/images/scannetpp/depth/2dgs.webp?v=66c98f4a9b-DSC01979",
           "PGSR": "assets/images/scannetpp/depth/pgsr.webp?v=66c98f4a9b-DSC01979",
           "AmbiSuR": "assets/images/scannetpp/depth/ambisur.webp?v=66c98f4a9b-DSC01979",
-          "VisPNF": "assets/images/scannetpp/depth/vispnf.webp?v=66c98f4a9b-DSC01979"
+          "PNFSurf-P": "assets/images/scannetpp/depth/vispnf.webp?v=66c98f4a9b-DSC01979"
         },
         "normal": {
           "2DGS": "assets/images/scannetpp/normal/2dgs.webp?v=66c98f4a9b-DSC01979",
           "PGSR": "assets/images/scannetpp/normal/pgsr.webp?v=66c98f4a9b-DSC01979",
           "AmbiSuR": "assets/images/scannetpp/normal/ambisur.webp?v=66c98f4a9b-DSC01979",
-          "VisPNF": "assets/images/scannetpp/normal/vispnf.webp?v=66c98f4a9b-DSC01979"
+          "PNFSurf-P": "assets/images/scannetpp/normal/vispnf.webp?v=66c98f4a9b-DSC01979"
         }
       },
       "view": "DSC01979"
@@ -77,32 +81,34 @@ window.VisPNF_DATA = {
       "description": "Consumer-device indoor capture",
       "images": {
         "mesh": {
-          "VisPNF": "assets/images/mushroom/mesh/vispnf.webp",
-          "PGSR": "assets/images/mushroom/mesh/pgsr.webp",
-          "2DGS": "assets/images/mushroom/mesh/2dgs.webp",
-          "AmbiSuR": "assets/images/mushroom/mesh/ambisur.webp",
-          "GT": "assets/images/mushroom/mesh/gt.webp"
+          "PNFSurf-P": "assets/images/interactive-mesh/mushroom/pnfsurf-p.webp?v=pnfsurf-20261120",
+          "PNFSurf-A": "assets/images/interactive-mesh/mushroom/pnfsurf-a.webp?v=pnfsurf-20261120",
+          "PGSR": "assets/images/interactive-mesh/mushroom/pgsr.webp?v=pnfsurf-20261120",
+          "2DGS": "assets/images/interactive-mesh/mushroom/2dgs.webp?v=pnfsurf-20261120",
+          "GOF": "assets/images/interactive-mesh/mushroom/gof.webp?v=pnfsurf-20261120",
+          "AmbiSuR": "assets/images/interactive-mesh/mushroom/ambisur.webp?v=pnfsurf-20261120",
+          "GT": "assets/images/interactive-mesh/mushroom/gt.webp?v=pnfsurf-20261120"
         },
         "rgb": {
-          "VisPNF": "assets/images/mushroom/rgb/vispnf.webp",
           "PGSR": "assets/images/mushroom/rgb/pgsr.webp",
           "2DGS": "assets/images/mushroom/rgb/2dgs.webp",
           "AmbiSuR": "assets/images/mushroom/rgb/ambisur.webp",
-          "GT": "assets/images/mushroom/rgb/gt.webp"
+          "GT": "assets/images/mushroom/rgb/gt.webp",
+          "PNFSurf-P": "assets/images/mushroom/rgb/vispnf.webp"
         },
         "depth": {
-          "VisPNF": "assets/images/mushroom/depth/vispnf.webp",
           "PGSR": "assets/images/mushroom/depth/pgsr.webp",
           "2DGS": "assets/images/mushroom/depth/2dgs.webp",
           "AmbiSuR": "assets/images/mushroom/depth/ambisur.webp",
-          "GT": "assets/images/mushroom/depth/gt.webp"
+          "GT": "assets/images/mushroom/depth/gt.webp",
+          "PNFSurf-P": "assets/images/mushroom/depth/vispnf.webp"
         },
         "normal": {
-          "VisPNF": "assets/images/mushroom/normal/vispnf.webp",
           "PGSR": "assets/images/mushroom/normal/pgsr.webp",
           "2DGS": "assets/images/mushroom/normal/2dgs.webp",
           "AmbiSuR": "assets/images/mushroom/normal/ambisur.webp",
-          "GT": "assets/images/mushroom/normal/gt.webp"
+          "GT": "assets/images/mushroom/normal/gt.webp",
+          "PNFSurf-P": "assets/images/mushroom/normal/vispnf.webp"
         }
       },
       "view": "frame_00009"

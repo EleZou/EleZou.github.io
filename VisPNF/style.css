@@ -141,3 +141,42 @@ h2{font-size:32px;margin:0 0 24px}
  .comparison-grid,.comparison-grid.is-portrait{grid-template-columns:1fr;gap:22px}.result-table-card h3{font-size:20px}.experiment-figure{margin-block:36px}.experiment-figure-heading{margin-bottom:20px}.site-footer{padding:32px 20px}
 }
 @media(max-width:380px){.hero h1{font-size:29px}.dataset-tabs button{padding-inline:12px}.mesh-method-tabs button{padding-inline:8px}}
+
+/* PNFSurf showcase */
+.hero .project-name { letter-spacing: 0; }
+.hero.container { padding-top: 40px; padding-bottom: 28px; }
+.hero-teaser { margin: 26px auto 0; max-width: 820px; }
+.hero-teaser a { display: block; cursor: zoom-in; }
+.hero-teaser img { width: 100%; height: auto; }
+.hero-teaser figcaption { margin: 10px auto 0; color: #555; font-size: 14px; }
+.showcase-section { padding-block: 36px; }
+.showcase-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 auto 20px; }
+.showcase-tabs button { line-height: 1.3; white-space: nowrap; }
+.showcase-panel[hidden] { display: none; }
+.showcase-plate { margin: 0 auto 18px; }
+.showcase-plate figcaption { text-align: center; color: #555; font-size: 14px; margin-top: 8px; }
+.showcase-plate a { display: block; cursor: zoom-in; }
+.showcase-plate img { width: 100%; height: auto; }
+.rendering-plates { margin-top: 20px; }
+.rendering-plates summary { cursor: pointer; width: fit-content; margin: 0 auto 16px; color: #363636; }
+.showcase-results > .result-table-card { max-width: 920px; }
+.showcase-results .experiment-table { min-width: 550px; }
+.showcase-results .result-table-card h3 { margin-block: 0 12px; }
+.showcase-results figcaption { text-align: center; }
+.showcase-results .experiment-figure h3 { font-size: 26px; }
+.showcase-results .matched-time { max-width: 720px; margin-top: 20px; }
+.matched-time summary { width: fit-content; margin-inline: auto; cursor: pointer; }
+.matched-time[open] summary { margin-bottom: 14px; }
+.showcase-results .experiment-table .method-column { position: static; box-shadow: none; }
+.showcase-results .experiment-table tr.group-start { border-top: 1px solid var(--line); }
+@media (max-width: 695px) {
+  .hero.container { padding-top: 24px; }
+  .hero-teaser { margin-top: 20px; }
+  .hero-teaser figcaption, .showcase-plate figcaption { font-size: 13px; }
+  .showcase-section { padding-block: 26px; }
+  .showcase-tabs button { padding: 7px 10px; font-size: 13px; }
+  .showcase-results .experiment-table .method-column {
+    position: sticky; left: 0; z-index: 1; background: #fff; box-shadow: 1px 0 var(--line);
+  }
+  .showcase-results .experiment-table thead th:not(.method-column) { position: static; box-shadow: none; }
+}

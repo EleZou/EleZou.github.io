@@ -1,4 +1,4 @@
-# VisPNF project website
+# PNFSurf project website
 
 Static project page at `https://elezou.github.io/VisPNF/`. No build step, framework, analytics, or third-party runtime requests are required.
 
@@ -45,10 +45,10 @@ The VisPNF-only teaser waits for a play action before downloading video data. In
 
 ## Experimental results
 
-The results section follows the videos and interactive comparisons. One combined table reports all 108 metric values from the current manuscript, with separate reconstruction and rendering headers. Dense ranks preserve ties, and rank colors fill the entire cell. On narrow screens the table scrolls within its container.
+The results section contains the five tables from the paper, including DTU at matched training time. Rank colors and ties follow the manuscript. Tables scroll within their own containers on narrow screens.
 
-Figures 5–8 show mesh comparisons including GOF, surface-error maps, optimized Gaussian kernel close-ups against PGSR, and RGB/normal/depth comparisons including GOF. The method overview matches the current manuscript. All five figures are lossless WebP exports, preserve their aspect ratios, and link to full-resolution images. Video playback and background preloading retain their existing behavior.
+The mesh gallery spans seven datasets and includes all 17 indoor scenes. The indoor galleries also contain RGB, normal, and depth comparisons. Mesh sliders compare both PNFSurf backbones and GoF with other methods or ground truth. The recorded mesh videos use the earlier VisPNF name for PNFSurf-P.
 
 ## Page layout
 
-Typography and layout follow DiffWind: the same Google Sans title font, 48 px publication title, 32 px section headings, 16 px body text with 1.5 line height, and a centered 768 px content column. The source declares Jost without loading it; the same sans-serif fallback is used for body text. Google Sans is bundled locally with its OFL license. The abstract precedes the video and method overview. Captions are concise, and duplicate analysis is omitted. The table values and media remain unchanged.
+The page uses the existing DiffWind-inspired layout and locally hosted Google Sans. The bicycle teaser and abstract precede the method overview, videos, and comparisons.
