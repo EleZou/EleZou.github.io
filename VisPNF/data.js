@@ -236,8 +236,8 @@ window.PNFSURF_DATA = {
         "pnfsurf-p": "../review/assets/scenes-20261121/mipnerf360/pnfsurf-p-poster.webp",
         "pnfsurf-a": "../review/assets/scenes-20261121/mipnerf360/pnfsurf-a-poster.webp"
       },
-      "videoNote": "The Garden videos use foreground meshes. Both PNFSurf meshes include depth-supported hole filling. PNFSurf-P also includes a local tray completion.",
-      "imageNote": "Both PNFSurf panels include local completion at the table-leg joints."
+      "videoNote": "The Garden videos use foreground meshes.",
+      "imageNote": ""
     }
   ],
   "reconstructionVideos": [
