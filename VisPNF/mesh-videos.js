@@ -72,8 +72,9 @@
 
   function waitForBuffer(video, signal) {
     return new Promise((resolve, reject) => {
-      const events = ['canplay', 'canplaythrough', 'progress', 'seeked', 'error'];
+      const events = ['canplay', 'canplaythrough', 'progress', 'seeked', 'suspend', 'error'];
       function finish(error) {
+        clearInterval(timer);
         events.forEach(event => video.removeEventListener(event, check));
         signal.removeEventListener('abort', check);
         if (error) reject(error);
@@ -96,6 +97,8 @@
           }
         }
       }
+      // A byte-range load can extend the buffer without another progress event.
+      const timer = setInterval(check, 125);
       events.forEach(event => video.addEventListener(event, check));
       signal.addEventListener('abort', check, {once: true});
       check();
