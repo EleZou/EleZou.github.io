@@ -14,10 +14,10 @@
   <title>PNFSurf: Gaussian Surface Reconstruction Guided by Projective Normal Fields</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=scenes-20261121">
-  <script src="data.js?v=paper-comparisons-3f35c79" defer></script>
+  <link rel="stylesheet" href="style.css?v=mesh-videos-20261121">
+  <script src="data.js?v=mesh-videos-20261121" defer></script>
   <script src="app.js?v=paper-comparisons-3f35c79" defer></script>
-  <script src="mesh-videos.js?v=scenes-20261121" defer></script>
+  <script src="mesh-videos.js?v=mesh-videos-20261121" defer></script>
   <script src="showcase-tabs.js?v=pnfsurf-20261120" defer></script>
 </head>
 <body>
@@ -46,7 +46,7 @@
     </section>
 
     <section id="videos" class="mesh-video-section container" aria-labelledby="mesh-videos-title">
-      <div id="mesh-videos" class="section-heading centered"><h2 id="mesh-videos-title">360° Mesh Videos</h2></div>
+      <div id="mesh-videos" class="section-heading centered"><h2 id="mesh-videos-title">Mesh Videos</h2></div>
       <div class="tab-list dataset-tabs selected-dataset-tabs" role="tablist" aria-label="Mesh video dataset">
 <button type="button" role="tab" id="mesh-dataset-replica" aria-controls="mesh-video-panel" aria-selected="true" tabindex="0" data-mesh-dataset="replica">Replica</button>
 <button type="button" role="tab" id="mesh-dataset-scannetpp" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="scannetpp">ScanNet++</button>
@@ -59,42 +59,13 @@
       <div id="mesh-video-panel" role="tabpanel" aria-labelledby="mesh-dataset-replica">
         <div class="mesh-video-meta">
           <p><strong id="mesh-video-scene">office1</strong></p>
-        </div>
-        <div class="scene-video-pair">
-      <div class="scene-video">
-        <div class="scene-video-heading">
-          <label for="mesh-comparison-left-method" class="sr-only">Left method</label>
-          <select id="mesh-comparison-left-method"><option value="2dgs">2DGS</option><option value="gof">GOF</option><option value="pgsr" selected>PGSR</option><option value="ambisur">AmbiSuR</option><option value="pnfsurf-p">PNFSurf-P</option><option value="pnfsurf-a">PNFSurf-A</option></select>
-          <a class="scene-video-open" id="mesh-comparison-left-open" href="assets/scenes-20261121/replica/pgsr.mp4" target="_blank"
-             rel="noopener" title="Open video" aria-label="Open PGSR video">↗</a>
-        </div>
-        <div class="scene-video-frame">
-          <video id="mesh-comparison-left" playsinline muted loop preload="none" poster="assets/scenes-20261121/replica/pgsr-poster.webp"
-                 aria-label="Replica office1, PGSR mesh orbit">
-            <source src="assets/scenes-20261121/replica/pgsr.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <div class="scene-video">
-        <div class="scene-video-heading">
-          <label for="mesh-comparison-right-method" class="sr-only">Right method</label>
-          <select id="mesh-comparison-right-method"><option value="2dgs">2DGS</option><option value="gof">GOF</option><option value="pgsr">PGSR</option><option value="ambisur">AmbiSuR</option><option value="pnfsurf-p" selected>PNFSurf-P</option><option value="pnfsurf-a">PNFSurf-A</option></select>
-          <a class="scene-video-open" id="mesh-comparison-right-open" href="assets/scenes-20261121/replica/pnfsurf-p.mp4" target="_blank"
-             rel="noopener" title="Open video" aria-label="Open PNFSurf-P video">↗</a>
-        </div>
-        <div class="scene-video-frame">
-          <video id="mesh-comparison-right" playsinline muted loop preload="none" poster="assets/scenes-20261121/replica/pnfsurf-p-poster.webp"
-                 aria-label="Replica office1, PNFSurf-P mesh orbit">
-            <source src="assets/scenes-20261121/replica/pnfsurf-p.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+          <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
         </div>
         <div class="scene-playback">
           <button type="button" class="mesh-play-button" id="mesh-play-toggle"
-                  aria-controls="mesh-comparison-left mesh-comparison-right">
+                  aria-controls="mesh-video-grid">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
-            <span>Play comparison</span>
+            <span>Play all</span>
           </button>
           <label for="mesh-video-time" class="sr-only">Comparison playback progress</label>
           <input id="mesh-video-time" type="range" min="0" max="1000" value="0" disabled>
@@ -103,8 +74,20 @@
             <select id="mesh-video-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select>
           </label>
         </div>
+        <div id="mesh-video-grid" class="scene-video-grid">
+          <template id="mesh-video-tile">
+            <figure class="scene-video">
+              <figcaption class="scene-video-heading">
+                <span></span>
+                <a class="scene-video-open" target="_blank" rel="noopener" title="Open video">↗</a>
+              </figcaption>
+              <div class="scene-video-frame">
+                <video playsinline muted loop preload="none"></video>
+              </div>
+            </figure>
+          </template>
+        </div>
         <p id="mesh-video-note" class="mesh-video-caption" hidden></p>
-        <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
       </div>
     <details class="reconstruction-demos" id="reconstruction-demos">
 <summary>Reconstruction videos</summary>

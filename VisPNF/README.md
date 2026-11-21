@@ -6,19 +6,19 @@ Serve the repository root with `python -m http.server 8000` and visit `/VisPNF/`
 
 ## Comparisons
 
-The 360° videos and image sliders cover seven benchmarks. Each offers 2DGS, GOF, PGSR, AmbiSuR, PNFSurf-P, and PNFSurf-A. The six videos for each scene share a camera path and material. Each clip loops after 8 seconds at 800 × 450 and 24 fps. The sliders use matched panels from Figures 5 and 6 and the NeRF-Synthetic comparison in the supplement.
+The mesh videos and image sliders cover seven benchmarks. Each offers 2DGS, GOF, PGSR, AmbiSuR, PNFSurf-P, and PNFSurf-A. All six mesh videos for a scene share a camera path and play together. The indoor videos show selected views in short sweeps. The sliders use matched panels from Figures 5 and 6 and the NeRF-Synthetic comparison in the supplement.
 
-| Dataset | Image sliders | 360° video |
+| Dataset | Image sliders | Mesh videos |
 | --- | --- | --- |
 | Replica | office1 | office1 |
 | ScanNet++ | 66c98f4a9b | 8b5caf3398 |
 | MuSHRoom | kokko | kokko |
-| DTU | scan105 | scan37 |
+| DTU | scan105 | scan105 |
 | NeRF-Synthetic | mic | mic |
 | Tanks and Temples | Truck | Ignatius |
-| Mip-NeRF 360 | garden | garden |
+| Mip-NeRF 360 | garden | bonsai |
 
-The three longer indoor reconstruction videos are available below the 360° player.
+The three longer indoor reconstruction videos are available below the mesh comparison player.
 
 ## Experimental results
 
