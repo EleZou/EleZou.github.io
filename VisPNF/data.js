@@ -12,15 +12,16 @@ window.PNFSURF_DATA = {
       "id": "replica",
       "name": "Replica",
       "scene": "office1",
-      "width": 960,
-      "height": 540,
+      "comparisonScene": "office1",
+      "width": 1080,
+      "height": 608,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/replica/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/replica/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/replica/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/replica/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/replica/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/replica/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/replica/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/replica/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/replica/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/replica/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/replica/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/replica/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/replica/2dgs.mp4",
@@ -45,15 +46,16 @@ window.PNFSURF_DATA = {
       "id": "scannetpp",
       "name": "ScanNet++",
       "scene": "8b5caf3398",
-      "width": 960,
-      "height": 540,
+      "comparisonScene": "66c98f4a9b",
+      "width": 1080,
+      "height": 608,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/scannetpp/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/scannetpp/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/scannetpp/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/scannetpp/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/scannetpp/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/scannetpp/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/scannetpp/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/scannetpp/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/scannetpp/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/scannetpp/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/scannetpp/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/scannetpp/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/scannetpp/2dgs.mp4",
@@ -78,15 +80,16 @@ window.PNFSURF_DATA = {
       "id": "mushroom",
       "name": "MuSHRoom",
       "scene": "kokko",
-      "width": 960,
-      "height": 540,
+      "comparisonScene": "kokko",
+      "width": 1080,
+      "height": 608,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/mushroom/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/mushroom/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/mushroom/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/mushroom/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/mushroom/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/mushroom/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/mushroom/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/mushroom/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/mushroom/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/mushroom/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/mushroom/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/mushroom/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/mushroom/2dgs.mp4",
@@ -111,15 +114,16 @@ window.PNFSURF_DATA = {
       "id": "dtu",
       "name": "DTU",
       "scene": "scan37",
+      "comparisonScene": "scan105",
       "width": 1080,
       "height": 808,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/dtu/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/dtu/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/dtu/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/dtu/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/dtu/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/dtu/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/dtu/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/dtu/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/dtu/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/dtu/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/dtu/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/dtu/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/dtu/2dgs.mp4",
@@ -144,15 +148,16 @@ window.PNFSURF_DATA = {
       "id": "nerf-synthetic",
       "name": "NeRF-Synthetic",
       "scene": "mic",
+      "comparisonScene": "mic",
       "width": 800,
       "height": 800,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/nerf-synthetic/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/nerf-synthetic/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/nerf-synthetic/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/nerf-synthetic/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/nerf-synthetic/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/nerf-synthetic/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/nerf-synthetic/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/nerf-synthetic/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/nerf-synthetic/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/nerf-synthetic/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/nerf-synthetic/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/nerf-synthetic/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/nerf-synthetic/2dgs.mp4",
@@ -177,15 +182,16 @@ window.PNFSURF_DATA = {
       "id": "tnt",
       "name": "Tanks and Temples",
       "scene": "Ignatius",
+      "comparisonScene": "Truck",
       "width": 1080,
-      "height": 602,
+      "height": 601,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/tnt/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/tnt/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/tnt/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/tnt/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/tnt/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/tnt/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/tnt/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/tnt/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/tnt/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/tnt/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/tnt/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/tnt/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/tnt/2dgs.mp4",
@@ -210,15 +216,16 @@ window.PNFSURF_DATA = {
       "id": "mipnerf360",
       "name": "Mip-NeRF 360",
       "scene": "garden",
+      "comparisonScene": "garden",
       "width": 1080,
       "height": 700,
       "images": {
-        "2DGS": "../review/assets/scenes-20261121/mipnerf360/2dgs.webp",
-        "GOF": "../review/assets/scenes-20261121/mipnerf360/gof.webp",
-        "PGSR": "../review/assets/scenes-20261121/mipnerf360/pgsr.webp",
-        "AmbiSuR": "../review/assets/scenes-20261121/mipnerf360/ambisur.webp",
-        "PNFSurf-P": "../review/assets/scenes-20261121/mipnerf360/pnfsurf-p.webp",
-        "PNFSurf-A": "../review/assets/scenes-20261121/mipnerf360/pnfsurf-a.webp"
+        "2DGS": "../review/assets/scenes-20261121/mipnerf360/2dgs.webp?v=paper-comparisons-3f35c79",
+        "GOF": "../review/assets/scenes-20261121/mipnerf360/gof.webp?v=paper-comparisons-3f35c79",
+        "PGSR": "../review/assets/scenes-20261121/mipnerf360/pgsr.webp?v=paper-comparisons-3f35c79",
+        "AmbiSuR": "../review/assets/scenes-20261121/mipnerf360/ambisur.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-P": "../review/assets/scenes-20261121/mipnerf360/pnfsurf-p.webp?v=paper-comparisons-3f35c79",
+        "PNFSurf-A": "../review/assets/scenes-20261121/mipnerf360/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
         "2dgs": "../review/assets/scenes-20261121/mipnerf360/2dgs.mp4",

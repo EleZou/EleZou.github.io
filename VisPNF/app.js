@@ -9,6 +9,7 @@
   const sync = document.querySelector('#sync-sliders');
   let renderVersion = 0;
   const dataset = () => data.datasets.find(d => d.id === state.dataset);
+  const comparisonScene = d => d.comparisonScene ?? d.scene;
   const available = () => dataset().images;
   const referenceName = () => state.reference;
   const arrows = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>';
@@ -67,8 +68,8 @@
     view.dataset.method = method;
     const d = dataset();
     view.style.setProperty('--image-ratio', `${d.width} / ${d.height}`);
-    view.innerHTML = `<img class="reference-image" alt="${referenceName()}: ${d.name} ${d.scene} mesh" decoding="async" draggable="false">
-      <img class="method-image" alt="${method}: ${d.name} ${d.scene} mesh" decoding="async" draggable="false">
+    view.innerHTML = `<img class="reference-image" alt="${referenceName()}: ${d.name} ${comparisonScene(d)} mesh" decoding="async" draggable="false">
+      <img class="method-image" alt="${method}: ${d.name} ${comparisonScene(d)} mesh" decoding="async" draggable="false">
       <span class="image-label left">${method}</span><span class="image-label right">${referenceName()}</span>
       <span class="compare-divider"><span class="compare-handle">${arrows}</span></span>
       <input class="compare-range" type="range" min="0" max="100" step="1" value="50" aria-label="Compare ${method} with ${referenceName()}, ${d.name} mesh">`;
@@ -109,7 +110,8 @@
   }
 
   function enlarge(method, opener) {
-    const title = `${dataset().name} · ${dataset().scene}`;
+    const d = dataset();
+    const title = `${d.name} · ${comparisonScene(d)}`;
     document.querySelector('#dialog-title').textContent = title;
     document.querySelector('#dialog-content').replaceChildren(createView(method, true));
     dialog.showModal();
@@ -139,13 +141,13 @@
       const button = card.querySelector('button'); button.addEventListener('click', () => enlarge(method, button));
       grid.append(card);
     }
-    document.querySelector('#comparison-scene').textContent = d.scene;
+    document.querySelector('#comparison-scene').textContent = comparisonScene(d);
     document.querySelector('#comparison-context').textContent = `${d.name} · Mesh`;
     const note = document.querySelector('#comparison-note');
     note.hidden = !d.imageNote;
     note.textContent = d.imageNote;
     document.querySelector('#comparison-panel').setAttribute('aria-labelledby', `dataset-${d.id}`);
-    requestAnimationFrame(() => { if (version === renderVersion) document.querySelector('#comparison-status').textContent = `${d.name}, ${d.scene}. Mesh comparisons against ${referenceName()}.`; });
+    requestAnimationFrame(() => { if (version === renderVersion) document.querySelector('#comparison-status').textContent = `${d.name}, ${comparisonScene(d)}. Mesh comparisons against ${referenceName()}.`; });
   }
   document.querySelectorAll('[data-dataset]').forEach(button => button.addEventListener('click', () => {
     state.dataset = button.dataset.dataset; selectTab(button); render();

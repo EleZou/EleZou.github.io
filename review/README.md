@@ -13,6 +13,7 @@ Font licenses remain in `assets/fonts/`. Layout credits are retained in the page
 The results section contains the five tables from the paper, including DTU at matched training time. The mesh gallery covers seven datasets and includes all 17 indoor scenes.
 
 The 360° videos and image sliders use one scene per dataset with six methods. The two video players share a timeline and each offers a method selector.
+The sliders use matched panels from Figures 5 and 6 and the NeRF-Synthetic comparison in the supplement.
 
 ## Page layout
 
