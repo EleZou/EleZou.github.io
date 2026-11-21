@@ -52,6 +52,7 @@
   }
 
   function pause() {
+    if (running && !starting && !master.seeking) phase = master.currentTime;
     running?.abort();
     running = null;
     starting = false;
@@ -66,9 +67,9 @@
     status.textContent = 'A video could not load. Try again or open a clip.';
   }
 
-  function waitForFrame(video, signal) {
+  function waitForBuffer(video, signal) {
     return new Promise((resolve, reject) => {
-      const events = ['canplay', 'seeked', 'error'];
+      const events = ['canplay', 'canplaythrough', 'progress', 'seeked', 'error'];
       function finish(error) {
         events.forEach(event => video.removeEventListener(event, check));
         signal.removeEventListener('abort', check);
@@ -76,9 +77,21 @@
         else resolve();
       }
       function check() {
-        if (signal.aborted) finish(signal.reason);
-        else if (video.error) finish(video.error);
-        else if (!video.seeking && video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) finish();
+        if (signal.aborted || video.error) {
+          finish(signal.aborted ? signal.reason : video.error);
+          return;
+        }
+        if (video.seeking || video.readyState < HTMLMediaElement.HAVE_FUTURE_DATA) return;
+
+        const time = video.currentTime;
+        const end = Math.min(time + 5 * video.playbackRate, video.duration);
+        const buffered = video.buffered;
+        for (let index = 0; index < buffered.length; index++) {
+          if (buffered.start(index) <= time + 0.05 && buffered.end(index) >= end - 0.05) {
+            finish();
+            return;
+          }
+        }
       }
       events.forEach(event => video.addEventListener(event, check));
       signal.addEventListener('abort', check, {once: true});
@@ -118,7 +131,7 @@
         }
         if (Math.abs(video.currentTime - phase) > 0.02) video.currentTime = phase;
       }
-      await Promise.all(videos.map(video => waitForFrame(video, ticket.signal)));
+      await Promise.all(videos.map(video => waitForBuffer(video, ticket.signal)));
       if (ticket !== running) return;
       await Promise.all(videos.map(video => video.play()));
       if (ticket !== running) return;
