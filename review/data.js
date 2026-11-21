@@ -47,12 +47,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/replica/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/replica/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/replica/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/replica/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/replica/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/replica/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/replica/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/replica/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/replica/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/replica/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/replica/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/replica/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/replica/2dgs-depth-poster.webp",
@@ -65,12 +65,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/replica/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/replica/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/replica/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/replica/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/replica/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/replica/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/replica/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/replica/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/replica/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/replica/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/replica/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/replica/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/replica/2dgs-normals-poster.webp",
@@ -122,12 +122,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/scannetpp/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/scannetpp/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/scannetpp/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/scannetpp/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/scannetpp/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/scannetpp/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/scannetpp/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/scannetpp/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/scannetpp/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/scannetpp/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/scannetpp/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/scannetpp/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/scannetpp/2dgs-depth-poster.webp",
@@ -140,12 +140,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/scannetpp/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/scannetpp/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/scannetpp/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/scannetpp/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/scannetpp/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/scannetpp/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/scannetpp/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/scannetpp/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/scannetpp/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/scannetpp/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/scannetpp/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/scannetpp/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/scannetpp/2dgs-normals-poster.webp",
@@ -197,12 +197,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/mushroom/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/mushroom/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/mushroom/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/mushroom/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/mushroom/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/mushroom/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/mushroom/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/mushroom/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/mushroom/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/mushroom/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/mushroom/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/mushroom/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/mushroom/2dgs-depth-poster.webp",
@@ -215,12 +215,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/mushroom/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/mushroom/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/mushroom/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/mushroom/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/mushroom/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/mushroom/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/mushroom/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/mushroom/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/mushroom/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/mushroom/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/mushroom/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/mushroom/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/mushroom/2dgs-normals-poster.webp",
@@ -272,12 +272,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/dtu/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/dtu/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/dtu/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/dtu/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/dtu/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/dtu/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/dtu/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/dtu/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/dtu/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/dtu/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/dtu/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/dtu/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/dtu/2dgs-depth-poster.webp",
@@ -290,12 +290,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/dtu/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/dtu/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/dtu/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/dtu/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/dtu/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/dtu/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/dtu/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/dtu/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/dtu/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/dtu/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/dtu/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/dtu/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/dtu/2dgs-normals-poster.webp",
@@ -347,12 +347,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/nerf-synthetic/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/nerf-synthetic/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/nerf-synthetic/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/nerf-synthetic/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/nerf-synthetic/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/nerf-synthetic/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/nerf-synthetic/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/nerf-synthetic/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/nerf-synthetic/2dgs-depth-poster.webp",
@@ -365,12 +365,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/nerf-synthetic/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/nerf-synthetic/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/nerf-synthetic/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/nerf-synthetic/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/nerf-synthetic/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/nerf-synthetic/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/nerf-synthetic/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/nerf-synthetic/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/nerf-synthetic/2dgs-normals-poster.webp",
@@ -422,12 +422,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/tnt/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/tnt/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/tnt/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/tnt/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/tnt/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/tnt/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/tnt/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/tnt/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/tnt/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/tnt/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/tnt/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/tnt/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/tnt/2dgs-depth-poster.webp",
@@ -440,12 +440,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/tnt/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/tnt/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/tnt/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/tnt/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/tnt/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/tnt/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/tnt/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/tnt/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/tnt/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/tnt/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/tnt/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/tnt/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/tnt/2dgs-normals-poster.webp",
@@ -497,12 +497,12 @@ window.PNFSURF_DATA = {
       "videoMaps": {
         "depth": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/mipnerf360/2dgs-depth.mp4",
-            "gof": "assets/mesh-video-maps/mipnerf360/gof-depth.mp4",
-            "pgsr": "assets/mesh-video-maps/mipnerf360/pgsr-depth.mp4",
-            "ambisur": "assets/mesh-video-maps/mipnerf360/ambisur-depth.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/mipnerf360/pnfsurf-p-depth.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/mipnerf360/pnfsurf-a-depth.mp4"
+            "2dgs": "assets/mesh-video-maps/mipnerf360/2dgs-depth.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/mipnerf360/gof-depth.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/mipnerf360/pgsr-depth.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/mipnerf360/ambisur-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/mipnerf360/pnfsurf-p-depth.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/mipnerf360/pnfsurf-a-depth.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/mipnerf360/2dgs-depth-poster.webp",
@@ -515,12 +515,12 @@ window.PNFSURF_DATA = {
         },
         "normals": {
           "videos": {
-            "2dgs": "assets/mesh-video-maps/mipnerf360/2dgs-normals.mp4",
-            "gof": "assets/mesh-video-maps/mipnerf360/gof-normals.mp4",
-            "pgsr": "assets/mesh-video-maps/mipnerf360/pgsr-normals.mp4",
-            "ambisur": "assets/mesh-video-maps/mipnerf360/ambisur-normals.mp4",
-            "pnfsurf-p": "assets/mesh-video-maps/mipnerf360/pnfsurf-p-normals.mp4",
-            "pnfsurf-a": "assets/mesh-video-maps/mipnerf360/pnfsurf-a-normals.mp4"
+            "2dgs": "assets/mesh-video-maps/mipnerf360/2dgs-normals.mp4?v=depth-normal-detail",
+            "gof": "assets/mesh-video-maps/mipnerf360/gof-normals.mp4?v=depth-normal-detail",
+            "pgsr": "assets/mesh-video-maps/mipnerf360/pgsr-normals.mp4?v=depth-normal-detail",
+            "ambisur": "assets/mesh-video-maps/mipnerf360/ambisur-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-p": "assets/mesh-video-maps/mipnerf360/pnfsurf-p-normals.mp4?v=depth-normal-detail",
+            "pnfsurf-a": "assets/mesh-video-maps/mipnerf360/pnfsurf-a-normals.mp4?v=depth-normal-detail"
           },
           "posters": {
             "2dgs": "assets/mesh-video-maps/mipnerf360/2dgs-normals-poster.webp",
