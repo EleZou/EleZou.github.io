@@ -12,7 +12,7 @@ Font licenses remain in `assets/fonts/`. Layout credits are retained in the page
 
 The results section contains the five tables from the paper, including DTU at matched training time. The mesh gallery covers seven datasets and includes all 17 indoor scenes.
 
-The mesh videos and image sliders each show one scene per dataset. All six mesh videos for a scene share a camera path and play together. The indoor videos show selected views in short sweeps.
+The mesh videos and image sliders each show one scene per dataset. All six mesh videos for a scene share a camera path and play together at 30 fps. The indoor videos complete one panoramic rotation in 16 seconds.
 The sliders use matched panels from Figures 5 and 6 and the NeRF-Synthetic comparison in the supplement.
 
 ## Page layout

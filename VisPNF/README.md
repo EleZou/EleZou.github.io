@@ -6,13 +6,13 @@ Serve the repository root with `python -m http.server 8000` and visit `/VisPNF/`
 
 ## Comparisons
 
-The mesh videos and image sliders cover seven benchmarks. Each offers 2DGS, GOF, PGSR, AmbiSuR, PNFSurf-P, and PNFSurf-A. All six mesh videos for a scene share a camera path and play together. The indoor videos show selected views in short sweeps. The sliders use matched panels from Figures 5 and 6 and the NeRF-Synthetic comparison in the supplement.
+The mesh videos and image sliders cover seven benchmarks. Each offers 2DGS, GOF, PGSR, AmbiSuR, PNFSurf-P, and PNFSurf-A. All six mesh videos for a scene share a camera path and play together at 30 fps. The indoor videos complete one panoramic rotation in 16 seconds. The sliders use matched panels from Figures 5 and 6 and the NeRF-Synthetic comparison in the supplement.
 
 | Dataset | Image sliders | Mesh videos |
 | --- | --- | --- |
-| Replica | office1 | office1 |
-| ScanNet++ | 66c98f4a9b | 8b5caf3398 |
-| MuSHRoom | kokko | kokko |
+| Replica | office1 | office0 |
+| ScanNet++ | 66c98f4a9b | 66c98f4a9b |
+| MuSHRoom | kokko | coffee_room |
 | DTU | scan105 | scan105 |
 | NeRF-Synthetic | mic | mic |
 | Tanks and Temples | Truck | Ignatius |

@@ -11,7 +11,7 @@ window.PNFSURF_DATA = {
     {
       "id": "replica",
       "name": "Replica",
-      "scene": "office1",
+      "scene": "office0",
       "comparisonScene": "office1",
       "width": 1080,
       "height": 608,
@@ -24,20 +24,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/replica/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/replica/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/replica/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/replica/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/replica/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/replica/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/replica/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/replica/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/replica/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/replica/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/replica/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/replica/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/replica/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/replica/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/replica/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/replica/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/replica/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/replica/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/replica/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/replica/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/replica/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/replica/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/replica/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/replica/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/replica/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
@@ -47,7 +47,7 @@ window.PNFSURF_DATA = {
     {
       "id": "scannetpp",
       "name": "ScanNet++",
-      "scene": "8b5caf3398",
+      "scene": "66c98f4a9b",
       "comparisonScene": "66c98f4a9b",
       "width": 1080,
       "height": 608,
@@ -60,20 +60,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/scannetpp/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/scannetpp/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/scannetpp/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/scannetpp/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/scannetpp/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/scannetpp/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/scannetpp/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/scannetpp/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/scannetpp/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/scannetpp/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/scannetpp/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/scannetpp/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/scannetpp/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/scannetpp/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/scannetpp/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/scannetpp/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/scannetpp/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/scannetpp/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/scannetpp/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/scannetpp/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/scannetpp/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/scannetpp/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/scannetpp/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/scannetpp/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/scannetpp/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
@@ -83,7 +83,7 @@ window.PNFSURF_DATA = {
     {
       "id": "mushroom",
       "name": "MuSHRoom",
-      "scene": "kokko",
+      "scene": "coffee_room",
       "comparisonScene": "kokko",
       "width": 1080,
       "height": 608,
@@ -96,20 +96,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/mushroom/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/mushroom/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/mushroom/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/mushroom/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/mushroom/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/mushroom/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/mushroom/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/mushroom/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/mushroom/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/mushroom/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/mushroom/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/mushroom/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/mushroom/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/mushroom/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/mushroom/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/mushroom/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/mushroom/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/mushroom/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/mushroom/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/mushroom/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/mushroom/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/mushroom/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/mushroom/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/mushroom/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/mushroom/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
@@ -132,20 +132,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/dtu/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/dtu/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/dtu/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/dtu/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/dtu/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/dtu/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/dtu/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/dtu/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/dtu/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/dtu/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/dtu/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/dtu/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/dtu/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/dtu/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/dtu/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/dtu/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/dtu/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/dtu/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/dtu/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/dtu/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/dtu/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/dtu/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/dtu/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/dtu/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/dtu/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
@@ -168,20 +168,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/nerf-synthetic/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/nerf-synthetic/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/nerf-synthetic/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/nerf-synthetic/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/nerf-synthetic/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/nerf-synthetic/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/nerf-synthetic/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/nerf-synthetic/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/nerf-synthetic/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/nerf-synthetic/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/nerf-synthetic/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/nerf-synthetic/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/nerf-synthetic/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/nerf-synthetic/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/nerf-synthetic/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/nerf-synthetic/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/nerf-synthetic/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/nerf-synthetic/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/nerf-synthetic/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/nerf-synthetic/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/nerf-synthetic/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/nerf-synthetic/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/nerf-synthetic/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/nerf-synthetic/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/nerf-synthetic/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
@@ -204,20 +204,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/tnt/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/tnt/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/tnt/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/tnt/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/tnt/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/tnt/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/tnt/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/tnt/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/tnt/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/tnt/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/tnt/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/tnt/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/tnt/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/tnt/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/tnt/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/tnt/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/tnt/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/tnt/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/tnt/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/tnt/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/tnt/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/tnt/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/tnt/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/tnt/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/tnt/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
@@ -240,20 +240,20 @@ window.PNFSURF_DATA = {
         "PNFSurf-A": "assets/scenes-20261121/mipnerf360/pnfsurf-a.webp?v=paper-comparisons-3f35c79"
       },
       "videos": {
-        "2dgs": "assets/mesh-videos-20261121/mipnerf360/2dgs.mp4",
-        "gof": "assets/mesh-videos-20261121/mipnerf360/gof.mp4",
-        "pgsr": "assets/mesh-videos-20261121/mipnerf360/pgsr.mp4",
-        "ambisur": "assets/mesh-videos-20261121/mipnerf360/ambisur.mp4",
-        "pnfsurf-p": "assets/mesh-videos-20261121/mipnerf360/pnfsurf-p.mp4",
-        "pnfsurf-a": "assets/mesh-videos-20261121/mipnerf360/pnfsurf-a.mp4"
+        "2dgs": "assets/mesh-videos-smooth/mipnerf360/2dgs.mp4",
+        "gof": "assets/mesh-videos-smooth/mipnerf360/gof.mp4",
+        "pgsr": "assets/mesh-videos-smooth/mipnerf360/pgsr.mp4",
+        "ambisur": "assets/mesh-videos-smooth/mipnerf360/ambisur.mp4",
+        "pnfsurf-p": "assets/mesh-videos-smooth/mipnerf360/pnfsurf-p.mp4",
+        "pnfsurf-a": "assets/mesh-videos-smooth/mipnerf360/pnfsurf-a.mp4"
       },
       "posters": {
-        "2dgs": "assets/mesh-videos-20261121/mipnerf360/2dgs-poster.webp",
-        "gof": "assets/mesh-videos-20261121/mipnerf360/gof-poster.webp",
-        "pgsr": "assets/mesh-videos-20261121/mipnerf360/pgsr-poster.webp",
-        "ambisur": "assets/mesh-videos-20261121/mipnerf360/ambisur-poster.webp",
-        "pnfsurf-p": "assets/mesh-videos-20261121/mipnerf360/pnfsurf-p-poster.webp",
-        "pnfsurf-a": "assets/mesh-videos-20261121/mipnerf360/pnfsurf-a-poster.webp"
+        "2dgs": "assets/mesh-videos-smooth/mipnerf360/2dgs-poster.webp",
+        "gof": "assets/mesh-videos-smooth/mipnerf360/gof-poster.webp",
+        "pgsr": "assets/mesh-videos-smooth/mipnerf360/pgsr-poster.webp",
+        "ambisur": "assets/mesh-videos-smooth/mipnerf360/ambisur-poster.webp",
+        "pnfsurf-p": "assets/mesh-videos-smooth/mipnerf360/pnfsurf-p-poster.webp",
+        "pnfsurf-a": "assets/mesh-videos-smooth/mipnerf360/pnfsurf-a-poster.webp"
       },
       "videoNote": "",
       "imageNote": "",
