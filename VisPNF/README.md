@@ -20,7 +20,7 @@ The mesh videos and image sliders cover seven benchmarks. Each offers 2DGS, GOF,
 
 The three longer indoor reconstruction videos are available below the mesh comparison player.
 
-The mesh player switches between shaded meshes, depth from the meshes, and camera-space surface normals at the same playback position. Depth colors share a fixed range across all frames and methods for each scene. For scan105 and bonsai, all three views use the same camera path fitted to the supplied clips.
+The mesh player switches between shaded meshes, depth from the meshes, and camera-space surface normals at the same playback position. A shared stream keeps all six methods synchronized. Each method links to its full-resolution clip. Depth colors share a fixed range across all frames and methods for each scene. For scan105 and bonsai, all three views use the same camera path fitted to the supplied clips.
 
 ## Experimental results
 

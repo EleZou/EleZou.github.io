@@ -216,17 +216,34 @@ h2{font-size:32px;margin:0 0 24px}
   white-space: nowrap;
 }
 .scene-video-frame {
+  position: relative;
   width: 100%;
   aspect-ratio: var(--mesh-video-ratio, 16 / 9);
   overflow: hidden;
   background: #f4f4f4;
   border-radius: 4px;
 }
-.scene-video-frame video {
+.scene-video-frame img,
+.scene-video-frame canvas {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+}
+.scene-video-frame canvas {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+.scene-video-grid.has-video-frame canvas {
+  visibility: visible;
+}
+.scene-video-track {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 .scene-playback {
   display: grid;

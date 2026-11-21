@@ -81,6 +81,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-a": "assets/mesh-video-maps/replica/pnfsurf-a-normals-poster.webp"
           }
         }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/replica/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        },
+        "depth": {
+          "src": "assets/comparison-videos/replica/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        },
+        "normals": {
+          "src": "assets/comparison-videos/replica/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        }
       }
     },
     {
@@ -155,6 +172,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-p": "assets/mesh-video-maps/scannetpp/pnfsurf-p-normals-poster.webp",
             "pnfsurf-a": "assets/mesh-video-maps/scannetpp/pnfsurf-a-normals-poster.webp"
           }
+        }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/scannetpp/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        },
+        "depth": {
+          "src": "assets/comparison-videos/scannetpp/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        },
+        "normals": {
+          "src": "assets/comparison-videos/scannetpp/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
         }
       }
     },
@@ -231,6 +265,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-a": "assets/mesh-video-maps/mushroom/pnfsurf-a-normals-poster.webp"
           }
         }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/mushroom/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        },
+        "depth": {
+          "src": "assets/comparison-videos/mushroom/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        },
+        "normals": {
+          "src": "assets/comparison-videos/mushroom/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 216
+        }
       }
     },
     {
@@ -305,6 +356,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-p": "assets/mesh-video-maps/dtu/pnfsurf-p-normals-poster.webp",
             "pnfsurf-a": "assets/mesh-video-maps/dtu/pnfsurf-a-normals-poster.webp"
           }
+        }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/dtu/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 266
+        },
+        "depth": {
+          "src": "assets/comparison-videos/dtu/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 266
+        },
+        "normals": {
+          "src": "assets/comparison-videos/dtu/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 266
         }
       }
     },
@@ -381,6 +449,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-a": "assets/mesh-video-maps/nerf-synthetic/pnfsurf-a-normals-poster.webp"
           }
         }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/nerf-synthetic/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 278
+        },
+        "depth": {
+          "src": "assets/comparison-videos/nerf-synthetic/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 278
+        },
+        "normals": {
+          "src": "assets/comparison-videos/nerf-synthetic/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 278
+        }
       }
     },
     {
@@ -456,6 +541,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-a": "assets/mesh-video-maps/tnt/pnfsurf-a-normals-poster.webp"
           }
         }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/tnt/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 298
+        },
+        "depth": {
+          "src": "assets/comparison-videos/tnt/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 298
+        },
+        "normals": {
+          "src": "assets/comparison-videos/tnt/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 298
+        }
       }
     },
     {
@@ -530,6 +632,23 @@ window.PNFSURF_DATA = {
             "pnfsurf-p": "assets/mesh-video-maps/mipnerf360/pnfsurf-p-normals-poster.webp",
             "pnfsurf-a": "assets/mesh-video-maps/mipnerf360/pnfsurf-a-normals-poster.webp"
           }
+        }
+      },
+      "videoClips": {
+        "mesh": {
+          "src": "assets/comparison-videos/mipnerf360/mesh.mp4",
+          "tileWidth": 384,
+          "tileHeight": 272
+        },
+        "depth": {
+          "src": "assets/comparison-videos/mipnerf360/depth.mp4",
+          "tileWidth": 384,
+          "tileHeight": 272
+        },
+        "normals": {
+          "src": "assets/comparison-videos/mipnerf360/normals.mp4",
+          "tileWidth": 384,
+          "tileHeight": 272
         }
       }
     }
