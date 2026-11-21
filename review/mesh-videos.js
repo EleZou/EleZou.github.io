@@ -3,6 +3,8 @@
   const {datasets, methods} = window.PNFSURF_DATA;
   const section = document.querySelector('#videos');
   const tabs = [...section.querySelectorAll('[data-mesh-dataset]')];
+  const modeButtons = [...section.querySelectorAll('[data-video-mode]')];
+  const depthKey = section.querySelector('#mesh-depth-key');
   const grid = section.querySelector('#mesh-video-grid');
   const template = grid.querySelector('#mesh-video-tile');
   const tiles = Object.entries(methods).map(([method, label]) => {
@@ -27,6 +29,7 @@
   const note = section.querySelector('#mesh-video-note');
   const status = section.querySelector('#mesh-video-status');
   let scene = datasets[0];
+  let mode = 'mesh';
   let phase = 0;
   let running = null;
   let starting = false;
@@ -42,7 +45,7 @@
   }
 
   function updateProgress() {
-    const total = master.duration;
+    const total = scene.videoDuration ?? master.duration;
     scrub.disabled = starting || !Number.isFinite(total) || total <= 0;
     scrub.value = scrub.disabled ? 0 : Math.round(phase / total * 1000);
     const time = scrub.disabled ? '0:00' : formatTime(phase) + ' / ' + formatTime(total);
@@ -145,10 +148,18 @@
     }
   }
 
-  function loadScene() {
+  function loadScene(keepTime = false) {
     const resume = Boolean(running);
     pause();
-    phase = 0;
+    if (!keepTime) phase = 0;
+    if (mode !== 'mesh' && !scene.videoMaps?.[mode]) mode = 'mesh';
+    const media = mode === 'mesh' ? scene : scene.videoMaps[mode];
+    for (const button of modeButtons) {
+      const view = button.dataset.videoMode;
+      button.hidden = view !== 'mesh' && !scene.videoMaps?.[view];
+      button.setAttribute('aria-pressed', String(view === mode));
+    }
+    depthKey.hidden = mode !== 'depth';
     section.querySelector('#mesh-video-scene').textContent = scene.scene;
     note.hidden = !scene.videoNote;
     note.textContent = scene.videoNote ?? '';
@@ -157,11 +168,11 @@
     } else {
       grid.style.removeProperty('--mesh-video-ratio');
     }
-    toolbar.hidden = tiles.some(({method}) => !scene.videos?.[method]);
+    toolbar.hidden = tiles.some(({method}) => !media.videos?.[method]);
     for (const {method, label, video, link} of tiles) {
-      const source = scene.videos?.[method];
-      const poster = scene.posters?.[method] || scene.images?.[label];
-      video.preload = 'none';
+      const source = media.videos?.[method];
+      const poster = media.posters?.[method] || scene.images?.[label];
+      video.preload = phase > 0 || resume ? 'auto' : 'none';
       if (poster) video.poster = poster;
       else video.removeAttribute('poster');
       if (source) {
@@ -172,11 +183,21 @@
         link.removeAttribute('href');
       }
       link.hidden = !source;
-      video.setAttribute('aria-label', [scene.name, scene.scene, label + ' mesh'].join(', '));
+      video.setAttribute('aria-label', [scene.name, scene.scene, label + ' ' + mode].join(', '));
+      link.setAttribute('aria-label', 'Open ' + label + ' ' + mode + ' video');
       video.load();
+      if (source && phase > 0) video.currentTime = phase;
     }
     updateProgress();
     if (resume && !toolbar.hidden) play();
+  }
+  for (const button of modeButtons) {
+    button.addEventListener('click', () => {
+      const view = button.dataset.videoMode;
+      if (view === mode) return;
+      mode = view;
+      loadScene(true);
+    });
   }
 
   for (const [index, tab] of tabs.entries()) {
@@ -213,8 +234,15 @@
     }
   });
   scrub.addEventListener('input', () => {
-    phase = Math.min(master.duration * Number(scrub.value) / 1000, master.duration - 0.04);
-    videos.forEach(video => { video.currentTime = phase; });
+    const total = scene.videoDuration ?? master.duration;
+    phase = Math.min(total * Number(scrub.value) / 1000, total - 0.04);
+    for (const video of videos) {
+      if (video.preload === 'none') {
+        video.preload = 'auto';
+        video.load();
+      }
+      video.currentTime = phase;
+    }
     updateProgress();
   });
   for (const video of videos) {

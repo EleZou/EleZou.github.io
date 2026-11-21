@@ -14,10 +14,10 @@
   <title>PNFSurf: Gaussian Surface Reconstruction Guided by Projective Normal Fields</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" href="assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=mesh-videos-20261121">
-  <script src="data.js?v=mesh-videos-smooth" defer></script>
+  <link rel="stylesheet" href="style.css?v=mesh-video-maps">
+  <script src="data.js?v=mesh-video-maps" defer></script>
   <script src="app.js?v=paper-comparisons-3f35c79" defer></script>
-  <script src="mesh-videos.js?v=mesh-videos-smooth-buffered" defer></script>
+  <script src="mesh-videos.js?v=mesh-video-maps" defer></script>
   <script src="showcase-tabs.js?v=pnfsurf-20261120" defer></script>
 </head>
 <body>
@@ -59,8 +59,13 @@
       <div id="mesh-video-panel" role="tabpanel" aria-labelledby="mesh-dataset-replica">
         <div class="mesh-video-meta">
           <p><strong id="mesh-video-scene">office0</strong></p>
-          <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
+          <div class="scene-video-modes" role="group" aria-label="Surface view">
+            <button type="button" data-video-mode="mesh" aria-pressed="true" aria-controls="mesh-video-grid">Mesh</button>
+            <button type="button" data-video-mode="depth" aria-pressed="false" aria-controls="mesh-video-grid" title="Camera depth from the mesh">Depth</button>
+            <button type="button" data-video-mode="normals" aria-pressed="false" aria-controls="mesh-video-grid" title="Camera-space mesh surface normals">Normals</button>
+          </div>
         </div>
+        <p id="mesh-video-status" class="mesh-video-status" role="status" aria-live="polite"></p>
         <div class="scene-playback">
           <button type="button" class="mesh-play-button" id="mesh-play-toggle"
                   aria-controls="mesh-video-grid">
@@ -86,6 +91,9 @@
               </div>
             </figure>
           </template>
+        </div>
+        <div id="mesh-depth-key" class="mesh-depth-key" aria-label="Shared depth scale" hidden>
+          <span>Far</span><span class="mesh-depth-ramp" aria-hidden="true"></span><span>Near</span>
         </div>
         <p id="mesh-video-note" class="mesh-video-caption" hidden></p>
       </div>
