@@ -1,2 +1,19 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>VisPNF Project</title></head><body><p><a href="/VisPNF/">Open the VisPNF project page</a></p><script>if(/^\/PGSF(?:\/|$)/.test(location.pathname)){location.replace(location.pathname.replace(/^\/PGSF(?=\/|$)/,'/VisPNF')+location.search+location.hash);}</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>PNFSurf Project</title>
+  <script>
+    const legacy = /^\/(?:PGSF|VisPNF)(?=\/|$)/;
+    if (legacy.test(location.pathname)) {
+      const target = location.pathname.replace(legacy, '/PNFSurf');
+      location.replace((target === '/PNFSurf' ? target + '/' : target) + location.search + location.hash);
+    }
+  </script>
+</head>
+<body>
+  <p><a href="/PNFSurf/">Open the PNFSurf project page</a></p>
+</body>
+</html>
