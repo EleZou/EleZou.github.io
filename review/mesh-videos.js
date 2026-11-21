@@ -128,7 +128,7 @@
     updateProgress();
     const timeout = setTimeout(() => {
       if (ticket === running) playbackFailed();
-    }, 30000);
+    }, mode === 'mesh' ? 30000 : 60000);
     try {
       for (const video of videos) {
         if (video.preload === 'none' || video.error) {
