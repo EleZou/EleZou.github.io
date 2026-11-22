@@ -47,6 +47,20 @@
 
     <section id="videos" class="mesh-video-section container" aria-labelledby="mesh-videos-title">
       <div id="mesh-videos" class="section-heading centered"><h2 id="mesh-videos-title">Mesh Videos</h2></div>
+      <figure class="full-comparison-video">
+        <div class="full-comparison-heading">
+          <h3>Full comparison video</h3>
+          <a href="assets/videos/full-side-by-side-comparison.mp4" target="_blank" rel="noopener">Open video</a>
+        </div>
+        <video controls playsinline preload="metadata"
+               poster="assets/videos/full-side-by-side-comparison.webp"
+               aria-label="Synchronized mesh, depth, and normal comparison across seven datasets and six methods">
+          <source src="assets/videos/full-side-by-side-comparison.mp4" type="video/mp4">
+          Your browser does not support HTML video.
+          <a href="assets/videos/full-side-by-side-comparison.mp4">Open the full comparison video.</a>
+        </video>
+        <figcaption>Seven selected scenes. Columns show the methods; rows show mesh, depth, and normals.</figcaption>
+      </figure>
       <div class="tab-list dataset-tabs selected-dataset-tabs" role="tablist" aria-label="Mesh video dataset">
 <button type="button" role="tab" id="mesh-dataset-replica" aria-controls="mesh-video-panel" aria-selected="true" tabindex="0" data-mesh-dataset="replica">Replica</button>
 <button type="button" role="tab" id="mesh-dataset-scannetpp" aria-controls="mesh-video-panel" aria-selected="false" tabindex="-1" data-mesh-dataset="scannetpp">ScanNet++</button>
