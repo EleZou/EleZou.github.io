@@ -1,6 +1,6 @@
 # PNFSurf project website
 
-Static project page at `https://elezou.github.io/PNFSurf/`. No build step, framework, analytics, or third-party runtime requests are required.
+Static project page source. No build step, framework, analytics, or third-party runtime requests are required.
 
 Serve the repository root with `python -m http.server 8000` and visit `/PNFSurf/`.
 
